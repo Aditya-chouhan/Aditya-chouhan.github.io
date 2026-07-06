@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aditya Chouhan — GTM Engineer & AI Systems Builder</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8e8; background: #111214; }
+    a { color: #8ab4ff; }
+    .card { background: #1a1b1e !important; border-color: #2a2b2e !important; }
+    .tag { background: #26272b !important; color: #b8b8b8 !important; }
+  }
+  h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .tagline { font-size: 16px; color: #555; margin: 0 0 18px; font-weight: 600; }
+  .contact { font-size: 14px; color: #666; margin: 0 0 36px; }
+  .contact a { color: inherit; text-decoration: underline; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #a8641f; margin: 40px 0 16px; }
+  p.lead { font-size: 15px; color: #333; margin: 0 0 8px; }
+  .card {
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    background: #fafafa;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 16px; }
+  .card p { margin: 0 0 10px; font-size: 14px; color: #444; }
+  .card .links a { font-size: 13px; margin-right: 14px; text-decoration: none; color: #a8641f; font-weight: 600; }
+  .tag { display: inline-block; font-size: 11px; background: #eee; color: #666; padding: 2px 8px; border-radius: 999px; margin-right: 6px; }
+  footer { margin-top: 48px; font-size: 12px; color: #888; }
+</style>
+</head>
+<body>
+
+<h1>Aditya Chouhan</h1>
+<div class="tagline">GTM Engineer & AI Systems Builder</div>
+<div class="contact">
+  Indore / Hyderabad, India · Open to relocation &nbsp;·&nbsp;
+  <a href="mailto:ai.adityachouhan@gmail.com">ai.adityachouhan@gmail.com</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/aditya-chouhan-gtm/">LinkedIn</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Aditya-chouhan">GitHub</a>
+</div>
+
+<p class="lead">I build AI-native go-to-market systems hands-on — signal-detection pipelines, agent workflows, and outbound infrastructure a modern revenue team runs on. Every project below is public and runnable, not a slide deck.</p>
+
+<h2>Public Projects</h2>
+
+<div class="card">
+  <h3>Restaurant Lead Engine</h3>
+  <span class="tag">Python</span><span class="tag">OpenStreetMap API</span>
+  <p>A lead-intelligence pipeline for NYC restaurants: harvests real venues, fingerprints their live ordering/reservation/delivery stack, scores fit with disclosed weights, detects real multi-location chains, generates rep pre-call briefs, and ships a rep-facing dashboard.</p>
+  <div class="links">
+    <a href="https://aditya-chouhan.github.io/restaurant-lead-engine/">Write-up + code →</a>
+    <a href="https://aditya-chouhan.github.io/restaurant-lead-engine/rep_dashboard.html">Rep dashboard →</a>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Signal Engine</h3>
+  <span class="tag">Python</span><span class="tag">GitHub API</span><span class="tag">Claude API</span>
+  <p>A composite signal-scoring engine on fully public data, scoring commit-velocity acceleration across 8 open-source companies — one accelerated +183% in 4 weeks, a reproducible signal, not a modeled guess. A second script drafts outreach grounded only in verifiable facts; a human approves every send.</p>
+  <div class="links"><a href="https://aditya-chouhan.github.io/signal-engine-demo/">Write-up + code →</a></div>
+</div>
+
+<div class="card">
+  <h3>Account Brief Generator</h3>
+  <span class="tag">Python</span><span class="tag">Hacker News API</span><span class="tag">Claude API</span>
+  <p>Pulls real, current company signals (releases, contributor activity, Hacker News mentions) and synthesizes a source-cited pre-call brief. The system prompt forces "no clear signal here" over invented pain points.</p>
+  <div class="links"><a href="https://aditya-chouhan.github.io/account-brief-demo/">Write-up + code →</a></div>
+</div>
+
+<div class="card">
+  <h3>Mini GTM Warehouse + Attribution</h3>
+  <span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Python</span>
+  <p>A normalized schema unifying signal/brief/draft data, extended with a disclosed-synthetic multi-touch funnel and four attribution models (first/last-touch, linear, U-shaped) in SQL — the measurement that shows whether a channel actually moved revenue before you cut its budget.</p>
+  <div class="links"><a href="https://aditya-chouhan.github.io/gtm-warehouse-demo/">Write-up + code →</a></div>
+</div>
+
+<div class="card">
+  <h3>Groundtruth — AI "Company Brain" for engineering teams</h3>
+  <span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">FastAPI</span><span class="tag">pgvector</span>
+  <p>Keeps a team's AI-agent rulebooks current by extracting patterns from real repo activity instead of docs that decay. Hand-audited a real 60K-star repo (mem0ai/mem0) and surfaced a verifiable gap: five pull requests used auto-close keywords while touching only a test file.</p>
+  <div class="links"><a href="https://aditya-chouhan.github.io/mem0-audit-casestudy/">Write-up →</a></div>
+</div>
+
+<h2>Experience</h2>
+<p class="lead" style="margin-bottom:4px"><strong>GTM Engineer — Sydon AI</strong> (Anthropic Claude Partner Network member) · Apr–Jul 2026</p>
+<p class="lead" style="margin-bottom:4px"><strong>Outbound BDR (Founding) — Mapog</strong> · GIS SaaS · Jan–Apr 2026 — 136 qualified opportunities in ~60 days</p>
+<p class="lead"><strong>Co-Founder — Hahaha Marketing</strong> · digital agency · 2022–2025</p>
+
+<footer>Last updated July 2026. Every project above is public and runnable — the code speaks for itself.</footer>
+
+</body>
+</html>
