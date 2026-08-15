@@ -113,7 +113,7 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">Hyderabad, India · Open to contract, freelance &amp; remote work</div>
+    <div class="eyebrow">Mumbai, India · Open to contract, freelance &amp; remote work</div>
     <h1 class="name">Aditya Chouhan</h1>
     <p class="role">GTM Engineer &amp; AI Systems Builder</p>
     <p class="dek">I build AI-native go-to-market systems hands-on — signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure a modern revenue team actually runs on. Every project below is public and runnable, not a slide deck.</p>
@@ -129,9 +129,22 @@
 
   <section id="projects">
     <div class="section-head"><h2>Public Projects</h2></div>
-    <p class="section-note">Six systems, each with real code and a written breakdown of what's synthetic vs. real, what's verified vs. claimed.</p>
+    <p class="section-note">Seven systems, each with real code and a written breakdown of what's synthetic vs. real, what's verified vs. claimed.</p>
 
     <div class="project-grid">
+
+      <div class="project-card featured">
+        <div class="project-top">
+          <h3>Groundtruth</h3>
+          <span class="flag">Newest · 2026-08-16</span>
+        </div>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub REST API</span><span class="tag">FastAPI</span></div>
+        <p>Scans real, active public repositories for a specific defect: a PR that claims to close a bug via a GitHub keyword while its diff touches only test files. 30 repos scanned against the live GitHub API, 43 raw candidates, every one hand-verified against real issue/PR text — 26 confirmed real, 17 false positives, full reasoning shown for each. Caught and fixed two bugs in its own rule engine along the way.</p>
+        <div class="project-links">
+          <a href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">Live findings</a>
+          <a href="https://github.com/Aditya-chouhan/groundtruth" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
 
       <div class="project-card featured">
         <div class="project-top">
@@ -158,11 +171,20 @@
       </div>
 
       <div class="project-card">
-        <h3>Signal Engine</h3>
+        <h3>Commit-Velocity Signal Engine</h3>
         <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub API</span><span class="tag">Claude API</span></div>
         <p>A composite signal-scoring engine on fully public data, scoring commit-velocity acceleration across 8 open-source companies — one accelerated +183% in 4 weeks, a reproducible signal, not a modeled guess. A second script drafts outreach grounded only in verifiable facts.</p>
         <div class="project-links">
           <a href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">Write-up + code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Atlas Signal Engine</h3>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">FDA API</span><span class="tag">Public Data</span></div>
+        <p>Turns real FDA enforcement/inspection data (Form 483s, warning letters, recalls) into a ranked outreach queue — a buying-trigger model a compliance-tooling sales team would actually run on, built on public federal records, not synthetic scores.</p>
+        <div class="project-links">
+          <a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Write-up + code</a>
         </div>
       </div>
 
@@ -184,15 +206,6 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>Groundtruth — AI "Company Brain"</h3>
-        <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">FastAPI</span><span class="tag">pgvector</span></div>
-        <p>Keeps a team's AI-agent rulebooks current by extracting patterns from real repo activity instead of docs that decay. Hand-audited a real 60K-star repo (mem0ai/mem0) and surfaced a verifiable gap: five PRs used auto-close keywords while touching only a test file.</p>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/mem0-audit-casestudy/" target="_blank" rel="noopener">Write-up</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -201,7 +214,7 @@
     <p class="section-note">&nbsp;</p>
     <div class="timeline">
       <div class="tl-item">
-        <div class="role-line">GTM Engineer <span>— Anthropic Claude Partner Network</span></div>
+        <div class="role-line">GTM Engineer <span>— Sydon AI (Anthropic Claude Partner Network member)</span></div>
         <div class="meta-line">Apr–Jul 2026</div>
         <p>Owned GTM system design and execution — signal scoring, outbound infrastructure, and pipeline reporting.</p>
       </div>
@@ -253,7 +266,7 @@
 
   <footer>
     <span>Aditya Chouhan · <a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/aditya-chouhan-gtm/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>Last updated July 2026 — every project above is public and runnable.</span>
+    <span>Last updated August 2026 — every project above is public and runnable.</span>
   </footer>
 
 </div>
