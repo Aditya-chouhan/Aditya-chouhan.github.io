@@ -135,7 +135,7 @@
 
   <section id="projects">
     <div class="section-head"><h2>Public Projects</h2></div>
-    <p class="section-note">Nine systems. Each one leads with the revenue problem it solves, states plainly what is real data versus synthetic, and reports the volume it actually processed — every number below came out of a run, not an estimate.</p>
+    <p class="section-note">Ten systems. Each one leads with the revenue problem it solves, states plainly what is real data versus synthetic, and reports the volume it actually processed — every number below came out of a run, not an estimate.</p>
 
     <div class="project-grid">
 
@@ -181,6 +181,20 @@
         <div class="project-links">
           <a href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">Write-up</a>
           <a href="https://github.com/Aditya-chouhan/clay-enrichment-waterfall" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <h3>n8n GTM Orchestration</h3>
+          <span class="flag">New · executed</span>
+        </div>
+        <p class="problem"><b>Problem it solves</b>A signal pipeline that depends on someone remembering to re-run it goes stale — and when the refresh fails, the queue doesn't empty, it silently serves yesterday's data.</p>
+        <div class="tag-row"><span class="tag">n8n</span><span class="tag">Workflow orchestration</span><span class="tag">openFDA API</span><span class="tag">Error handling</span></div>
+        <p>A scheduled n8n workflow turning live FDA enforcement filings into a ranked, grounded outreach queue. The interesting half is the failure path: retry with backoff, a dedicated error branch that emits a structured "queue is stale, do not send from it" alert, deliberate rate limiting, and a fail-closed guard that throws rather than emit an empty queue. <strong>Executed headlessly on n8n 2.35.7 against the live API — the real run output is committed</strong>, not a screenshot of a canvas.</p>
+        <div class="metrics"><span class="metric"><b>100</b> records → <b>10</b> briefs</span><span class="metric"><b>3</b> retries + error branch</span><span class="metric">fetch <b>1.9s</b></span><span class="metric">run output committed</span></div>
+        <div class="project-links">
+          <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output</a>
         </div>
       </div>
 
@@ -295,7 +309,7 @@
       </div>
       <div class="skill-group">
         <h4>AI Systems</h4>
-        <ul><li>Claude API / agent workflows</li><li>Signal-scoring &amp; enrichment pipelines</li><li>Clay waterfalls &amp; formula columns</li><li>Evaluation &amp; A/B testing of scoring models</li></ul>
+        <ul><li>Claude API / agent workflows</li><li>Signal-scoring &amp; enrichment pipelines</li><li>Clay waterfalls &amp; formula columns</li><li>n8n workflow orchestration</li><li>Evaluation &amp; A/B testing of scoring models</li></ul>
       </div>
       <div class="skill-group">
         <h4>Data &amp; Reporting</h4>
