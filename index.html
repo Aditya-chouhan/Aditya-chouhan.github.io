@@ -135,7 +135,7 @@
 
   <section id="projects">
     <div class="section-head"><h2>Public Projects</h2></div>
-    <p class="section-note">Ten systems. Each one leads with the revenue problem it solves, states plainly what is real data versus synthetic, and reports the volume it actually processed — every number below came out of a run, not an estimate.</p>
+    <p class="section-note">Eleven systems. Each one leads with the revenue problem it solves, states plainly what is real data versus synthetic, and reports the volume it actually processed — every number below came out of a run, not an estimate.</p>
 
     <div class="project-grid">
 
@@ -181,6 +181,20 @@
         <div class="project-links">
           <a href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">Write-up</a>
           <a href="https://github.com/Aditya-chouhan/clay-enrichment-waterfall" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <h3>Salesforce GTM Signal Layer</h3>
+          <span class="flag">New · deployed</span>
+        </div>
+        <p class="problem"><b>Problem it solves</b>Leads arrive in no priority order and reps qualify on gut feel, so the pipeline fills with deals that were never real and nobody can say why one lead got called before another.</p>
+        <div class="tag-row"><span class="tag">Salesforce</span><span class="tag">Flow</span><span class="tag">Validation rules</span><span class="tag">SOQL</span><span class="tag">Permission sets</span></div>
+        <p>A signal-driven routing layer deployed to a Salesforce Developer Edition org: a custom <code>GTM_Signal__c</code> object carrying verbatim source evidence, five custom Lead fields, a <strong>before-save</strong> record-triggered Flow deriving routing tier from signal score, a validation rule that refuses to let a lead reach Qualified below score 60, and a permission set granting field-level security. Thresholds mirror the CRM routing in Revenue Engine System, so the two describe one system in two stacks. Verified in-org: 85 → Tier 1, 70 → Tier 2, 40 → Tier 3, and the rule blocks and allows exactly as designed.</p>
+        <div class="metrics"><span class="metric"><b>13</b> components deployed</span><span class="metric"><b>3</b> tiers verified in-org</span><span class="metric"><b>6</b> SOQL queries</span><span class="metric">integrity check: <b>0</b> rows</span></div>
+        <div class="project-links">
+          <a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Metadata + SOQL</a>
         </div>
       </div>
 
@@ -309,7 +323,7 @@
       </div>
       <div class="skill-group">
         <h4>AI Systems</h4>
-        <ul><li>Claude API / agent workflows</li><li>Signal-scoring &amp; enrichment pipelines</li><li>Clay waterfalls &amp; formula columns</li><li>n8n workflow orchestration</li><li>Evaluation &amp; A/B testing of scoring models</li></ul>
+        <ul><li>Claude API / agent workflows</li><li>Signal-scoring &amp; enrichment pipelines</li><li>Clay waterfalls &amp; formula columns</li><li>n8n workflow orchestration</li><li>Salesforce Flows, validation rules, SOQL</li><li>Evaluation &amp; A/B testing of scoring models</li></ul>
       </div>
       <div class="skill-group">
         <h4>Data &amp; Reporting</h4>
