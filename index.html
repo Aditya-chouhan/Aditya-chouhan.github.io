@@ -2,386 +2,806 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aditya Chouhan — GTM Engineer &amp; AI Systems Builder</title>
-<meta name="description" content="AI-native go-to-market systems, built hands-on: signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure. Every project is public and runnable.">
+<meta name="description" content="I build AI-native go-to-market systems hands-on: signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure. Twelve public, runnable systems.">
+<link rel="canonical" href="https://aditya-chouhan.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aditya-chouhan.github.io/">
+<meta property="og:title" content="Aditya Chouhan — GTM Engineer &amp; AI Systems Builder">
+<meta property="og:description" content="Twelve public, runnable go-to-market systems. Signal detection, enrichment, orchestration, forecasting — built end to end.">
+<meta property="og:image" content="https://aditya-chouhan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aditya Chouhan — GTM Engineer &amp; AI Systems Builder">
+<meta name="twitter:description" content="Twelve public, runnable go-to-market systems. Signal detection, enrichment, orchestration, forecasting — built end to end.">
+<meta name="twitter:image" content="https://aditya-chouhan.github.io/og.png">
+
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08080A" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231D1D1F'/%3E%3Ctext x='32' y='46' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='40' font-weight='600' letter-spacing='-1' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<!-- Analytics: register a code at goatcounter.com, drop it in, uncomment. No cookies, no consent banner.
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+
 <style>
-  :root {
-    --paper: #ECEEEB;
-    --paper-raised: #F5F6F3;
-    --ink: #191D1B;
-    --ink-soft: #4B524D;
-    --ink-faint: #7B8179;
-    --line: #D6D3C8;
-    --accent: #A8641F;
-    --accent-soft: #EADFCB;
-    --verified: #35603F;
-    --verified-soft: #DEE7DE;
-    --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", "URW Palladio", Georgia, serif;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, monospace;
+/* ============ TOKENS ============ */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --bg: #FFFFFF;
+  --bg-sunken: #F5F5F7;
+  --surface: #FFFFFF;
+  --chrome: rgba(255,255,255,0.72);
+  --text-1: #1D1D1F;
+  --text-2: #6E6E73;
+  --text-3: #86868B;
+  --hairline: rgba(0,0,0,0.08);
+  --hairline-strong: rgba(0,0,0,0.14);
+  --accent: #0066CC;
+  --accent-hover: #0055AA;
+
+  --e1: 0 1px 2px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.03);
+  --e2: 0 4px 16px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --e3: 0 12px 40px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.05);
+
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem;
+  --s6:2rem; --s7:3rem; --s8:4rem; --s9:6rem; --s10:8rem;
+
+  --r-sm:8px; --r-md:14px; --r-lg:20px; --r-xl:28px; --r-full:999px;
+
+  --blur-chrome: 20px;
+  --wrap: 1040px;
+
+  /* spring approximations */
+  --damped: cubic-bezier(0.32, 0.72, 0, 1);
+  --bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --micro: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #08080A;
+    --bg-sunken: #101012;
+    --surface: #141416;
+    --chrome: rgba(20,20,22,0.72);
+    --text-1: #F5F5F7;
+    --text-2: #A1A1A6;
+    --text-3: #6E6E73;
+    --hairline: rgba(255,255,255,0.10);
+    --hairline-strong: rgba(255,255,255,0.18);
+    --accent: #2997FF;
+    --accent-hover: #5AAEFF;
+    --e1: 0 1px 2px rgba(0,0,0,.5);
+    --e2: 0 8px 28px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+    --e3: 0 20px 56px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.07);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #131412;
-      --paper-raised: #1B1C19;
-      --ink: #ECEEEB;
-      --ink-soft: #B7BBB3;
-      --ink-faint: #82877F;
-      --line: #302F29;
-      --accent: #D89A5C;
-      --accent-soft: #332A1C;
-      --verified: #6FA97C;
-      --verified-soft: #1E2A20;
-    }
+}
+:root[data-theme="dark"] {
+  --bg: #08080A;
+  --bg-sunken: #101012;
+  --surface: #141416;
+  --chrome: rgba(20,20,22,0.72);
+  --text-1: #F5F5F7;
+  --text-2: #A1A1A6;
+  --text-3: #6E6E73;
+  --hairline: rgba(255,255,255,0.10);
+  --hairline-strong: rgba(255,255,255,0.18);
+  --accent: #2997FF;
+  --accent-hover: #5AAEFF;
+  --e1: 0 1px 2px rgba(0,0,0,.5);
+  --e2: 0 8px 28px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+  --e3: 0 20px 56px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+/* ============ BASE ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color .25s ease, color .25s ease;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4 { margin: 0; font-weight: 600; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: var(--accent); text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--surface); color: var(--text-1);
+  padding: var(--s3) var(--s4); border-radius: var(--r-sm); box-shadow: var(--e3);
+}
+.skip:focus { left: var(--s4); top: var(--s4); }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding-inline: var(--s5); }
+@media (min-width: 700px) { .wrap { padding-inline: var(--s6); } }
+
+/* ============ TYPE ============ */
+.t-display-xl {
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 600; line-height: 1.04; letter-spacing: -0.025em;
+}
+.t-display {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 600; line-height: 1.08; letter-spacing: -0.02em;
+}
+.t-title { font-size: 1.5rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; }
+.t-headline { font-size: 1.125rem; font-weight: 590; line-height: 1.25; letter-spacing: -0.01em; }
+.t-body-lg { font-size: 1.1875rem; line-height: 1.5; letter-spacing: -0.003em; }
+.t-caption { font-size: .875rem; line-height: 1.45; letter-spacing: .004em; }
+.t-micro {
+  font-family: var(--font-mono);
+  font-size: .75rem; font-weight: 590; line-height: 1.3;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.dim { color: var(--text-2); }
+.dimmer { color: var(--text-3); }
+.prose { max-width: 68ch; }
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 52px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color .35s var(--damped),
+              backdrop-filter .35s var(--damped),
+              -webkit-backdrop-filter .35s var(--damped),
+              border-color .35s var(--damped);
+}
+.nav[data-stuck="true"] {
+  background: var(--chrome);
+  -webkit-backdrop-filter: blur(var(--blur-chrome)) saturate(180%);
+  backdrop-filter: blur(var(--blur-chrome)) saturate(180%);
+  border-bottom-color: var(--hairline);
+}
+.nav-in {
+  height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+}
+.nav-mark { font-weight: 600; letter-spacing: -0.01em; color: var(--text-1); font-size: .9375rem; }
+.nav-links { display: none; gap: var(--s5); align-items: center; }
+@media (min-width: 620px) { .nav-links { display: flex; } }
+.nav-links > a:not(.btn) {
+  font-size: .875rem; font-weight: 500; color: var(--text-2);
+  padding: var(--s2) var(--s1); transition: color .2s var(--damped);
+}
+.nav-links > a:not(.btn):hover { color: var(--text-1); }
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  font-family: inherit; font-size: .9375rem; font-weight: 590; letter-spacing: -0.005em;
+  padding: .6875rem 1.125rem; border-radius: var(--r-full);
+  border: 1px solid transparent; cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+  transition: background-color .25s var(--damped), color .25s var(--damped),
+              border-color .25s var(--damped), box-shadow .25s var(--damped);
+}
+.btn-sm { font-size: .8125rem; padding: .4375rem .875rem; }
+.btn-primary { background: var(--text-1); color: var(--bg); }
+.btn-primary:hover { background: var(--accent); }
+.btn-ghost { background: transparent; color: var(--text-1); border-color: var(--hairline-strong); }
+.btn-ghost:hover { border-color: var(--text-1); background: var(--bg-sunken); }
+
+/* ============ HERO ============ */
+.hero { padding-top: clamp(var(--s8), 10vw, var(--s9)); padding-bottom: clamp(var(--s6), 4vw, var(--s7)); }
+.hero-eyebrow { color: var(--text-3); margin-bottom: var(--s5); }
+.hero h1 { margin-bottom: var(--s4); max-width: 16ch; }
+.hero-role { color: var(--text-2); margin-bottom: var(--s6); max-width: 40ch; }
+.hero-voice {
+  color: var(--text-1); max-width: 52ch;
+  margin-bottom: var(--s5);
+  padding-left: var(--s5);
+  border-left: 2px solid var(--hairline-strong);
+}
+.hero-dek { color: var(--text-2); max-width: 62ch; margin-bottom: var(--s7); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-bottom: var(--s6); }
+.hero-contact { display: flex; flex-wrap: wrap; gap: var(--s5) var(--s6); }
+.hero-contact > a {
+  font-size: .9375rem; color: var(--text-2);
+  border-bottom: 1px solid var(--hairline-strong); padding-bottom: 1px;
+  transition: color .2s var(--damped), border-color .2s var(--damped);
+}
+.hero-contact > a:hover { color: var(--text-1); border-color: var(--text-1); }
+
+/* Photo slot — drop a 256x256 image in and delete the hidden attribute.
+   Layout switches to two columns automatically. */
+.hero-grid { display: grid; gap: var(--s7); align-items: start; }
+@media (min-width: 900px) {
+  .hero-grid:has(.hero-photo:not([hidden])) { grid-template-columns: minmax(0,1fr) auto; gap: var(--s9); }
+}
+.hero-photo {
+  width: 128px; height: 128px; border-radius: var(--r-full);
+  object-fit: cover; box-shadow: 0 0 0 1px var(--hairline), var(--e2);
+}
+
+/* ============ SECTIONS ============ */
+.section { padding-block: clamp(var(--s9), 10vw, var(--s10)); scroll-margin-top: 72px; }
+.section + .section { border-top: 1px solid var(--hairline); }
+.section-head { margin-bottom: var(--s8); }
+.section-head .t-micro { color: var(--text-3); margin-bottom: var(--s4); display: block; }
+.section-head h2 { margin-bottom: var(--s4); }
+.section-head p { color: var(--text-2); max-width: 62ch; }
+
+/* ============ HERO PROJECT CARDS ============ */
+.heroes { display: grid; gap: var(--s5); }
+.pcard {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-xl);
+  padding: clamp(var(--s5), 4vw, var(--s7));
+  box-shadow: var(--e2);
+  transition: transform .35s var(--damped), box-shadow .35s var(--damped), border-color .35s var(--damped);
+}
+@media (hover: hover) {
+  .pcard:hover { transform: translateY(-3px); box-shadow: var(--e3); border-color: var(--hairline-strong); }
+}
+.pcard h3 { margin-bottom: var(--s3); }
+.pcard-stack { overflow-wrap: anywhere; color: var(--text-3); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .02em; margin-bottom: var(--s5); }
+.pcard p { color: var(--text-2); max-width: 66ch; margin-bottom: var(--s5); }
+
+/* data strip — replaces the old green "verified" pills */
+.data {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .8125rem; line-height: 1.65;
+  color: var(--text-2);
+  background: var(--bg-sunken);
+  border-left: 2px solid var(--hairline-strong);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: var(--s3) var(--s4);
+  margin-bottom: var(--s5);
+  overflow-wrap: anywhere;
+}
+.data b { color: var(--text-1); font-weight: 600; }
+.data .note { color: var(--text-3); }
+
+.plinks { display: flex; flex-wrap: wrap; gap: var(--s5); }
+.plinks a {
+  font-size: .875rem; font-weight: 590; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: color .2s var(--damped);
+}
+.plinks a:hover { color: var(--accent-hover); }
+.plinks a .arw { transition: transform .25s var(--damped); }
+.plinks a:hover .arw { transform: translateX(3px); }
+
+/* split card (Salesforce + n8n) */
+.split { display: grid; gap: var(--s6); }
+@media (min-width: 820px) { .split { grid-template-columns: 1fr 1fr; gap: var(--s7); } }
+.split > div + div { padding-top: var(--s6); border-top: 1px solid var(--hairline); }
+@media (min-width: 820px) {
+  .split > div + div { padding-top: 0; border-top: none; padding-left: var(--s7); border-left: 1px solid var(--hairline); }
+}
+
+/* ============ COMPACT INDEX ============ */
+.index { border-top: 1px solid var(--hairline); }
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s2) var(--s5);
+  align-items: baseline;
+  padding: var(--s5) var(--s3);
+  border-bottom: 1px solid var(--hairline);
+  color: inherit;
+  transition: background-color .25s var(--damped);
+  border-radius: var(--r-sm);
+}
+@media (min-width: 860px) {
+  .row { grid-template-columns: 132px minmax(0,1fr) auto; }
+}
+@media (hover: hover) { .row:hover { background: var(--bg-sunken); } }
+.row-dom { color: var(--text-3); font-family: var(--font-mono); font-size: .6875rem; font-weight: 590; letter-spacing: .07em; text-transform: uppercase; grid-column: 1 / -1; }
+@media (min-width: 860px) { .row-dom { grid-column: auto; } }
+.row-main { min-width: 0; }
+.row-name { font-weight: 590; letter-spacing: -0.01em; color: var(--text-1); display: block; }
+.row-desc { display: block; color: var(--text-2); font-size: .875rem; line-height: 1.45; margin-top: 3px; }
+.row-data { display: block; color: var(--text-3); font-family: var(--font-mono); font-size: .75rem; line-height: 1.6; margin-top: var(--s3); overflow-wrap: anywhere; }
+.row-arw { color: var(--text-3); font-size: 1rem; transition: transform .25s var(--damped), color .25s var(--damped); align-self: center; }
+@media (hover: hover) { .row:hover .row-arw { transform: translateX(3px); color: var(--text-1); } }
+
+/* ============ EXPERIENCE ============ */
+.xp { display: grid; gap: 0; }
+.xp-item { padding-block: var(--s6); border-bottom: 1px solid var(--hairline); display: grid; gap: var(--s2); }
+.xp-item:first-child { padding-top: 0; }
+@media (min-width: 760px) {
+  .xp-item { grid-template-columns: 190px minmax(0,1fr); gap: var(--s6); align-items: baseline; }
+}
+.xp-when { color: var(--text-3); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .04em; }
+.xp-role { font-weight: 590; letter-spacing: -0.01em; }
+.xp-role span { font-weight: 400; color: var(--text-2); }
+.xp-body { color: var(--text-2); font-size: .9375rem; margin-top: var(--s2); max-width: 62ch; }
+
+/* ============ CAPABILITIES ============ */
+.caps { display: grid; gap: var(--s7); }
+@media (min-width: 620px) { .caps { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 940px) { .caps { grid-template-columns: repeat(4, 1fr); gap: var(--s6); } }
+.cap h4 { color: var(--text-3); margin-bottom: var(--s4); }
+.cap li { color: var(--text-2); font-size: .9375rem; padding-block: var(--s2); border-top: 1px solid var(--hairline); }
+
+/* ============ FORK ============ */
+.fork { display: grid; gap: var(--s5); }
+@media (min-width: 760px) { .fork { grid-template-columns: 1fr 1fr; gap: var(--s6); } }
+.fork-card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-xl);
+  padding: clamp(var(--s5), 4vw, var(--s7));
+  box-shadow: var(--e1);
+  display: flex; flex-direction: column; gap: var(--s4);
+  transition: box-shadow .35s var(--damped), border-color .35s var(--damped);
+}
+@media (hover: hover) { .fork-card:hover { box-shadow: var(--e2); border-color: var(--hairline-strong); } }
+.fork-card p { color: var(--text-2); font-size: .9375rem; flex: 1; }
+.fork-actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s2); }
+
+/* ============ FOOTER ============ */
+.foot {
+  border-top: 1px solid var(--hairline);
+  padding-block: var(--s7);
+  display: flex; flex-wrap: wrap; gap: var(--s4) var(--s6);
+  justify-content: space-between; align-items: center;
+  color: var(--text-3); font-size: .8125rem;
+}
+.foot a { color: var(--text-3); transition: color .2s var(--damped); }
+.foot a:hover { color: var(--text-1); }
+
+/* ============ MOTION ============ */
+/* Content is visible by DEFAULT. JS opts elements into the hidden state only
+   when it will actually observe them. A JS failure must never blank the page. */
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(6px);
+}
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+  transition: opacity .55s var(--damped), transform .55s var(--damped), filter .55s var(--damped);
+}
+.pressed { transform: scale(.978); transition: transform .12s var(--micro); }
+.unpressed { transition: transform .4s var(--bounce); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 100px; }
-
-  header.hero { background: var(--paper-raised); border-bottom: 1px solid var(--line); padding: 64px 24px 44px; margin-bottom: 60px; }
-  .hero-inner { max-width: 880px; margin: 0 auto; }
-  .eyebrow { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
-  .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  h1.name { font-family: var(--font-display); font-weight: 500; font-size: clamp(34px, 5.6vw, 52px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 10px; color: var(--ink); }
-  .role { font-family: var(--font-display); font-style: italic; font-size: clamp(17px, 2.2vw, 20px); color: var(--ink-soft); margin: 0 0 22px; }
-  .dek { font-size: 17px; color: var(--ink-soft); max-width: 64ch; margin: 0 0 28px; }
-  .contact-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .contact-chip { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 13.5px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 7px 12px; color: var(--ink-soft); text-decoration: none; }
-  .contact-chip:hover { border-color: var(--accent); color: var(--accent); }
-  .contact-chip b { color: var(--ink); font-weight: 600; }
-
-  section { margin-bottom: 60px; }
-  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
-  h2 { font-family: var(--font-display); font-weight: 500; font-size: 24px; letter-spacing: -0.005em; margin: 0; text-wrap: balance; }
-  .section-note { font-size: 13.5px; color: var(--ink-faint); margin: 0 0 26px; max-width: 60ch; }
-  p { max-width: 68ch; color: var(--ink-soft); margin: 0 0 16px; }
-  p:last-child { margin-bottom: 0; }
-
-  .project-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  .project-card { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px; transition: border-color 0.15s ease; }
-  .project-card:hover { border-color: var(--accent); }
-  .project-card.featured { border-color: var(--accent); background: linear-gradient(180deg, var(--accent-soft) 0%, var(--paper-raised) 140px); }
-  .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-  .project-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 19px; margin: 0; color: var(--ink); }
-  .flag { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; background: var(--verified-soft); color: var(--verified); padding: 3px 9px; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
-  .tag-row { margin-bottom: 12px; }
-  .tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; background: var(--paper); border: 1px solid var(--line); color: var(--ink-faint); padding: 3px 9px; border-radius: 999px; margin: 0 6px 6px 0; }
-  .project-card p { font-size: 14.5px; margin-bottom: 16px; }
-  .project-links { display: flex; flex-wrap: wrap; gap: 18px; }
-  .project-links a { font-size: 13.5px; font-weight: 600; text-decoration: none; }
-  .project-links a::after { content: " →"; }
-
-  .timeline { border-left: 2px solid var(--line); padding-left: 24px; display: flex; flex-direction: column; gap: 26px; }
-  .tl-item { position: relative; }
-  .tl-item::before { content: ""; position: absolute; left: -30px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); border: 2px solid var(--paper); }
-  .tl-item .role-line { font-size: 15.5px; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
-  .tl-item .role-line span { font-weight: 400; color: var(--ink-soft); }
-  .tl-item .meta-line { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-faint); margin-bottom: 6px; }
-  .tl-item p { font-size: 14px; margin: 0; }
-
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-  .skill-group h4 { font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin: 0 0 10px; }
-  .skill-group ul { list-style: none; margin: 0; padding: 0; font-size: 14px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
-
-  .cta { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 12px; padding: 40px 36px; text-align: left; }
-  .cta h2 { margin-bottom: 12px; }
-  .cta p { max-width: 60ch; }
-  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 22px; }
-  .btn { display: inline-block; background: var(--ink); color: var(--paper); font-family: var(--font-body); font-weight: 600; font-size: 14.5px; padding: 11px 20px; border-radius: 7px; text-decoration: none; border: none; cursor: pointer; }
-  .btn:hover { background: var(--accent); color: var(--paper); }
-  .email-line { font-family: var(--font-mono); font-size: 15px; margin-top: 4px; }
-  .email-line a { color: var(--ink); font-weight: 600; }
-
-  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  footer a { color: var(--ink-faint); }
-
-  @media (min-width: 640px) {
-    .project-grid { grid-template-columns: 1fr 1fr; }
-    .project-card.featured { grid-column: 1 / -1; }
-  }
-  @media (max-width: 560px) {
-    header.hero { padding: 48px 20px 36px; }
-    .project-card, .cta { padding: 22px 20px; }
-  }
-
-  .problem { font-size: 13.5px; color: var(--ink); background: var(--paper); border-left: 2px solid var(--accent); padding: 8px 12px; border-radius: 0 6px 6px 0; margin: 0 0 14px; max-width: none; }
-  .problem b { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); display: block; margin-bottom: 3px; font-weight: 600; }
-  .metrics { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 16px; }
-  .metric { font-family: var(--font-mono); font-size: 11.5px; background: var(--verified-soft); color: var(--verified); border-radius: 5px; padding: 4px 9px; white-space: nowrap; }
-  .metric b { font-weight: 700; }
-
-  .cluster { margin-bottom: 46px; }
-  .cluster-head { border-left: 3px solid var(--accent); padding-left: 16px; margin-bottom: 18px; }
-  .cluster-freq { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-  .cluster-problem { font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.3; color: var(--ink); margin: 0 0 8px; text-wrap: balance; }
-  .cluster-quote { font-size: 13.5px; font-style: italic; color: var(--ink-faint); margin: 0; max-width: 66ch; }
-  .measured { display: block; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.5; color: var(--verified); background: var(--verified-soft); border-radius: 7px; padding: 9px 12px; margin: 0 0 14px; }
+  [data-reveal="pending"] { opacity: 0; transform: none; filter: none; }
+  [data-reveal="in"] { transition: opacity .2s ease !important; }
+  .pressed { transform: none; }
+  .pcard:hover, .fork-card:hover { transform: none; }
+}
+@media (prefers-contrast: more) {
+  :root { --hairline: rgba(0,0,0,.35); --hairline-strong: rgba(0,0,0,.6); --text-2: #4A4A4E; --text-3: #5A5A5E; }
+  :root[data-theme="dark"], :root:not([data-theme="light"]) { }
+}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">Mumbai, India · Open to contract, freelance &amp; remote work</div>
-    <h1 class="name">Aditya Chouhan</h1>
-    <p class="role">GTM Engineer &amp; AI Systems Builder</p>
-    <p class="dek">I build AI-native go-to-market systems hands-on — signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure a modern revenue team actually runs on. Every project below is public and runnable, not a slide deck.</p>
-    <div class="contact-row">
-      <a class="contact-chip" href="mailto:ai.adityachouhan@gmail.com"><b>Email</b> ai.adityachouhan@gmail.com</a>
-      <a class="contact-chip" href="https://www.linkedin.com/in/aditya-chouhan-gtm/" target="_blank" rel="noopener"><b>LinkedIn</b> in/aditya-chouhan-gtm</a>
-      <a class="contact-chip" href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener"><b>GitHub</b> @Aditya-chouhan</a>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="wrap nav-in">
+    <span class="nav-mark">Aditya Chouhan</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <!-- RESUME: re-enable once the PDF is regenerated (see below), then commit it as Aditya-Chouhan-Resume.pdf
+      <a class="btn btn-ghost btn-sm" href="Aditya-Chouhan-Resume.pdf">Résumé</a> -->
+      <a class="btn btn-primary btn-sm" href="#contact">Get in touch</a>
     </div>
   </div>
-</header>
+</nav>
 
-<div class="wrap">
+<main id="main">
 
-  <section id="projects">
-    <div class="section-head"><h2>Systems, grouped by the problem they solve</h2></div>
-    <p class="section-note">Twelve public, runnable systems. They’re grouped by the seven problems that recur across a study of 14 live GTM Engineer job descriptions — the problem is stated first, in the hiring company’s own words, and every number below is regenerable by a documented command.</p>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">7 of 14 postings</div>
-        <p class="cluster-problem">The team is deliberately small and has to perform like a large one.</p>
-        <p class="cluster-quote">Blackboard: “AI-driven operations that let a lean marketing team operate at a scale its headcount should not allow.”</p>
-      </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-top"><h3>Clay Enrichment Waterfall</h3><span class="flag">New</span></div>
-          <div class="tag-row"><span class="tag">Clay</span><span class="tag">Formula columns</span><span class="tag">Python</span><span class="tag">Credit ROI</span></div>
-          <p>A four-step conditional waterfall that only spends credits when the cheaper provider misses — cost control designed in, not bolted on afterwards.</p>
-          <span class="measured">20 rows scanned → 6 qualified (30%) → 4-step waterfall · $0.06 total · 0 credits charged on steps 1–3 misses</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">Write-up</a><a href="https://github.com/Aditya-chouhan/clay-enrichment-waterfall" target="_blank" rel="noopener">Code</a></div>
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="t-micro hero-eyebrow">Mumbai, India · Open to roles &amp; contract work</p>
+        <h1 class="t-display-xl">Aditya Chouhan</h1>
+        <p class="t-body-lg hero-role">GTM Engineer &amp; AI Systems Builder</p>
+        <p class="t-body-lg hero-voice">Every system here started as a problem I hit myself and couldn't buy my way out of.</p>
+        <p class="hero-dek">I build AI-native go-to-market systems hands-on — signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure a modern revenue team actually runs on. Every project below is public and runnable, not a slide deck.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Role">Email me</a>
+          <a class="btn btn-ghost" href="#work">See the work</a>
         </div>
-        <div class="project-card">
-          <div class="project-top"><h3>Restaurant Lead Engine</h3></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">OpenStreetMap</span><span class="tag">A/B testing</span></div>
-          <p>Harvests venues from OpenStreetMap, fingerprints each one’s tech stack, scores fit, and A/B tests the scoring model itself rather than trusting it.</p>
-          <span class="measured">OpenStreetMap harvest → tech fingerprint → fit score → A/B tested scoring variant</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/restaurant-lead-engine/" target="_blank" rel="noopener">Write-up + code</a><a href="https://aditya-chouhan.github.io/restaurant-lead-engine/rep_dashboard.html" target="_blank" rel="noopener">Rep dashboard</a></div>
+        <div class="hero-contact">
+          <a href="mailto:ai.adityachouhan@gmail.com">ai.adityachouhan@gmail.com</a>
+          <a href="https://www.linkedin.com/in/aditya-chouhan-gtm/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+      <!-- Swap src for a 256x256 photo and remove `hidden` to switch to a two-column hero. -->
+      <img class="hero-photo" hidden alt="Aditya Chouhan" src="">
     </div>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">5 of 14 postings</div>
-        <p class="cluster-problem">Reps spend the day on work that isn’t selling.</p>
-        <p class="cluster-quote">Hologram: “taking Account Executives off the operational path… measured by time reclaimed and revenue capacity redirected.”</p>
+  </header>
+
+  <section class="section" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="t-micro">Selected work</span>
+        <h2 class="t-display" id="work-h">Systems, built end to end</h2>
+        <p>Twelve public, runnable systems. Every number below is regenerable by a documented command, and every simulated result is labelled as one.</p>
       </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-top"><h3>Atlas Signal Engine</h3><span class="flag">Real federal data</span></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">openFDA API</span><span class="tag">Signal scoring</span><span class="tag">Zero dependencies</span></div>
+
+      <div class="heroes">
+
+        <article class="pcard">
+          <h3 class="t-title">Revenue Brain</h3>
+          <p class="pcard-stack">Claude Code workspace · Agent design · Logistic regression · openFDA API · Zero dependencies</p>
+          <p>Detects signals, writes grounded briefs, drafts outreach, records what happened — then refits its own scoring model from the result. That last step is the one almost no revenue stack performs, and it is why most GTM systems produce activity instead of learning. Starts at uniform weights knowing nothing; validated against a hidden response model it never sees.</p>
+          <span class="data"><b>1.51×</b> lift vs random control after convergence · weight-recovery L1 error <b>0.600 → 0.098</b> · <b>1,000</b> real FDA records, <b>416</b> firms <span class="note">· outcomes simulated and labelled as such</span></span>
+          <div class="plinks">
+            <a href="https://aditya-chouhan.github.io/revenue-brain-demo/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/revenue-brain-demo" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+          </div>
+        </article>
+
+        <article class="pcard">
+          <h3 class="t-title">Atlas Signal Engine</h3>
+          <p class="pcard-stack">Python · openFDA API · Signal scoring · Zero dependencies</p>
           <p>Pulls real FDA enforcement actions, scores every firm for buying-trigger intensity, and drafts outreach grounded only in what the FDA actually filed.</p>
-          <span class="measured">1,000 real openFDA enforcement records → firm-level scoring → top-8 briefs · $0 API cost · no fabricated contacts</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Live queue</a><a href="https://github.com/Aditya-chouhan/atlas-signal-engine" target="_blank" rel="noopener">Code</a></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><h3>Account Brief Generator</h3></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">Hacker News API</span><span class="tag">Claude API</span></div>
-          <p>Turns a company into a source-cited pre-call brief so the rep walks in informed without spending an hour reading.</p>
-          <span class="measured">Every claim link-traceable to its source · no fabricated contacts · no email sent</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/account-brief-demo/" target="_blank" rel="noopener">Write-up + code</a></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><h3>Commit-Velocity Signal Engine</h3></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub API</span><span class="tag">Claude API</span></div>
-          <p>Detects engineering-velocity inflections from public commit history — the signal that a team just started moving, before it shows up anywhere else.</p>
-          <span class="measured">+183% commit velocity detected over a 4-week window</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">Write-up + code</a></div>
-        </div>
+          <span class="data"><b>1,000</b> real openFDA enforcement records → firm-level scoring → top-<b>8</b> briefs · <b>$0</b> API cost <span class="note">· no fabricated contacts</span></span>
+          <div class="plinks">
+            <a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Live queue <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/atlas-signal-engine" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+          </div>
+        </article>
+
+        <article class="pcard">
+          <div class="split">
+            <div>
+              <h3 class="t-title">Salesforce GTM Signal Layer</h3>
+              <p class="pcard-stack">Salesforce · Flow · Validation rules · SOQL · Permission sets</p>
+              <p>Custom object, fields, Flow and a validation rule that stops a lead reaching Qualified without a live signal behind it. Built in a Developer Edition org.</p>
+              <span class="data">Custom object + <b>5</b> fields, Flow, validation rule, permission set · <b>3</b> leads auto-tiered by signal score</span>
+              <div class="plinks">
+                <a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Metadata + SOQL <span class="arw">→</span></a>
+              </div>
+            </div>
+            <div>
+              <h3 class="t-title">n8n GTM Orchestration</h3>
+              <p class="pcard-stack">n8n · Workflow orchestration · openFDA API · Error handling</p>
+              <p>A scheduled workflow — fetch, score, threshold, brief — with the production concerns configured rather than assumed.</p>
+              <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs · retry maxTries:3, 5s backoff, 1 req/sec, 30s timeout</span>
+              <div class="plinks">
+                <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output <span class="arw">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">5 of 14 postings</div>
-        <p class="cluster-problem">The systems disagree, and nobody finds out until a customer does.</p>
-        <p class="cluster-quote">SecureW2: “If a lead fails to sync to Salesforce, you should know before the sales team does.”</p>
+  </section>
+
+  <section class="section" id="more" aria-labelledby="more-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="t-micro">Also public</span>
+        <h2 class="t-display" id="more-h">Eight more systems</h2>
       </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-top"><h3>GTM Data-Quality Monitor</h3><span class="flag">New</span></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">Data contracts</span><span class="tag">Observability</span><span class="tag">Zero dependencies</span></div>
-          <p>Declarative contracts over a GTM dataset — schema drift, type violations, staleness and fill rate — so a broken pipe surfaces as an alert, not as a rep complaint.</p>
-          <span class="measured">Caught osm_id type violation on 65/65 records and detections on 43 · flagged 193/219 firms stale >60d · defect fixed upstream</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/gtm-data-quality-monitor/" target="_blank" rel="noopener">Live health report</a><a href="https://github.com/Aditya-chouhan/gtm-data-quality-monitor" target="_blank" rel="noopener">Code</a></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><h3>Groundtruth</h3></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub REST API</span><span class="tag">FastAPI</span><span class="tag">Evaluation</span></div>
-          <p>Scans public repositories for real defects and reports its own precision honestly — false positives included rather than hidden.</p>
-          <span class="measured">26 confirmed defects / 17 false positives → 60.5% precision, stated openly</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">Live findings</a><a href="https://github.com/Aditya-chouhan/groundtruth" target="_blank" rel="noopener">Code</a></div>
-        </div>
+
+      <div class="index">
+
+        <a class="row" href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">
+          <span class="row-dom">Enrichment</span>
+          <span class="row-main">
+            <span class="row-name">Clay Enrichment Waterfall</span>
+            <span class="row-desc">A four-step conditional waterfall that only spends credits when the cheaper provider misses — cost control designed in, not bolted on afterwards.</span>
+            <span class="row-data">20 rows scanned → 6 qualified (30%) · $0.06 total · 0 credits charged on steps 1–3 misses</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/gtm-data-quality-monitor/" target="_blank" rel="noopener">
+          <span class="row-dom">Observability</span>
+          <span class="row-main">
+            <span class="row-name">GTM Data-Quality Monitor</span>
+            <span class="row-desc">Declarative contracts over a GTM dataset — schema drift, type violations, staleness and fill rate — so a broken pipe surfaces as an alert, not as a rep complaint.</span>
+            <span class="row-data">Caught osm_id type violation on 65/65 records and detections on 43 · flagged 193/219 firms stale &gt;60d · defect fixed upstream</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">
+          <span class="row-dom">Evaluation</span>
+          <span class="row-main">
+            <span class="row-name">Groundtruth</span>
+            <span class="row-desc">Scans public repositories for real defects and reports its own precision honestly — false positives included rather than hidden.</span>
+            <span class="row-data">26 confirmed defects / 17 false positives → 60.5% precision, stated openly</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/restaurant-lead-engine/" target="_blank" rel="noopener">
+          <span class="row-dom">Sourcing</span>
+          <span class="row-main">
+            <span class="row-name">Restaurant Lead Engine</span>
+            <span class="row-desc">Harvests venues from OpenStreetMap, fingerprints each one's tech stack, scores fit, and A/B tests the scoring model itself rather than trusting it.</span>
+            <span class="row-data">OpenStreetMap harvest → tech fingerprint → fit score → A/B tested scoring variant</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/account-brief-demo/" target="_blank" rel="noopener">
+          <span class="row-dom">Briefing</span>
+          <span class="row-main">
+            <span class="row-name">Account Brief Generator</span>
+            <span class="row-desc">Turns a company into a source-cited pre-call brief so the rep walks in informed without spending an hour reading.</span>
+            <span class="row-data">Every claim link-traceable to its source · no fabricated contacts · no email sent</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">
+          <span class="row-dom">Signal</span>
+          <span class="row-main">
+            <span class="row-name">Commit-Velocity Signal Engine</span>
+            <span class="row-desc">Detects engineering-velocity inflections from public commit history — the signal that a team just started moving, before it shows up anywhere else.</span>
+            <span class="row-data">+183% commit velocity detected over a 4-week window</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">
+          <span class="row-dom">Warehouse</span>
+          <span class="row-main">
+            <span class="row-name">Mini GTM Warehouse + Attribution</span>
+            <span class="row-desc">A SQL warehouse over the funnel with four attribution models side by side, so "which play worked" is a query rather than an opinion.</span>
+            <span class="row-data">4 attribution models compared over one SQL funnel · 6 analytical queries, one real finding</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">
+          <span class="row-dom">Lifecycle</span>
+          <span class="row-main">
+            <span class="row-name">Revenue Engine System</span>
+            <span class="row-desc">A complete Lead → MQL → SQL → Opportunity → Closed lifecycle built from zero — routing, hygiene rules, funnel metrics and a three-scenario forecast.</span>
+            <span class="row-data">5-stage lifecycle · weighted round-robin routing · 3-scenario revenue forecast · dashboard included</span>
+          </span>
+          <span class="row-arw" aria-hidden="true">→</span>
+        </a>
+
       </div>
     </div>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">5 of 14 postings</div>
-        <p class="cluster-problem">Spend goes in, revenue comes out, and nobody can connect the two.</p>
-        <p class="cluster-quote">Scribe: “connect outbound activity to pipeline to ARR — every play trackable and every dollar attributable.”</p>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="xp-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="t-micro">Background</span>
+        <h2 class="t-display" id="xp-h">Experience</h2>
       </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-top"><h3>Mini GTM Warehouse + Attribution</h3></div>
-          <div class="tag-row"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Python</span></div>
-          <p>A SQL warehouse over the funnel with four attribution models side by side, so “which play worked” is a query rather than an opinion.</p>
-          <span class="measured">4 attribution models compared over one SQL funnel · 6 analytical queries, one real finding</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">Write-up + code</a></div>
+      <div class="xp">
+        <div class="xp-item">
+          <p class="xp-when">Apr – Jul 2026</p>
+          <div>
+            <p class="xp-role">GTM Engineer <span>— Sydon AI (Anthropic Claude Partner Network member)</span></p>
+            <p class="xp-body">Owned GTM system design and execution — signal scoring, outbound infrastructure, and pipeline reporting.</p>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">4 of 14 postings</div>
-        <p class="cluster-problem">They bought the AI, and nothing compounds.</p>
-        <p class="cluster-quote">Scribe: &ldquo;Own agent design and AI-enabled development with Coding Agents &mdash; build and maintain a structured, data-driven agentic universe.&rdquo;</p>
-      </div>
-      <div class="project-grid">
-        <div class="project-card featured">
-          <div class="project-top"><h3>Revenue Brain</h3><span class="flag">New &middot; closed loop</span></div>
-          <div class="tag-row"><span class="tag">Claude Code workspace</span><span class="tag">Agent design</span><span class="tag">Logistic regression</span><span class="tag">openFDA API</span><span class="tag">Zero dependencies</span></div>
-          <p>Detects signals, writes grounded briefs, drafts outreach, records what happened &mdash; then refits its own scoring model from the result. That last step is the one almost no revenue stack performs, and it is why most GTM systems produce activity instead of learning. Starts at uniform weights knowing nothing; validated against a hidden response model it never sees.</p>
-          <span class="measured">1.51&times; lift vs random control after convergence &middot; weight-recovery L1 error 0.600 &rarr; 0.098 &middot; 1,000 real FDA records, 416 firms &middot; outcomes simulated and labelled as such</span>
-          <div class="project-links"><a href="https://aditya-chouhan.github.io/revenue-brain-demo/" target="_blank" rel="noopener">Live write-up</a><a href="https://github.com/Aditya-chouhan/revenue-brain-demo" target="_blank" rel="noopener">Code</a></div>
+        <div class="xp-item">
+          <p class="xp-when">Jan – Apr 2026</p>
+          <div>
+            <p class="xp-role">Outbound BDR, Founding <span>— Mapog (GIS SaaS)</span></p>
+            <p class="xp-body">136 qualified demos booked in ~60 days as the first outbound hire, building the function from zero.</p>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">4 of 14 postings</div>
-        <p class="cluster-problem">Product engineering will never prioritise internal GTM tooling.</p>
-        <p class="cluster-quote">Immuta: “You won’t be handing off requirements to an engineering team — you’ll be writing the code.”</p>
-      </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-top"><h3>n8n GTM Orchestration</h3><span class="flag">New · executed</span></div>
-          <div class="tag-row"><span class="tag">n8n</span><span class="tag">Workflow orchestration</span><span class="tag">openFDA API</span><span class="tag">Error handling</span></div>
-          <p>A scheduled workflow — fetch, score, threshold, brief — with the production concerns configured rather than assumed.</p>
-          <span class="measured">100 records → 34 firms → 11 cleared ≥60 → 10 briefs · retry maxTries:3, 5s backoff, 1 req/sec, 30s timeout</span>
-          <div class="project-links"><a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output</a></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><h3>Salesforce GTM Signal Layer</h3><span class="flag">New · deployed</span></div>
-          <div class="tag-row"><span class="tag">Salesforce</span><span class="tag">Flow</span><span class="tag">Validation rules</span><span class="tag">SOQL</span><span class="tag">Permission sets</span></div>
-          <p>Custom object, fields, Flow and a validation rule that stops a lead reaching Qualified without a live signal behind it. Built in a Developer Edition org.</p>
-          <span class="measured">Custom object + 5 fields, Flow, validation rule, permission set · 3 leads auto-tiered by signal score</span>
-          <div class="project-links"><a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Metadata + SOQL</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="cluster">
-      <div class="cluster-head">
-        <div class="cluster-freq">3 of 14 postings</div>
-        <p class="cluster-problem">There’s no machine yet — someone has to build the first one.</p>
-        <p class="cluster-quote">Meesho: “0-1 build phase… without an existing playbook.”</p>
-      </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-top"><h3>Revenue Engine System</h3><span class="flag">Full lifecycle</span></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Streamlit</span><span class="tag">CRM design</span><span class="tag">Forecasting</span></div>
-          <p>A complete Lead → MQL → SQL → Opportunity → Closed lifecycle built from zero — routing, hygiene rules, funnel metrics and a three-scenario forecast.</p>
-          <span class="measured">5-stage lifecycle · weighted round-robin routing · 3-scenario revenue forecast · live CRM + dashboard</span>
-          <div class="project-links"><a href="https://revenue-engine-demo-crzmn3vxfxzbt6qetnqwb4.streamlit.app" target="_blank" rel="noopener">Live CRM</a><a href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">Write-up + code</a><a href="https://aditya-chouhan.github.io/revenue-engine-demo/dashboard.html" target="_blank" rel="noopener">Dashboard</a></div>
+        <div class="xp-item">
+          <p class="xp-when">2022 – 2025</p>
+          <div>
+            <p class="xp-role">Co-Founder <span>— Hahaha Marketing (digital agency)</span></p>
+            <p class="xp-body">Built and ran a client-facing marketing agency from the ground up starting at 17.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="experience">
-    <div class="section-head"><h2>Experience</h2></div>
-    <p class="section-note">&nbsp;</p>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="role-line">GTM Engineer <span>— Sydon AI (Anthropic Claude Partner Network member)</span></div>
-        <div class="meta-line">Apr–Jul 2026</div>
-        <p>Owned GTM system design and execution — signal scoring, outbound infrastructure, and pipeline reporting.</p>
+  <section class="section" id="capabilities" aria-labelledby="cap-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="t-micro">Toolkit</span>
+        <h2 class="t-display" id="cap-h">Capabilities</h2>
       </div>
-      <div class="tl-item">
-        <div class="role-line">Outbound BDR, Founding <span>— Mapog</span></div>
-        <div class="meta-line">GIS SaaS · Jan–Apr 2026</div>
-        <p>136 qualified demos booked in ~60 days as the first outbound hire, building the function from zero.</p>
-      </div>
-      <div class="tl-item">
-        <div class="role-line">Co-Founder <span>— Hahaha Marketing</span></div>
-        <div class="meta-line">Digital agency · 2022–2025</div>
-        <p>Built and ran a client-facing marketing agency from the ground up starting at 17.</p>
+      <div class="caps">
+        <div class="cap">
+          <h4 class="t-micro">GTM / Revenue Ops</h4>
+          <ul>
+            <li>CRM lifecycle &amp; lead routing design</li>
+            <li>Funnel &amp; pipeline metrics</li>
+            <li>Revenue forecasting</li>
+            <li>Outbound systems &amp; sequencing</li>
+          </ul>
+        </div>
+        <div class="cap">
+          <h4 class="t-micro">Engineering</h4>
+          <ul>
+            <li>Python</li>
+            <li>SQL / SQLite</li>
+            <li>TypeScript / Next.js</li>
+            <li>FastAPI, pgvector</li>
+          </ul>
+        </div>
+        <div class="cap">
+          <h4 class="t-micro">AI Systems</h4>
+          <ul>
+            <li>Claude API / agent workflows</li>
+            <li>Signal-scoring &amp; enrichment pipelines</li>
+            <li>Clay waterfalls &amp; formula columns</li>
+            <li>n8n workflow orchestration</li>
+            <li>Salesforce Flows, validation rules, SOQL</li>
+            <li>Evaluation &amp; A/B testing of scoring models</li>
+          </ul>
+        </div>
+        <div class="cap">
+          <h4 class="t-micro">Data &amp; Reporting</h4>
+          <ul>
+            <li>Executive dashboards</li>
+            <li>Accessible data visualization</li>
+            <li>Source-cited research discipline</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
-    <div class="section-head"><h2>Skills</h2></div>
-    <p class="section-note">&nbsp;</p>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h4>GTM / Revenue Ops</h4>
-        <ul><li>CRM lifecycle &amp; lead routing design</li><li>Funnel &amp; pipeline metrics</li><li>Revenue forecasting</li><li>Outbound systems &amp; sequencing</li></ul>
+  <section class="section" id="contact" aria-labelledby="fork-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="t-micro">Next</span>
+        <h2 class="t-display" id="fork-h">Work with me</h2>
+        <p>Happy to walk through the code, the design decisions, or what I'd build next.</p>
       </div>
-      <div class="skill-group">
-        <h4>Engineering</h4>
-        <ul><li>Python</li><li>SQL / SQLite</li><li>TypeScript / Next.js</li><li>FastAPI, pgvector</li></ul>
-      </div>
-      <div class="skill-group">
-        <h4>AI Systems</h4>
-        <ul><li>Claude API / agent workflows</li><li>Signal-scoring &amp; enrichment pipelines</li><li>Clay waterfalls &amp; formula columns</li><li>n8n workflow orchestration</li><li>Salesforce Flows, validation rules, SOQL</li><li>Evaluation &amp; A/B testing of scoring models</li></ul>
-      </div>
-      <div class="skill-group">
-        <h4>Data &amp; Reporting</h4>
-        <ul><li>Executive dashboards</li><li>Accessible data visualization</li><li>Source-cited research discipline</li></ul>
+      <div class="fork">
+        <div class="fork-card">
+          <h3 class="t-headline">Hiring</h3>
+          <p>Open to GTM engineering and revenue-systems roles — remote or contract. Based in Mumbai, India.</p>
+          <div class="fork-actions">
+            <!-- RESUME BUTTON — restore this line once Aditya-Chouhan-Resume.pdf is regenerated and committed:
+                 <a class="btn btn-primary" href="Aditya-Chouhan-Resume.pdf">Download résumé</a> -->
+            <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Role">Email me</a>
+          </div>
+        </div>
+        <div class="fork-card">
+          <h3 class="t-headline">You have a GTM problem</h3>
+          <p>I build signal-detection, enrichment and outbound systems inside your own stack. You own everything — if we stop working together, the system keeps running.</p>
+          <div class="fork-actions">
+            <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Project">Start a conversation</a>
+            <button class="btn btn-ghost" type="button" id="copyEmail">Copy email</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Let's talk</h2>
-    <p>Open to GTM engineering and revenue-systems roles. Every project above is public and runnable — happy to walk through the code, the design decisions, or what I'd build next.</p>
-    <div class="cta-row">
-      <a class="btn" href="mailto:ai.adityachouhan@gmail.com?subject=GTM%20Engineer%20role" target="_top" rel="noopener">Let's talk</a>
-      <button class="btn" type="button" id="copyEmailBtn" style="border:none;cursor:pointer;">Copy email address</button>
-    </div>
-    <p class="email-line">Or write directly: <a href="mailto:ai.adityachouhan@gmail.com" target="_top" rel="noopener">ai.adityachouhan@gmail.com</a></p>
-  </section>
+</main>
 
-  <footer>
+<footer class="wrap">
+  <div class="foot">
     <span>Aditya Chouhan · <a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/aditya-chouhan-gtm/" target="_blank" rel="noopener">LinkedIn</a></span>
     <span>Last updated August 2026 — every project above is public and runnable.</span>
-  </footer>
-
-</div>
+  </div>
+</footer>
 
 <script>
-  (function () {
-    var btn = document.getElementById('copyEmailBtn');
-    if (!btn) return;
-    var email = 'ai.adityachouhan@gmail.com';
-    var originalLabel = btn.textContent;
-    btn.addEventListener('click', function () {
-      function fallbackCopy() {
-        var ta = document.createElement('textarea');
-        ta.value = email;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        try { document.execCommand('copy'); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).catch(fallbackCopy);
-      } else {
-        fallbackCopy();
-      }
-      btn.textContent = 'Copied!';
-      btn.disabled = true;
-      setTimeout(function () { btn.textContent = originalLabel; btn.disabled = false; }, 2000);
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- nav materializes past the hero --- */
+  var nav = document.getElementById('nav');
+  var hero = document.querySelector('.hero');
+  if (nav && hero) {
+    var setStuck = function () {
+      nav.dataset.stuck = (window.scrollY > hero.offsetHeight - 52) ? 'true' : 'false';
+    };
+    setStuck();
+    window.addEventListener('scroll', setStuck, { passive: true });
+  }
+
+  /* --- reveal on scroll. Elements start visible; we only hide what we will observe. --- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var targets = document.querySelectorAll('.section-head, .pcard, .row, .xp-item, .cap, .fork-card');
+    Array.prototype.forEach.call(targets, function (el) { el.dataset.reveal = 'pending'; });
+
+    var io = new IntersectionObserver(function (entries) {
+      var i = 0;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.style.transitionDelay = (i * 60) + 'ms';
+        i++;
+        el.dataset.reveal = 'in';
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+
+    /* Failsafe: nothing may stay invisible. If the observer has not resolved an
+       element within 1.2s (deep link, scroll restore, throttled tab), show it. */
+    setTimeout(function () {
+      Array.prototype.forEach.call(
+        document.querySelectorAll('[data-reveal="pending"]'),
+        function (el) { el.style.transitionDelay = '0ms'; el.dataset.reveal = 'in'; }
+      );
+    }, 1200);
+  }
+
+  /* --- press feedback on pointerdown, not click. Delegated; cancels on drag-off. --- */
+  if (!reduce) {
+    var pressed = null;
+    var release = function () {
+      if (!pressed) return;
+      pressed.classList.remove('pressed');
+      pressed.classList.add('unpressed');
+      var el = pressed;
+      setTimeout(function () { el.classList.remove('unpressed'); }, 400);
+      pressed = null;
+    };
+    document.addEventListener('pointerdown', function (e) {
+      var el = e.target.closest('a.btn, button.btn, .pcard, .row, .fork-card, .plinks a');
+      if (!el) return;
+      pressed = el;
+      el.classList.remove('unpressed');
+      el.classList.add('pressed');
+    }, { passive: true });
+    ['pointerup', 'pointercancel', 'pointerleave', 'dragstart'].forEach(function (evt) {
+      document.addEventListener(evt, release, { passive: true });
     });
-  })();
+  }
+
+  /* --- copy email --- */
+  var btn = document.getElementById('copyEmail');
+  if (btn) {
+    var email = 'ai.adityachouhan@gmail.com';
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var fallback = function () {
+        var ta = document.createElement('textarea');
+        ta.value = email; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try { document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).catch(fallback);
+      } else { fallback(); }
+      btn.textContent = 'Copied';
+      btn.disabled = true;
+      setTimeout(function () { btn.textContent = label; btn.disabled = false; }, 2000);
+    });
+  }
+})();
 </script>
 
 </body>
