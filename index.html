@@ -455,7 +455,7 @@ a { color: var(--accent); text-decoration: none; }
         <article class="pcard">
           <h3 class="t-title">Revenue Brain</h3>
           <p class="pcard-stack">Claude Code workspace · Agent design · Logistic regression · openFDA API · Zero dependencies</p>
-          <p>Detects signals, writes grounded briefs, drafts outreach, records what happened — then refits its own scoring model from the result. That last step is the one almost no revenue stack performs, and it is why most GTM systems produce activity instead of learning. Starts at uniform weights knowing nothing; validated against a hidden response model it never sees.</p>
+          <p>Detects signals, writes grounded briefs, drafts outreach, records what happened — then refits its own scoring model from the result. That last step is the one almost no revenue stack performs, and it is why most GTM systems produce activity instead of learning. Starts at uniform weights knowing nothing and recovers a hidden response model it never sees — a correctness test of the learning code, not evidence about real reply behaviour.</p>
           <span class="data"><b>1.51×</b> lift vs random control after convergence · weight-recovery L1 error <b>0.600 → 0.098</b> · <b>1,000</b> real FDA records, <b>416</b> firms <span class="note">· outcomes simulated and labelled as such</span></span>
           <div class="plinks">
             <a href="https://aditya-chouhan.github.io/revenue-brain-demo/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
@@ -515,7 +515,7 @@ a { color: var(--accent); text-decoration: none; }
           <span class="row-main">
             <span class="row-name">Clay Enrichment Waterfall</span>
             <span class="row-desc">A four-step conditional waterfall that only spends credits when the cheaper provider misses — cost control designed in, not bolted on afterwards.</span>
-            <span class="row-data">20 rows scanned → 6 qualified (30%) · $0.06 total · 0 credits charged on steps 1–3 misses</span>
+            <span class="row-data">20 synthetic rows → 6 cleared the gate (30%) · paid enrichment ran only on those 6 · gate’s false-negative rate untested</span>
           </span>
           <span class="row-arw" aria-hidden="true">→</span>
         </a>
@@ -609,10 +609,10 @@ a { color: var(--accent); text-decoration: none; }
           </div>
         </div>
         <div class="xp-item">
-          <p class="xp-when">Jan – Apr 2026</p>
+          <p class="xp-when">Nov 2025 – Apr 2026</p>
           <div>
             <p class="xp-role">Outbound BDR, Founding <span>— Mapog (GIS SaaS)</span></p>
-            <p class="xp-body">136 qualified demos booked in ~60 days as the first outbound hire, building the function from zero.</p>
+            <p class="xp-body">136 qualified opportunities in ~60 days as the first outbound hire, building the function from zero.</p>
           </div>
         </div>
         <div class="xp-item">
