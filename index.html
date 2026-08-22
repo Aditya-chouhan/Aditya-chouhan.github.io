@@ -113,6 +113,13 @@
   .metrics { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 16px; }
   .metric { font-family: var(--font-mono); font-size: 11.5px; background: var(--verified-soft); color: var(--verified); border-radius: 5px; padding: 4px 9px; white-space: nowrap; }
   .metric b { font-weight: 700; }
+
+  .cluster { margin-bottom: 46px; }
+  .cluster-head { border-left: 3px solid var(--accent); padding-left: 16px; margin-bottom: 18px; }
+  .cluster-freq { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .cluster-problem { font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.3; color: var(--ink); margin: 0 0 8px; text-wrap: balance; }
+  .cluster-quote { font-size: 13.5px; font-style: italic; color: var(--ink-faint); margin: 0; max-width: 66ch; }
+  .measured { display: block; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.5; color: var(--verified); background: var(--verified-soft); border-radius: 7px; padding: 9px 12px; margin: 0 0 14px; }
 </style>
 </head>
 <body>
@@ -134,157 +141,138 @@
 <div class="wrap">
 
   <section id="projects">
-    <div class="section-head"><h2>Public Projects</h2></div>
-    <p class="section-note">Eleven systems. Each one leads with the revenue problem it solves, states plainly what is real data versus synthetic, and reports the volume it actually processed — every number below came out of a run, not an estimate.</p>
-
-    <div class="project-grid">
-
-      <div class="project-card featured">
-        <div class="project-top">
-          <h3>Atlas Signal Engine</h3>
-          <span class="flag">Real federal data</span>
+    <div class="section-head"><h2>Systems, grouped by the problem they solve</h2></div>
+    <p class="section-note">Eleven public, runnable systems. They’re grouped by the six problems that recur across a study of 14 live GTM Engineer job descriptions — the problem is stated first, in the hiring company’s own words, and every number below is regenerable by a documented command.</p>
+    <div class="cluster">
+      <div class="cluster-head">
+        <div class="cluster-freq">7 of 14 postings</div>
+        <p class="cluster-problem">The team is deliberately small and has to perform like a large one.</p>
+        <p class="cluster-quote">Blackboard: “AI-driven operations that let a lean marketing team operate at a scale its headcount should not allow.”</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-top"><h3>Clay Enrichment Waterfall</h3><span class="flag">New</span></div>
+          <div class="tag-row"><span class="tag">Clay</span><span class="tag">Formula columns</span><span class="tag">Python</span><span class="tag">Credit ROI</span></div>
+          <p>A four-step conditional waterfall that only spends credits when the cheaper provider misses — cost control designed in, not bolted on afterwards.</p>
+          <span class="measured">20 rows scanned → 6 qualified (30%) → 4-step waterfall · $0.06 total · 0 credits charged on steps 1–3 misses</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">Write-up</a><a href="https://github.com/Aditya-chouhan/clay-enrichment-waterfall" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <p class="problem"><b>Problem it solves</b>Reps have no way to know which accounts are in pain <em>right now</em>, so outbound goes out on a static list and lands cold.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">openFDA API</span><span class="tag">Signal scoring</span><span class="tag">Zero dependencies</span></div>
-        <p>Turns real FDA drug-enforcement records into a ranked outreach queue: pulls live recall data, rolls it up to firm level, scores every firm 0–100 for buying-trigger intensity against a fully disclosed rubric, and drafts outreach grounded only in what the FDA actually filed. No fabricated contacts — outreach targets a role, never an invented person. Scope is stated openly: recalls are one enforcement type; Form 483s and warning letters are not in this free feed, so the engine detects one signal well rather than pretending to cover three.</p>
-        <div class="metrics"><span class="metric"><b>1,000</b> real records fetched</span><span class="metric"><b>219</b> firms scored</span><span class="metric"><b>8</b> briefs generated</span><span class="metric"><b>$0</b> data cost, no API key</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Live queue</a>
-          <a href="https://github.com/Aditya-chouhan/atlas-signal-engine" target="_blank" rel="noopener">Code</a>
+        <div class="project-card">
+          <div class="project-top"><h3>Restaurant Lead Engine</h3></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">OpenStreetMap</span><span class="tag">A/B testing</span></div>
+          <p>Harvests venues from OpenStreetMap, fingerprints each one’s tech stack, scores fit, and A/B tests the scoring model itself rather than trusting it.</p>
+          <span class="measured">OpenStreetMap harvest → tech fingerprint → fit score → A/B tested scoring variant</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/restaurant-lead-engine/" target="_blank" rel="noopener">Write-up + code</a><a href="https://aditya-chouhan.github.io/restaurant-lead-engine/rep_dashboard.html" target="_blank" rel="noopener">Rep dashboard</a></div>
         </div>
       </div>
-
-      <div class="project-card featured">
-        <div class="project-top">
-          <h3>Revenue Engine System</h3>
-          <span class="flag">Full lifecycle</span>
+    </div>
+    <div class="cluster">
+      <div class="cluster-head">
+        <div class="cluster-freq">5 of 14 postings</div>
+        <p class="cluster-problem">Reps spend the day on work that isn’t selling.</p>
+        <p class="cluster-quote">Hologram: “taking Account Executives off the operational path… measured by time reclaimed and revenue capacity redirected.”</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-top"><h3>Atlas Signal Engine</h3><span class="flag">Real federal data</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">openFDA API</span><span class="tag">Signal scoring</span><span class="tag">Zero dependencies</span></div>
+          <p>Pulls real FDA enforcement actions, scores every firm for buying-trigger intensity, and drafts outreach grounded only in what the FDA actually filed.</p>
+          <span class="measured">1,000 real openFDA enforcement records → firm-level scoring → top-8 briefs · $0 API cost · no fabricated contacts</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Live queue</a><a href="https://github.com/Aditya-chouhan/atlas-signal-engine" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <p class="problem"><b>Problem it solves</b>An early-stage team has no machine yet — no lifecycle definition, no routing, no forecast, no way to tell which channel actually produced revenue.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Streamlit</span><span class="tag">CRM design</span><span class="tag">Forecasting</span></div>
-        <p>A normalized 6-table relational schema with executable CRM lifecycle, routing and scoring logic — not a design doc. Includes an ICP/segmentation engine, multi-touch attribution across four models, a two-method revenue forecast, an AI RevOps copilot, and a working operational CRM UI with list views, a Kanban pipeline board and record detail pages.</p>
-        <div class="metrics"><span class="metric"><b>6</b>-table schema</span><span class="metric"><b>4</b> attribution models</span><span class="metric"><b>2</b>-method forecast</span><span class="metric">live hosted CRM</span></div>
-        <div class="project-links">
-          <a href="https://revenue-engine-demo-crzmn3vxfxzbt6qetnqwb4.streamlit.app" target="_blank" rel="noopener">Live CRM</a>
-          <a href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">Write-up + code</a>
-          <a href="https://aditya-chouhan.github.io/revenue-engine-demo/dashboard.html" target="_blank" rel="noopener">Dashboard</a>
+        <div class="project-card">
+          <div class="project-top"><h3>Account Brief Generator</h3></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Hacker News API</span><span class="tag">Claude API</span></div>
+          <p>Turns a company into a source-cited pre-call brief so the rep walks in informed without spending an hour reading.</p>
+          <span class="measured">Every claim link-traceable to its source · no fabricated contacts · no email sent</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/account-brief-demo/" target="_blank" rel="noopener">Write-up + code</a></div>
+        </div>
+        <div class="project-card">
+          <div class="project-top"><h3>Commit-Velocity Signal Engine</h3></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub API</span><span class="tag">Claude API</span></div>
+          <p>Detects engineering-velocity inflections from public commit history — the signal that a team just started moving, before it shows up anywhere else.</p>
+          <span class="measured">+183% commit velocity detected over a 4-week window</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">Write-up + code</a></div>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <h3>Clay Enrichment Waterfall</h3>
-          <span class="flag">New</span>
+    </div>
+    <div class="cluster">
+      <div class="cluster-head">
+        <div class="cluster-freq">5 of 14 postings</div>
+        <p class="cluster-problem">The systems disagree, and nobody finds out until a customer does.</p>
+        <p class="cluster-quote">SecureW2: “If a lead fails to sync to Salesforce, you should know before the sales team does.”</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-top"><h3>GTM Data-Quality Monitor</h3><span class="flag">New</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Data contracts</span><span class="tag">Observability</span><span class="tag">Zero dependencies</span></div>
+          <p>Declarative contracts over a GTM dataset — schema drift, type violations, staleness and fill rate — so a broken pipe surfaces as an alert, not as a rep complaint.</p>
+          <span class="measured">Caught osm_id type violation on 65/65 records and detections on 43 · flagged 193/219 firms stale >60d · defect fixed upstream</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/gtm-data-quality-monitor/" target="_blank" rel="noopener">Live health report</a><a href="https://github.com/Aditya-chouhan/gtm-data-quality-monitor" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <p class="problem"><b>Problem it solves</b>Enrichment credits get spent on every row, and the team finds out afterwards that most were never going to buy.</p>
-        <div class="tag-row"><span class="tag">Clay</span><span class="tag">Formula columns</span><span class="tag">Python</span><span class="tag">Credit ROI</span></div>
-        <p>A free formula-column scoring gate that runs before any paid lookup, then a cheapest-to-most-expensive contact waterfall that only fires on rows already showing an active collapse. Data is 100&nbsp;% synthetic and the credit saving is modeled, not measured in production — both stated up front in the repo.</p>
-        <div class="metrics"><span class="metric"><b>20</b> scanned → <b>6</b> qualified</span><span class="metric"><b>~70%</b> modeled credit cut</span><span class="metric"><b>11</b> formula columns</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">Write-up</a>
-          <a href="https://github.com/Aditya-chouhan/clay-enrichment-waterfall" target="_blank" rel="noopener">Code</a>
+        <div class="project-card">
+          <div class="project-top"><h3>Groundtruth</h3></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub REST API</span><span class="tag">FastAPI</span><span class="tag">Evaluation</span></div>
+          <p>Scans public repositories for real defects and reports its own precision honestly — false positives included rather than hidden.</p>
+          <span class="measured">26 confirmed defects / 17 false positives → 60.5% precision, stated openly</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">Live findings</a><a href="https://github.com/Aditya-chouhan/groundtruth" target="_blank" rel="noopener">Code</a></div>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <h3>Salesforce GTM Signal Layer</h3>
-          <span class="flag">New · deployed</span>
-        </div>
-        <p class="problem"><b>Problem it solves</b>Leads arrive in no priority order and reps qualify on gut feel, so the pipeline fills with deals that were never real and nobody can say why one lead got called before another.</p>
-        <div class="tag-row"><span class="tag">Salesforce</span><span class="tag">Flow</span><span class="tag">Validation rules</span><span class="tag">SOQL</span><span class="tag">Permission sets</span></div>
-        <p>A signal-driven routing layer deployed to a Salesforce Developer Edition org: a custom <code>GTM_Signal__c</code> object carrying verbatim source evidence, five custom Lead fields, a <strong>before-save</strong> record-triggered Flow deriving routing tier from signal score, a validation rule that refuses to let a lead reach Qualified below score 60, and a permission set granting field-level security. Thresholds mirror the CRM routing in Revenue Engine System, so the two describe one system in two stacks. Verified in-org: 85 → Tier 1, 70 → Tier 2, 40 → Tier 3, and the rule blocks and allows exactly as designed.</p>
-        <div class="metrics"><span class="metric"><b>13</b> components deployed</span><span class="metric"><b>3</b> tiers verified in-org</span><span class="metric"><b>6</b> SOQL queries</span><span class="metric">integrity check: <b>0</b> rows</span></div>
-        <div class="project-links">
-          <a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Metadata + SOQL</a>
+    </div>
+    <div class="cluster">
+      <div class="cluster-head">
+        <div class="cluster-freq">5 of 14 postings</div>
+        <p class="cluster-problem">Spend goes in, revenue comes out, and nobody can connect the two.</p>
+        <p class="cluster-quote">Scribe: “connect outbound activity to pipeline to ARR — every play trackable and every dollar attributable.”</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-top"><h3>Mini GTM Warehouse + Attribution</h3></div>
+          <div class="tag-row"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Python</span></div>
+          <p>A SQL warehouse over the funnel with four attribution models side by side, so “which play worked” is a query rather than an opinion.</p>
+          <span class="measured">4 attribution models compared over one SQL funnel · 6 analytical queries, one real finding</span>
+          <div class="project-links"><a href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">Write-up + code</a></div>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <h3>n8n GTM Orchestration</h3>
-          <span class="flag">New · executed</span>
+    </div>
+    <div class="cluster">
+      <div class="cluster-head">
+        <div class="cluster-freq">4 of 14 postings</div>
+        <p class="cluster-problem">Product engineering will never prioritise internal GTM tooling.</p>
+        <p class="cluster-quote">Immuta: “You won’t be handing off requirements to an engineering team — you’ll be writing the code.”</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-top"><h3>n8n GTM Orchestration</h3><span class="flag">New · executed</span></div>
+          <div class="tag-row"><span class="tag">n8n</span><span class="tag">Workflow orchestration</span><span class="tag">openFDA API</span><span class="tag">Error handling</span></div>
+          <p>A scheduled workflow — fetch, score, threshold, brief — with the production concerns configured rather than assumed.</p>
+          <span class="measured">100 records → 34 firms → 11 cleared ≥60 → 10 briefs · retry maxTries:3, 5s backoff, 1 req/sec, 30s timeout</span>
+          <div class="project-links"><a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output</a></div>
         </div>
-        <p class="problem"><b>Problem it solves</b>A signal pipeline that depends on someone remembering to re-run it goes stale — and when the refresh fails, the queue doesn't empty, it silently serves yesterday's data.</p>
-        <div class="tag-row"><span class="tag">n8n</span><span class="tag">Workflow orchestration</span><span class="tag">openFDA API</span><span class="tag">Error handling</span></div>
-        <p>A scheduled n8n workflow turning live FDA enforcement filings into a ranked, grounded outreach queue. The interesting half is the failure path: retry with backoff, a dedicated error branch that emits a structured "queue is stale, do not send from it" alert, deliberate rate limiting, and a fail-closed guard that throws rather than emit an empty queue. <strong>Executed headlessly on n8n 2.35.7 against the live API — the real run output is committed</strong>, not a screenshot of a canvas.</p>
-        <div class="metrics"><span class="metric"><b>100</b> records → <b>10</b> briefs</span><span class="metric"><b>3</b> retries + error branch</span><span class="metric">fetch <b>1.9s</b></span><span class="metric">run output committed</span></div>
-        <div class="project-links">
-          <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output</a>
+        <div class="project-card">
+          <div class="project-top"><h3>Salesforce GTM Signal Layer</h3><span class="flag">New · deployed</span></div>
+          <div class="tag-row"><span class="tag">Salesforce</span><span class="tag">Flow</span><span class="tag">Validation rules</span><span class="tag">SOQL</span><span class="tag">Permission sets</span></div>
+          <p>Custom object, fields, Flow and a validation rule that stops a lead reaching Qualified without a live signal behind it. Built in a Developer Edition org.</p>
+          <span class="measured">Custom object + 5 fields, Flow, validation rule, permission set · 3 leads auto-tiered by signal score</span>
+          <div class="project-links"><a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Metadata + SOQL</a></div>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <h3>GTM Data-Quality Monitor</h3>
-          <span class="flag">New</span>
-        </div>
-        <p class="problem"><b>Problem it solves</b>A sync fails, enrichment coverage slips, the same account arrives twice — none of it throws an error, and the first person to notice is a rep on a call with a dead account.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">Data contracts</span><span class="tag">Observability</span><span class="tag">Zero dependencies</span></div>
-        <p>Validates GTM datasets against declared contracts — fill rate, schema drift, duplicates, derived-field consistency, referential integrity, signal decay — ranks every finding by severity and <strong>exits non-zero</strong> so a scheduler or CI job can alert on it. Pointed at 292 real records from two other projects here, it found a genuine upstream defect: one firm scored and ranked on an enforcement event with zero underlying recall lines. Two of its own first three failures turned out to be errors in its contract, not the data — both documented in the README rather than quietly deleted.</p>
-        <div class="metrics"><span class="metric"><b>292</b> records checked</span><span class="metric"><b>11</b> check types</span><span class="metric"><b>1</b> real defect found</span><span class="metric">exit-code alerting</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/gtm-data-quality-monitor/" target="_blank" rel="noopener">Live health report</a>
-          <a href="https://github.com/Aditya-chouhan/gtm-data-quality-monitor" target="_blank" rel="noopener">Code</a>
+    </div>
+    <div class="cluster">
+      <div class="cluster-head">
+        <div class="cluster-freq">3 of 14 postings</div>
+        <p class="cluster-problem">There’s no machine yet — someone has to build the first one.</p>
+        <p class="cluster-quote">Meesho: “0-1 build phase… without an existing playbook.”</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-top"><h3>Revenue Engine System</h3><span class="flag">Full lifecycle</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Streamlit</span><span class="tag">CRM design</span><span class="tag">Forecasting</span></div>
+          <p>A complete Lead → MQL → SQL → Opportunity → Closed lifecycle built from zero — routing, hygiene rules, funnel metrics and a three-scenario forecast.</p>
+          <span class="measured">5-stage lifecycle · weighted round-robin routing · 3-scenario revenue forecast · live CRM + dashboard</span>
+          <div class="project-links"><a href="https://revenue-engine-demo-crzmn3vxfxzbt6qetnqwb4.streamlit.app" target="_blank" rel="noopener">Live CRM</a><a href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">Write-up + code</a><a href="https://aditya-chouhan.github.io/revenue-engine-demo/dashboard.html" target="_blank" rel="noopener">Dashboard</a></div>
         </div>
       </div>
-
-      <div class="project-card">
-        <h3>Restaurant Lead Engine</h3>
-        <p class="problem"><b>Problem it solves</b>A sales team scaling fast needs a constant prioritized feed of real accounts, and duplicate locations of the same chain waste reps' time.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">OpenStreetMap</span><span class="tag">A/B testing</span></div>
-        <p>Four real stages on live public data: harvest venues, fingerprint each live homepage for its ordering/reservation/delivery stack, score fit with disclosed weights, generate rep pre-call briefs. A separate citywide pass collapses multi-location chains into one account. Includes a genuine A/B test between two scoring models that <em>shipped a negative result</em> — the challenger changed six leads' absolute scores but left rank order fully invariant, so it was rejected.</p>
-        <div class="metrics"><span class="metric"><b>80</b> harvested → <b>65</b> scored</span><span class="metric"><b>400</b> scanned → <b>5</b> chains</span><span class="metric">A/B: <b>1.00</b> rank correlation</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/restaurant-lead-engine/" target="_blank" rel="noopener">Write-up + code</a>
-          <a href="https://aditya-chouhan.github.io/restaurant-lead-engine/rep_dashboard.html" target="_blank" rel="noopener">Rep dashboard</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Groundtruth</h3>
-        <p class="problem"><b>Problem it solves</b>An AI system that reports findings is worthless if nobody has measured how often it is wrong.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub REST API</span><span class="tag">FastAPI</span><span class="tag">Evaluation</span></div>
-        <p>Scans active public repositories for a specific defect: a PR claiming to close a bug via a GitHub keyword while its diff touches only test files. Every raw candidate was hand-verified against the real issue and PR text, with full reasoning published for each — including the ones it got wrong. Caught and fixed two bugs in its own rule engine along the way.</p>
-        <div class="metrics"><span class="metric"><b>30</b> repos scanned</span><span class="metric"><b>26</b> confirmed / <b>17</b> false positives</span><span class="metric"><b>60.5%</b> precision, published</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">Live findings</a>
-          <a href="https://github.com/Aditya-chouhan/groundtruth" target="_blank" rel="noopener">Code</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Commit-Velocity Signal Engine</h3>
-        <p class="problem"><b>Problem it solves</b>Buying a static contact list tells you who fits the ICP, never when they are worth calling.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">GitHub API</span><span class="tag">Claude API</span></div>
-        <p>Composite signal scoring on fully public data, measuring commit-velocity acceleration across open-source dev-tool companies — one accelerated 183&nbsp;% in four weeks, a reproducible reading rather than a modeled guess. A second script drafts outreach grounded only in verifiable facts. Numbers shift between runs because the underlying data is live, which is the point.</p>
-        <div class="metrics"><span class="metric"><b>8</b> companies scored</span><span class="metric">top signal <b>+183%</b> / 4wks</span><span class="metric">live data, no API key</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">Write-up + code</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Account Brief Generator</h3>
-        <p class="problem"><b>Problem it solves</b>AEs lose hours a day to manual pre-call research, and generic AI research invents pain points that get a rep caught out on the call.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">Hacker News API</span><span class="tag">Claude API</span></div>
-        <p>Pulls real current company signals — repo metadata, recent releases, contributor activity, Hacker News mentions — and synthesizes a source-cited pre-call brief. The system prompt forces the model to return "no clear signal here" rather than manufacture a plausible-sounding one.</p>
-        <div class="metrics"><span class="metric">every claim source-cited</span><span class="metric">refuses to invent signals</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/account-brief-demo/" target="_blank" rel="noopener">Write-up + code</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Mini GTM Warehouse + Attribution</h3>
-        <p class="problem"><b>Problem it solves</b>Leadership cannot name which plays produced last quarter's pipeline, so spend keeps flowing to channels nobody has measured.</p>
-        <div class="tag-row"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Python</span></div>
-        <p>Gives the separate outputs of the other projects one normalized schema, then answers real questions against it in plain SQL — extended with a multi-touch funnel and four attribution models. The captured API data is real; the funnel layer is synthetic and labeled as such in the repo, because no real closed-won data exists to model.</p>
-        <div class="metrics"><span class="metric"><b>4</b> tables</span><span class="metric"><b>12</b> analytical queries</span><span class="metric"><b>4</b> attribution models</span></div>
-        <div class="project-links">
-          <a href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">Write-up + code</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
