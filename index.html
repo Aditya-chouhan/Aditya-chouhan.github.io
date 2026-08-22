@@ -447,7 +447,7 @@ a { color: var(--accent); text-decoration: none; }
       <div class="section-head">
         <span class="t-micro">Selected work</span>
         <h2 class="t-display" id="work-h">Systems, built end to end</h2>
-        <p>Twelve public, runnable systems. Every number below is regenerable by a documented command, and every simulated result is labelled as one.</p>
+        <p>Twelve public, runnable systems. Most numbers below regenerate from a documented command; the ones drawn from live feeds move with the data, and the Salesforce results need an org to re-run. Simulated results are labelled as simulated, and each repo states what it does not prove.</p>
       </div>
 
       <div class="heroes">
@@ -489,7 +489,7 @@ a { color: var(--accent); text-decoration: none; }
               <h3 class="t-title">n8n GTM Orchestration</h3>
               <p class="pcard-stack">n8n · Workflow orchestration · openFDA API · Error handling</p>
               <p>A scheduled workflow — fetch, score, threshold, brief — with the production concerns configured rather than assumed.</p>
-              <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs · retry maxTries:3, 5s backoff, 1 req/sec, 30s timeout</span>
+              <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs (capped at 10 per run by design) · retry maxTries:3, 5s backoff, 1 req/sec, 30s timeout</span>
               <div class="plinks">
                 <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output <span class="arw">→</span></a>
               </div>
@@ -565,7 +565,7 @@ a { color: var(--accent); text-decoration: none; }
           <span class="row-main">
             <span class="row-name">Commit-Velocity Signal Engine</span>
             <span class="row-desc">Detects engineering-velocity inflections from public commit history — the signal that a team just started moving, before it shows up anywhere else.</span>
-            <span class="row-data">+183% commit velocity detected over a 4-week window</span>
+            <span class="row-data">+183% commit velocity on the dated write-up run (live data moves — it read +120% on 2026-08-23)</span>
           </span>
           <span class="row-arw" aria-hidden="true">→</span>
         </a>
