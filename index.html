@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aditya Chouhan — GTM Engineer &amp; AI Systems Builder</title>
-<meta name="description" content="I build AI-native go-to-market systems hands-on: signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure. Twelve public, runnable systems.">
+<meta name="description" content="I build AI-native go-to-market systems hands-on, organized by tool: Salesforce, n8n, dbt, Python, Claude/agents, Clay. Fifteen public, runnable systems.">
 <link rel="canonical" href="https://aditya-chouhan.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aditya-chouhan.github.io/">
 <meta property="og:title" content="Aditya Chouhan — GTM Engineer &amp; AI Systems Builder">
-<meta property="og:description" content="Twelve public, runnable go-to-market systems. Signal detection, enrichment, orchestration, forecasting — built end to end.">
+<meta property="og:description" content="Fifteen public, runnable go-to-market systems, organized by tool. Signal detection, enrichment, orchestration, forecasting — built end to end.">
 <meta property="og:image" content="https://aditya-chouhan.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Aditya Chouhan — GTM Engineer &amp; AI Systems Builder">
-<meta name="twitter:description" content="Twelve public, runnable go-to-market systems. Signal detection, enrichment, orchestration, forecasting — built end to end.">
+<meta name="twitter:description" content="Fifteen public, runnable go-to-market systems, organized by tool. Signal detection, enrichment, orchestration, forecasting — built end to end.">
 <meta name="twitter:image" content="https://aditya-chouhan.github.io/og.png">
 
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
@@ -397,6 +397,41 @@ a { color: var(--accent); text-decoration: none; }
   :root { --hairline: rgba(0,0,0,.35); --hairline-strong: rgba(0,0,0,.6); --text-2: #4A4A4E; --text-3: #5A5A5E; }
   :root[data-theme="dark"], :root:not([data-theme="light"]) { }
 }
+
+/* ============ TOOL STRIP (hero) ============ */
+.toolstrip { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s6); }
+.chip {
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 590;
+  color: var(--text-2); background: var(--bg-sunken);
+  border: 1px solid var(--hairline); border-radius: var(--r-full);
+  padding: 7px 14px;
+  transition: color .2s var(--damped), border-color .2s var(--damped), background-color .2s var(--damped);
+}
+@media (hover: hover) { .chip:hover { color: var(--text-1); border-color: var(--hairline-strong); background: var(--surface); } }
+
+/* ============ STACK LAYERS (work section) ============ */
+.layer { margin-bottom: var(--s8); }
+.layer:last-child { margin-bottom: 0; }
+.layer-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s3);
+  margin-bottom: var(--s5); padding-bottom: var(--s4);
+  border-bottom: 1px solid var(--hairline-strong);
+}
+.layer-head h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text-1); }
+.layer-head .jd {
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 590;
+  color: var(--text-3); letter-spacing: .02em;
+}
+
+/* ============ FAILURE MODES ============ */
+.fails { display: grid; gap: 0; }
+.fail-item { padding-block: var(--s6); border-bottom: 1px solid var(--hairline); }
+.fail-item:first-child { padding-top: 0; }
+.fail-item:last-child { border-bottom: none; padding-bottom: 0; }
+.fail-what { color: var(--text-1); font-size: 1.0625rem; font-weight: 590; letter-spacing: -0.01em; max-width: 62ch; }
+.fail-why { color: var(--text-2); margin-top: var(--s2); max-width: 66ch; }
+.fail-link { display: inline-flex; align-items: center; gap: 4px; margin-top: var(--s3); font-size: .875rem; font-weight: 590; color: var(--accent); }
+.fail-link:hover { color: var(--accent-hover); }
 </style>
 </head>
 <body>
@@ -408,6 +443,7 @@ a { color: var(--accent); text-decoration: none; }
     <span class="nav-mark">Aditya Chouhan</span>
     <div class="nav-links">
       <a href="#work">Work</a>
+      <a href="#failures">What broke</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
       <!-- RESUME: re-enable once the PDF is regenerated (see below), then commit it as Aditya-Chouhan-Resume.pdf
@@ -425,8 +461,8 @@ a { color: var(--accent); text-decoration: none; }
         <p class="t-micro hero-eyebrow">Mumbai, India · Open to roles &amp; contract work</p>
         <h1 class="t-display-xl">Aditya Chouhan</h1>
         <p class="t-body-lg hero-role">GTM Engineer &amp; AI Systems Builder</p>
-        <p class="t-body-lg hero-voice">Every system here started as a problem I hit myself and couldn't buy my way out of.</p>
-        <p class="hero-dek">I build AI-native go-to-market systems hands-on — signal-detection pipelines, agent workflows, CRM and forecasting engines, and outbound infrastructure a modern revenue team actually runs on. Every project below is public and runnable, not a slide deck.</p>
+        <p class="t-body-lg hero-voice">I did the manual account research myself — 136 cold demos in about sixty days — then I built the systems that replace that work, one tool at a time.</p>
+        <p class="hero-dek">Fifteen public, runnable systems, organized by the tool a screener actually searches for — Salesforce, n8n, dbt, Python, Claude/agents, Clay. Every claim below traces to a file you can open yourself, and every project states plainly what it doesn't prove.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Role">Email me</a>
           <a class="btn btn-ghost" href="#work">See the work</a>
@@ -436,161 +472,299 @@ a { color: var(--accent); text-decoration: none; }
           <a href="https://www.linkedin.com/in/aditya-chouhan-gtm/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub</a>
         </div>
+        <nav class="toolstrip" aria-label="Jump to a stack layer">
+          <a class="chip" href="#layer-ai">AI / Agents</a>
+          <a class="chip" href="#layer-salesforce">Salesforce</a>
+          <a class="chip" href="#layer-n8n">n8n</a>
+          <a class="chip" href="#layer-warehouse">dbt / SQL</a>
+          <a class="chip" href="#layer-signal">Signal</a>
+          <a class="chip" href="#layer-clay">Clay</a>
+          <a class="chip" href="#layer-observability">Observability</a>
+          <a class="chip" href="#layer-lifecycle">CRM / Lifecycle</a>
+        </nav>
       </div>
       <!-- Swap src for a 256x256 photo and remove `hidden` to switch to a two-column hero. -->
       <img class="hero-photo" hidden alt="Aditya Chouhan" src="">
     </div>
   </header>
 
-  <section class="section" id="work" aria-labelledby="work-h">
+  <section class="section" id="failures" aria-labelledby="fail-h">
     <div class="wrap">
       <div class="section-head">
-        <span class="t-micro">Selected work</span>
-        <h2 class="t-display" id="work-h">Systems, built end to end</h2>
-        <p>Twelve public, runnable systems. Most numbers below regenerate from a documented command; the ones drawn from live feeds move with the data, and the Salesforce results need an org to re-run. Simulated results are labelled as simulated, and each repo states what it does not prove.</p>
+        <span class="t-micro">Operated, not just built</span>
+        <h2 class="t-display" id="fail-h">What broke, and what I did about it</h2>
+        <p>Anyone can make a demo work once. These are the moments each system actually ran and didn't — and the fix, with the receipt.</p>
       </div>
+      <div class="fails">
 
-      <div class="heroes">
+        <div class="fail-item">
+          <p class="fail-what">Salesforce: the first real test run came back 19/20, not 20/20.</p>
+          <p class="fail-why">A scheduled Apex job's <code>execute()</code> runs synchronously under <code>Test.stopTest()</code>, but the batch job it enqueues doesn't reliably finish before the assertion checks it — a real platform race, not a bug in the rollup logic. Root-caused and split into two deterministic tests rather than retried until green. Re-run: 20/20, 96% coverage.</p>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/salesforce-gtm-org/blob/main/evidence/apex-test-run-2026-08-24.txt" target="_blank" rel="noopener">See the test output <span class="arw">→</span></a>
+        </div>
 
-        <article class="pcard">
-          <h3 class="t-title">Revenue Brain</h3>
-          <p class="pcard-stack">Claude Code workspace · Agent design · Logistic regression · openFDA API · Zero dependencies</p>
-          <p>Detects signals, writes grounded briefs, drafts outreach, records what happened — then refits its own scoring model from the result. That last step is the one almost no revenue stack performs, and it is why most GTM systems produce activity instead of learning. Starts at uniform weights knowing nothing and recovers a hidden response model it never sees — a correctness test of the learning code, not evidence about real reply behaviour.</p>
-          <span class="data"><b>1.51×</b> lift vs random control after convergence · weight-recovery L1 error <b>0.600 → 0.098</b> · <b>1,000</b> real FDA records, <b>416</b> firms <span class="note">· outcomes simulated and labelled as such</span></span>
-          <div class="plinks">
-            <a href="https://aditya-chouhan.github.io/revenue-brain-demo/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
-            <a href="https://github.com/Aditya-chouhan/revenue-brain-demo" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
-          </div>
-        </article>
+        <div class="fail-item">
+          <p class="fail-what">n8n: the error handler I built to catch failures was itself broken.</p>
+          <p class="fail-why">n8n rewrites a thrown error's name before the handler sees it, so the classifier I wrote never matched a code defect and fell through to "unclassified." It still paged — the conservative default held — but the rule was wrong. Only surfaced by deliberately breaking a live workflow and reading what actually arrived.</p>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration/blob/main/output/error-workflow-fired-2026-08-23.json" target="_blank" rel="noopener">See the failure + handler run <span class="arw">→</span></a>
+        </div>
 
-        <article class="pcard">
-          <h3 class="t-title">Atlas Signal Engine</h3>
-          <p class="pcard-stack">Python · openFDA API · Signal scoring · Zero dependencies</p>
-          <p>Pulls real FDA enforcement actions, scores every firm for buying-trigger intensity, and drafts outreach grounded only in what the FDA actually filed.</p>
-          <span class="data"><b>1,000</b> real openFDA enforcement records → firm-level scoring → top-<b>8</b> briefs · <b>$0</b> API cost <span class="note">· no fabricated contacts</span></span>
-          <div class="plinks">
-            <a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Live queue <span class="arw">→</span></a>
-            <a href="https://github.com/Aditya-chouhan/atlas-signal-engine" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
-          </div>
-        </article>
+        <div class="fail-item">
+          <p class="fail-what">A stale number was leaking into outreach email.</p>
+          <p class="fail-why">A signal-detection demo pulled every fact live, then pasted a hardcoded "+183%" — in the one output designed to be sent to a real person. Re-running it returned a materially different number. Now computed at run time from the same function the score uses, and the page states both figures with their dates.</p>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/signal-engine-demo" target="_blank" rel="noopener">See the repo <span class="arw">→</span></a>
+        </div>
 
-        <article class="pcard">
-          <div class="split">
-            <div>
-              <h3 class="t-title">Salesforce GTM Signal Layer</h3>
-              <p class="pcard-stack">Salesforce · Flow · Validation rules · SOQL · Permission sets</p>
-              <p>Custom object, fields, Flow and a validation rule that stops a lead reaching Qualified without a live signal behind it. Built in a Developer Edition org.</p>
-              <span class="data">Custom object + <b>5</b> fields, Flow, validation rule, permission set · <b>3</b> leads auto-tiered by signal score</span>
-              <div class="plinks">
-                <a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Metadata + SOQL <span class="arw">→</span></a>
-              </div>
-            </div>
-            <div>
-              <h3 class="t-title">n8n GTM Orchestration</h3>
-              <p class="pcard-stack">n8n · Workflow orchestration · openFDA API · Error handling</p>
-              <p>A scheduled workflow — fetch, score, threshold, brief — with the production concerns configured rather than assumed.</p>
-              <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs (capped at 10 per run by design) · retry maxTries:3, 5s backoff, 1 req/sec, 30s timeout</span>
-              <div class="plinks">
-                <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Workflow + run output <span class="arw">→</span></a>
-              </div>
-            </div>
-          </div>
-        </article>
+        <div class="fail-item">
+          <p class="fail-what">"Clone it and run it" didn't actually work.</p>
+          <p class="fail-why">A CRM lifecycle system used syntax that needs Python 3.10+, with no minimum version stated — and macOS still ships 3.9. The documented reproduce steps failed at step one for anyone following them, on my own machine included. Fixed; outputs then verified byte-identical to what was already committed, so the numbers were always real — they just couldn't be regenerated until this was found.</p>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/revenue-engine-demo" target="_blank" rel="noopener">See the repo <span class="arw">→</span></a>
+        </div>
+
+        <div class="fail-item">
+          <p class="fail-what">I audited my own published precision number, and it needed two corrections.</p>
+          <p class="fail-why">Groundtruth reports 60.5% precision on 43 samples. The 95% confidence interval is 28 points wide, and 65% of the sample is one repository — the point estimate was never wrong, but alone it implied more than the sample supports. Caught by a measurement tool built for exactly this, then run across the rest of the portfolio.</p>
+          <a class="fail-link" href="https://aditya-chouhan.github.io/gtm-eval-harness/" target="_blank" rel="noopener">See the re-analysis <span class="arw">→</span></a>
+        </div>
 
       </div>
     </div>
   </section>
 
-  <section class="section" id="more" aria-labelledby="more-h">
+  <section class="section" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="section-head">
-        <span class="t-micro">Also public</span>
-        <h2 class="t-display" id="more-h">Eight more systems</h2>
+        <span class="t-micro">Selected work</span>
+        <h2 class="t-display" id="work-h">The stack, one tool at a time</h2>
+        <p>Fifteen public, runnable systems, grouped by the tool a screener actually searches for, ranked by how often it shows up in real GTM Engineer postings. Most numbers below regenerate from a documented command; the ones drawn from live feeds move with the data, and the Salesforce results need an org to re-run. Simulated results are labelled as simulated, and each repo states what it does not prove.</p>
       </div>
 
-      <div class="index">
+      <div class="layer" id="layer-ai">
+        <div class="layer-head">
+          <h3>AI / agent engineering &amp; evaluation</h3>
+          <span class="jd">14/14 postings</span>
+        </div>
+        <div class="heroes">
 
-        <a class="row" href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">
-          <span class="row-dom">Enrichment</span>
-          <span class="row-main">
-            <span class="row-name">Clay Enrichment Waterfall</span>
-            <span class="row-desc">A four-step conditional waterfall that only spends credits when the cheaper provider misses — cost control designed in, not bolted on afterwards.</span>
-            <span class="row-data">20 synthetic rows → 6 cleared the gate (30%) · paid enrichment ran only on those 6 · gate’s false-negative rate untested</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
+          <article class="pcard">
+            <h3 class="t-title">GTM Eval Harness</h3>
+            <p class="pcard-stack">Python, stdlib only · Wilson intervals · Precision/recall/F1 · Cohen's kappa</p>
+            <p>Reports rates with confidence intervals instead of bare numbers, refuses flattering defaults (undefined precision is <code>None</code>, not 0.0), and flags when a pooled result is really a statement about one over-represented group. Then turned on this portfolio's own published numbers, including my own.</p>
+            <span class="data"><b>87</b> tests passing · README-grounding checker run across <b>7</b> repos in this portfolio, including its own audit below <span class="note">· deterministic, no API key, $0</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/gtm-eval-harness/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/gtm-eval-harness" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
 
-        <a class="row" href="https://aditya-chouhan.github.io/gtm-data-quality-monitor/" target="_blank" rel="noopener">
-          <span class="row-dom">Observability</span>
-          <span class="row-main">
-            <span class="row-name">GTM Data-Quality Monitor</span>
-            <span class="row-desc">Declarative contracts over a GTM dataset — schema drift, type violations, staleness and fill rate — so a broken pipe surfaces as an alert, not as a rep complaint.</span>
-            <span class="row-data">Caught osm_id type violation on 65/65 records and detections on 43 · flagged 193/219 firms stale &gt;60d · defect fixed upstream</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
+          <article class="pcard">
+            <h3 class="t-title">Groundtruth</h3>
+            <p class="pcard-stack">Python · GitHub API · Defect scanning · Self-audited</p>
+            <p>Scans public repositories for a real defect pattern and reports its own precision honestly — false positives included rather than hidden. Re-audited by the eval harness above, which found the number needed two qualifications it didn't carry.</p>
+            <span class="data"><b>26</b> confirmed / <b>17</b> false positives → <b>60.5%</b> precision · 95% CI <b>[45.6%, 73.6%]</b> <span class="note">· 65% of the sample is one repository — both caveats now stated openly</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/groundtruth" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
 
-        <a class="row" href="https://aditya-chouhan.github.io/groundtruth/" target="_blank" rel="noopener">
-          <span class="row-dom">Evaluation</span>
-          <span class="row-main">
-            <span class="row-name">Groundtruth</span>
-            <span class="row-desc">Scans public repositories for real defects and reports its own precision honestly — false positives included rather than hidden.</span>
-            <span class="row-data">26 confirmed defects / 17 false positives → 60.5% precision, stated openly</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
+          <article class="pcard">
+            <h3 class="t-title">Revenue Brain</h3>
+            <p class="pcard-stack">Claude Code workspace · Agent design · Logistic regression · openFDA API · Zero dependencies</p>
+            <p>Detects signals, writes grounded briefs, drafts outreach, records what happened — then refits its own scoring model from the result. Starts at uniform weights knowing nothing and recovers a hidden response model it never sees — a correctness test of the learning code, not evidence about real reply behaviour.</p>
+            <span class="data"><b>1.51×</b> lift vs random control after convergence · weight-recovery L1 error <b>0.600 → 0.098</b> · <b>1,000</b> real FDA records, <b>416</b> firms <span class="note">· outcomes simulated and labelled as such</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/revenue-brain-demo/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/revenue-brain-demo" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
 
-        <a class="row" href="https://aditya-chouhan.github.io/restaurant-lead-engine/" target="_blank" rel="noopener">
-          <span class="row-dom">Sourcing</span>
-          <span class="row-main">
-            <span class="row-name">Restaurant Lead Engine</span>
-            <span class="row-desc">Harvests venues from OpenStreetMap, fingerprints each one's tech stack, scores fit, and A/B tests the scoring model itself rather than trusting it.</span>
-            <span class="row-data">OpenStreetMap harvest → tech fingerprint → fit score → A/B tested scoring variant</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
-
-        <a class="row" href="https://aditya-chouhan.github.io/account-brief-demo/" target="_blank" rel="noopener">
-          <span class="row-dom">Briefing</span>
-          <span class="row-main">
-            <span class="row-name">Account Brief Generator</span>
-            <span class="row-desc">Turns a company into a source-cited pre-call brief so the rep walks in informed without spending an hour reading.</span>
-            <span class="row-data">Every claim link-traceable to its source · no fabricated contacts · no email sent</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
-
-        <a class="row" href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">
-          <span class="row-dom">Signal</span>
-          <span class="row-main">
-            <span class="row-name">Commit-Velocity Signal Engine</span>
-            <span class="row-desc">Detects engineering-velocity inflections from public commit history — the signal that a team just started moving, before it shows up anywhere else.</span>
-            <span class="row-data">+183% commit velocity on the dated write-up run (live data moves — it read +120% on 2026-08-23)</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
-
-        <a class="row" href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">
-          <span class="row-dom">Warehouse</span>
-          <span class="row-main">
-            <span class="row-name">Mini GTM Warehouse + Attribution</span>
-            <span class="row-desc">A SQL warehouse over the funnel with four attribution models side by side, so "which play worked" is a query rather than an opinion.</span>
-            <span class="row-data">4 attribution models compared over one SQL funnel · 6 analytical queries, one real finding</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
-
-        <a class="row" href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">
-          <span class="row-dom">Lifecycle</span>
-          <span class="row-main">
-            <span class="row-name">Revenue Engine System</span>
-            <span class="row-desc">A complete Lead → MQL → SQL → Opportunity → Closed lifecycle built from zero — routing, hygiene rules, funnel metrics and a three-scenario forecast.</span>
-            <span class="row-data">5-stage lifecycle · weighted round-robin routing · 3-scenario revenue forecast · dashboard included</span>
-          </span>
-          <span class="row-arw" aria-hidden="true">→</span>
-        </a>
-
+        </div>
+        <div class="index">
+          <a class="row" href="https://aditya-chouhan.github.io/account-brief-demo/" target="_blank" rel="noopener">
+            <span class="row-dom">Briefing</span>
+            <span class="row-main">
+              <span class="row-name">Account Brief Generator</span>
+              <span class="row-desc">Turns a company into a source-cited pre-call brief so the rep walks in informed without spending an hour reading.</span>
+              <span class="row-data">Every claim link-traceable to its source · no fabricated contacts · no email sent</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
+
+      <div class="layer" id="layer-salesforce">
+        <div class="layer-head">
+          <h3>Salesforce</h3>
+          <span class="jd">9/14 postings</span>
+        </div>
+        <div class="heroes">
+          <article class="pcard">
+            <h3 class="t-title">Salesforce GTM Signal Layer</h3>
+            <p class="pcard-stack">Salesforce · Apex (trigger + service + batch) · Flow · Validation rules · SOQL</p>
+            <p>Custom object, fields, Flow and validation rule for the declarative routing layer — plus a trigger, rollup service and Batchable/Schedulable job in Apex for the roll-up Flow can't do declaratively (Lead can't be a master-detail parent). Deployed and tested against a live Developer Edition org, not just written.</p>
+            <span class="data"><b>20/20</b> Apex tests passing · <b>96%</b> org-wide coverage (75% deploy gate) <span class="note">· first real run was 19/20 — a nested-async race, root-caused and fixed, not retried until green</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/salesforce-gtm-org/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="layer" id="layer-n8n">
+        <div class="layer-head">
+          <h3>n8n</h3>
+          <span class="jd">7/14 postings · 4/4 India-tier</span>
+        </div>
+        <div class="heroes">
+          <article class="pcard">
+            <h3 class="t-title">n8n GTM Orchestration</h3>
+            <p class="pcard-stack">n8n · Scheduled workflows · Dedicated error handling · openFDA API</p>
+            <p>A scheduled workflow — fetch, score, threshold, brief — plus a dedicated error workflow proven by deliberately breaking a live run, not just configured and left untested.</p>
+            <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs (capped by design) · error handler fired <b>80ms</b> after a forced failure, classified and paged correctly</span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/n8n-gtm-orchestration/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="layer" id="layer-warehouse">
+        <div class="layer-head">
+          <h3>Warehouse &amp; SQL</h3>
+          <span class="jd">5/14 postings</span>
+        </div>
+        <div class="heroes">
+          <article class="pcard">
+            <h3 class="t-title">GTM Warehouse</h3>
+            <p class="pcard-stack">dbt Core · DuckDB · Incremental models · Custom + generic tests</p>
+            <p>A dimensional warehouse — staging → marts, an incremental fact table, generic and custom dbt tests — over the real signal data from the n8n artifact above. Touch and opportunity data is disclosed as synthetic everywhere it appears, since real sequencing infrastructure doesn't exist yet.</p>
+            <span class="data"><b>46/46</b> dbt tests passing, zero warnings · real signals, synthetic touches/opportunities <span class="note">· labelled in every file that touches them</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/gtm-warehouse/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/gtm-warehouse" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
+        </div>
+        <div class="index">
+          <a class="row" href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">
+            <span class="row-dom">Warehouse</span>
+            <span class="row-main">
+              <span class="row-name">Mini GTM Warehouse + Attribution</span>
+              <span class="row-desc">A SQL warehouse over the funnel with four attribution models side by side, so "which play worked" is a query rather than an opinion.</span>
+              <span class="row-data">4 attribution models compared over one SQL funnel · 6 analytical queries, one real finding</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="layer" id="layer-signal">
+        <div class="layer-head">
+          <h3>Signal &amp; intent</h3>
+        </div>
+        <div class="heroes">
+
+          <article class="pcard">
+            <h3 class="t-title">GTM Signal Engine</h3>
+            <p class="pcard-stack">Python · SEC EDGAR · GitHub · Hacker News · Retry-hardened</p>
+            <p>Real signals from three independent, free, public APIs — SEC filings, GitHub release activity, HN mentions — fused with a documented Severity × Confidence × Recency model. Retry logic was added after two genuine live-run failures, not designed in from a spec.</p>
+            <span class="data"><b>456</b> real signals, <b>14/14</b> entities, zero errors on the third run <span class="note">· not a prospect list — chosen for verifiable multi-source coverage</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/gtm-signal-engine/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/gtm-signal-engine" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
+
+          <article class="pcard">
+            <h3 class="t-title">Atlas Signal Engine</h3>
+            <p class="pcard-stack">Python · openFDA API · Signal scoring · Zero dependencies</p>
+            <p>Pulls real FDA enforcement actions, scores every firm for buying-trigger intensity, and drafts outreach grounded only in what the FDA actually filed.</p>
+            <span class="data"><b>1,000</b> real openFDA enforcement records → firm-level scoring → top-<b>8</b> briefs · <b>$0</b> API cost <span class="note">· no fabricated contacts</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/atlas-signal-engine/" target="_blank" rel="noopener">Live queue <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/atlas-signal-engine" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
+
+        </div>
+        <div class="index">
+          <a class="row" href="https://aditya-chouhan.github.io/signal-engine-demo/" target="_blank" rel="noopener">
+            <span class="row-dom">Signal</span>
+            <span class="row-main">
+              <span class="row-name">Commit-Velocity Signal Engine</span>
+              <span class="row-desc">Detects engineering-velocity inflections from public commit history — the signal that a team just started moving, before it shows up anywhere else.</span>
+              <span class="row-data">+183% commit velocity on the dated write-up run (live data moves — it read +120% on 2026-08-23)</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="layer" id="layer-clay">
+        <div class="layer-head">
+          <h3>Enrichment / Clay</h3>
+          <span class="jd">69% of postings name it</span>
+        </div>
+        <div class="index">
+          <a class="row" href="https://aditya-chouhan.github.io/clay-enrichment-waterfall/" target="_blank" rel="noopener">
+            <span class="row-dom">Enrichment</span>
+            <span class="row-main">
+              <span class="row-name">Clay Enrichment Waterfall</span>
+              <span class="row-desc">A four-step conditional waterfall that only spends credits when the cheaper provider misses — cost control designed in, not bolted on afterwards.</span>
+              <span class="row-data">20 synthetic rows → 6 cleared the gate (30%) · paid enrichment ran only on those 6 · gate's false-negative rate untested</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="layer" id="layer-observability">
+        <div class="layer-head">
+          <h3>Data quality &amp; observability</h3>
+          <span class="jd">5/14 postings</span>
+        </div>
+        <div class="index">
+          <a class="row" href="https://aditya-chouhan.github.io/gtm-data-quality-monitor/" target="_blank" rel="noopener">
+            <span class="row-dom">Observability</span>
+            <span class="row-main">
+              <span class="row-name">GTM Data-Quality Monitor</span>
+              <span class="row-desc">Declarative contracts over a GTM dataset — schema drift, type violations, staleness and fill rate — so a broken pipe surfaces as an alert, not as a rep complaint.</span>
+              <span class="row-data">Caught osm_id type violation on 65/65 records and detections on 43 · flagged 193/219 firms stale &gt;60d · defect fixed upstream</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="layer" id="layer-lifecycle">
+        <div class="layer-head">
+          <h3>CRM lifecycle &amp; forecasting</h3>
+        </div>
+        <div class="index">
+          <a class="row" href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">
+            <span class="row-dom">Lifecycle</span>
+            <span class="row-main">
+              <span class="row-name">Revenue Engine System</span>
+              <span class="row-desc">A complete Lead → MQL → SQL → Opportunity → Closed lifecycle built from zero — routing, hygiene rules, funnel metrics and a three-scenario forecast.</span>
+              <span class="row-data">5-stage lifecycle · weighted round-robin routing · 3-scenario revenue forecast · dashboard included</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+          <a class="row" href="https://aditya-chouhan.github.io/restaurant-lead-engine/" target="_blank" rel="noopener">
+            <span class="row-dom">Sourcing</span>
+            <span class="row-main">
+              <span class="row-name">Restaurant Lead Engine</span>
+              <span class="row-desc">Harvests venues from OpenStreetMap, fingerprints each one's tech stack, scores fit, and A/B tests the scoring model itself rather than trusting it.</span>
+              <span class="row-data">OpenStreetMap harvest → tech fingerprint → fit score → A/B tested scoring variant</span>
+            </span>
+            <span class="row-arw" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -646,7 +820,7 @@ a { color: var(--accent); text-decoration: none; }
           <h4 class="t-micro">Engineering</h4>
           <ul>
             <li>Python</li>
-            <li>SQL / SQLite</li>
+            <li>SQL / dbt Core / DuckDB</li>
             <li>TypeScript / Next.js</li>
             <li>FastAPI, pgvector</li>
           </ul>
@@ -657,9 +831,9 @@ a { color: var(--accent); text-decoration: none; }
             <li>Claude API / agent workflows</li>
             <li>Signal-scoring &amp; enrichment pipelines</li>
             <li>Clay waterfalls &amp; formula columns</li>
-            <li>n8n workflow orchestration</li>
-            <li>Salesforce Flows, validation rules, SOQL</li>
-            <li>Evaluation &amp; A/B testing of scoring models</li>
+            <li>n8n orchestration + dedicated error handling</li>
+            <li>Salesforce Flows, Apex (trigger/batch/schedulable), SOQL</li>
+            <li>Evaluation: Wilson intervals, precision/recall, judge agreement</li>
           </ul>
         </div>
         <div class="cap">
@@ -730,7 +904,7 @@ a { color: var(--accent); text-decoration: none; }
 
   /* --- reveal on scroll. Elements start visible; we only hide what we will observe. --- */
   if (!reduce && 'IntersectionObserver' in window) {
-    var targets = document.querySelectorAll('.section-head, .pcard, .row, .xp-item, .cap, .fork-card');
+    var targets = document.querySelectorAll('.section-head, .pcard, .row, .fail-item, .xp-item, .cap, .fork-card');
     Array.prototype.forEach.call(targets, function (el) { el.dataset.reveal = 'pending'; });
 
     var io = new IntersectionObserver(function (entries) {
