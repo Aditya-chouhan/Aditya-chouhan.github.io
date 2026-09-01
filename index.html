@@ -354,6 +354,13 @@ button { touch-action: manipulation; }
 .system-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .system-lines path { fill: none; stroke: var(--hairline-strong); stroke-width: 1.25; stroke-linecap: round; }
 .system-lines .line-accent { stroke: rgba(var(--accent-rgb),.32); stroke-dasharray: 3 7; }
+.system-lines .flow {
+  stroke: var(--accent); stroke-width: 2; stroke-dasharray: 2 14;
+  filter: drop-shadow(0 0 4px rgba(var(--accent-rgb),.85));
+  animation: signal-flow 5.4s linear infinite;
+}
+.system-lines .flow-two { animation-delay: -1.8s; }
+.system-lines .flow-three { stroke: var(--accent-2); animation-delay: -3.6s; }
 .system-node,
 .pipeline-core {
   position: absolute; z-index: 3;
@@ -390,21 +397,20 @@ button { touch-action: manipulation; }
   box-shadow: 0 0 0 5px rgba(var(--accent-rgb),.10), 0 0 18px rgba(var(--accent-rgb),.65);
   animation: core-glow 3.2s ease-in-out infinite;
 }
-.signal-pulse {
-  position: absolute; z-index: 2; left: 0; top: 0;
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 14px rgba(var(--accent-rgb),.9);
-  offset-rotate: 0deg;
-  animation: signal-travel 7.5s linear infinite;
-}
-.pulse-one { offset-path: path("M 58 88 C 116 88 124 180 180 180 C 238 180 246 88 302 88"); }
-.pulse-two { offset-path: path("M 60 278 C 116 278 126 180 180 180 C 236 180 246 276 302 276"); animation-delay: -2.5s; }
-.pulse-three { offset-path: path("M 58 88 C 118 88 126 180 180 180 C 238 180 244 276 302 276"); animation-delay: -5s; background: var(--accent-2); }
-@keyframes signal-travel { from { offset-distance: 0%; opacity: 0; } 8%, 88% { opacity: 1; } to { offset-distance: 100%; opacity: 0; } }
+@keyframes signal-flow { to { stroke-dashoffset: -128; } }
 @keyframes core-glow { 0%,100% { opacity: .72; } 50% { opacity: 1; } }
 .visual-caption {
   color: var(--text-3); font-family: var(--font-mono); font-size: .6875rem;
   line-height: 1.4; letter-spacing: .025em; text-align: center; margin-top: var(--s4);
+}
+@media (max-width: 480px) {
+  .system-visual { padding: var(--s3); border-radius: 26px; }
+  .system-stage { border-radius: 20px; }
+  .system-node { width: 76px; min-height: 48px; padding: 8px 9px; border-radius: 13px; }
+  .system-node strong { font-size: .6875rem; }
+  .system-node small, .pipeline-core small { font-size: .5rem; }
+  .pipeline-core { width: 100px; min-height: 68px; padding: 10px; border-radius: 19px; }
+  .visual-caption { margin-top: var(--s3); }
 }
 
 /* ============ SECTIONS ============ */
@@ -575,8 +581,7 @@ button { touch-action: manipulation; }
   [data-reveal="in"] { transition: opacity .2s ease !important; }
   .pressed { transform: none; }
   .pcard:hover, .fork-card:hover { transform: none; }
-  .signal-pulse, .core-dot { animation: none !important; }
-  .signal-pulse { display: none; }
+  .system-lines .flow, .core-dot { animation: none !important; }
   .system-stage { transform: none !important; }
 }
 @media (prefers-contrast: more) {
@@ -716,15 +721,15 @@ button { touch-action: manipulation; }
             <path d="M58 88 C116 88 124 180 180 180 C238 180 246 88 302 88" />
             <path d="M60 278 C116 278 126 180 180 180 C236 180 246 276 302 276" />
             <path class="line-accent" d="M58 88 C118 88 126 180 180 180 C238 180 244 276 302 276" />
+            <path class="flow flow-one" d="M58 88 C116 88 124 180 180 180 C238 180 246 88 302 88" />
+            <path class="flow flow-two" d="M60 278 C116 278 126 180 180 180 C236 180 246 276 302 276" />
+            <path class="flow flow-three" d="M58 88 C118 88 126 180 180 180 C238 180 244 276 302 276" />
           </svg>
           <span class="system-node node-signal"><small>01 · Detect</small><strong>Signals</strong></span>
           <span class="system-node node-context"><small>02 · Understand</small><strong>AI context</strong></span>
           <span class="system-node node-crm"><small>03 · Activate</small><strong>CRM action</strong></span>
           <span class="system-node node-learning"><small>04 · Improve</small><strong>Learning loop</strong></span>
           <span class="pipeline-core"><span class="core-dot"></span><strong>Revenue system</strong><small>orchestrated</small></span>
-          <span class="signal-pulse pulse-one"></span>
-          <span class="signal-pulse pulse-two"></span>
-          <span class="signal-pulse pulse-three"></span>
         </div>
         <p class="visual-caption">Signals → context → activation → learning</p>
       </div>
