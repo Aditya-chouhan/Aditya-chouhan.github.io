@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aditya Chouhan — GTM Engineer &amp; AI Systems Builder</title>
-<meta name="description" content="I build AI-native go-to-market systems hands-on, organized by tool: Salesforce, n8n, dbt, Python, Claude/agents, Clay. Fifteen public, runnable systems.">
+<meta name="description" content="I build AI-native go-to-market systems hands-on, organized by tool: Salesforce, HubSpot, n8n, dbt, Python, Claude/agents, Clay. Seventeen public, runnable systems.">
 <link rel="canonical" href="https://aditya-chouhan.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aditya-chouhan.github.io/">
 <meta property="og:title" content="Aditya Chouhan — GTM Engineer &amp; AI Systems Builder">
-<meta property="og:description" content="Fifteen public, runnable go-to-market systems, organized by tool. Signal detection, enrichment, orchestration, forecasting — built end to end.">
+<meta property="og:description" content="Seventeen public, runnable go-to-market systems, organized by tool. Signal detection, enrichment, orchestration, forecasting — built end to end.">
 <meta property="og:image" content="https://aditya-chouhan.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Aditya Chouhan — GTM Engineer &amp; AI Systems Builder">
-<meta name="twitter:description" content="Fifteen public, runnable go-to-market systems, organized by tool. Signal detection, enrichment, orchestration, forecasting — built end to end.">
+<meta name="twitter:description" content="Seventeen public, runnable go-to-market systems, organized by tool. Signal detection, enrichment, orchestration, forecasting — built end to end.">
 <meta name="twitter:image" content="https://aditya-chouhan.github.io/og.png">
 
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
@@ -276,7 +276,7 @@ a { color: var(--accent); text-decoration: none; }
 .plinks { display: flex; flex-wrap: wrap; gap: var(--s5); }
 .plinks a {
   font-size: .875rem; font-weight: 590; color: var(--accent);
-  display: inline-flex; align-items: center; gap: 4px;
+  display: inline-flex; align-items: center; gap: 4px; min-height: 44px;
   transition: color .2s var(--damped);
 }
 .plinks a:hover { color: var(--accent-hover); }
@@ -400,6 +400,7 @@ a { color: var(--accent); text-decoration: none; }
 /* ============ TOOL STRIP (hero) ============ */
 .toolstrip { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s6); }
 .chip {
+  display: inline-flex; align-items: center; min-height: 44px;
   font-family: var(--font-mono); font-size: .75rem; font-weight: 590;
   color: var(--text-2); background: var(--bg-sunken);
   border: 1px solid var(--hairline); border-radius: var(--r-full);
@@ -460,7 +461,7 @@ a { color: var(--accent); text-decoration: none; }
         <h1 class="t-display-xl">Aditya Chouhan</h1>
         <p class="t-body-lg hero-role">GTM Engineer &amp; AI Systems Builder</p>
         <p class="t-body-lg hero-voice">I did the manual account research myself — 136 cold demos in about sixty days — then I built the systems that replace that work, one tool at a time.</p>
-        <p class="hero-dek">Fifteen public, runnable systems, organized by the tool a screener actually searches for — Salesforce, n8n, dbt, Python, Claude/agents, Clay. Every claim below traces to a file you can open yourself, and every project states plainly what it doesn't prove.</p>
+        <p class="hero-dek">Seventeen public, runnable systems, organized by the tool a screener actually searches for — Salesforce, HubSpot, n8n, dbt, Python, Claude/agents, Clay. Every claim below traces to a file you can open yourself, and every project states plainly what it doesn't prove.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Role">Email me</a>
           <a class="btn btn-ghost" href="#work">See the work</a>
@@ -473,6 +474,7 @@ a { color: var(--accent); text-decoration: none; }
         <nav class="toolstrip" aria-label="Jump to a stack layer">
           <a class="chip" href="#layer-ai">AI / Agents</a>
           <a class="chip" href="#layer-salesforce">Salesforce</a>
+          <a class="chip" href="#layer-lifecycle">HubSpot / CRM sync</a>
           <a class="chip" href="#layer-n8n">n8n</a>
           <a class="chip" href="#layer-warehouse">dbt / SQL</a>
           <a class="chip" href="#layer-signal">Signal</a>
@@ -534,7 +536,7 @@ a { color: var(--accent); text-decoration: none; }
       <div class="section-head">
         <span class="t-micro">Selected work</span>
         <h2 class="t-display" id="work-h">The stack, one tool at a time</h2>
-        <p>Fifteen public, runnable systems, grouped by the tool a screener actually searches for, ranked by how often it shows up in real GTM Engineer postings. Most numbers below regenerate from a documented command; the ones drawn from live feeds move with the data, and the Salesforce results need an org to re-run. Simulated results are labelled as simulated, and each repo states what it does not prove.</p>
+        <p>Seventeen public, runnable systems, grouped by the tool a screener actually searches for, ranked by how often it shows up in real GTM Engineer postings. Most numbers below regenerate from a documented command; the ones drawn from live feeds move with the data, and the Salesforce results need an org to re-run. Simulated results are labelled as simulated, and each repo states what it does not prove.</p>
       </div>
 
       <div class="layer" id="layer-ai">
@@ -543,6 +545,18 @@ a { color: var(--accent); text-decoration: none; }
           <span class="jd">14/14 postings</span>
         </div>
         <div class="heroes">
+
+          <article class="pcard">
+            <h3 class="t-title">Claude GTM Revenue Agent</h3>
+            <p class="pcard-stack">Claude API · Structured outputs + strict tools · FastAPI · Postgres · n8n · Docker</p>
+            <p>A production-style revenue agent that turns public enforcement signals into scored accounts and source-grounded briefs, with visible retries, rate limits, spend controls, evaluation, observability and guarded Salesforce, HubSpot and Clay boundaries.</p>
+            <span class="data"><b>25</b> real public records fetched → <b>24</b> stored signals → <b>10</b> accounts scored · <b>23/23</b> tests, <b>85%</b> coverage · <b>7/7</b> deliberately corrupted briefs rejected · public evidence console + weekly live-source smoke run <span class="note">· committed briefs are offline mocks; no live Claude result or business outcome claimed</span></span>
+            <div class="plinks">
+              <a href="https://aditya-chouhan.github.io/claude-gtm-revenue-agent/" target="_blank" rel="noopener">Live evidence console <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">Case study <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
 
           <article class="pcard">
             <h3 class="t-title">GTM Eval Harness</h3>
@@ -739,7 +753,19 @@ a { color: var(--accent); text-decoration: none; }
 
       <div class="layer" id="layer-lifecycle">
         <div class="layer-head">
-          <h3>CRM lifecycle &amp; forecasting</h3>
+          <h3>CRM integration, lifecycle &amp; forecasting</h3>
+        </div>
+        <div class="heroes">
+          <article class="pcard">
+            <h3 class="t-title">RevOps Sync Control Plane</h3>
+            <p class="pcard-stack">HubSpot · Salesforce · Identity resolution · Postgres · dbt / BigQuery · Terraform</p>
+            <p>Reconciles cross-CRM account identity without unsafe same-name merges, applies explicit field ownership, preserves every disagreement in a conflict ledger, and produces replay-safe outbox previews. Live CRM delivery is absent from the public API and fails closed internally.</p>
+            <span class="data"><b>6</b> synthetic source records → <b>4</b> canonical accounts · <b>8</b> conflicts preserved · <b>8</b> preview-only actions · replay created <b>0</b> duplicates · <b>15/15</b> tests, <b>87%</b> coverage <span class="note">· BigQuery/dbt/Terraform path validated but not deployed; no live CRM result claimed</span></span>
+            <div class="plinks">
+              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">Case study <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
+            </div>
+          </article>
         </div>
         <div class="index">
           <a class="row" href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">
@@ -818,7 +844,7 @@ a { color: var(--accent); text-decoration: none; }
           <h4 class="t-micro">Engineering</h4>
           <ul>
             <li>Python</li>
-            <li>SQL / dbt Core / DuckDB</li>
+            <li>SQL / dbt Core / DuckDB / BigQuery</li>
             <li>TypeScript / Next.js</li>
             <li>FastAPI, pgvector</li>
           </ul>
@@ -831,6 +857,8 @@ a { color: var(--accent); text-decoration: none; }
             <li>Clay waterfalls &amp; formula columns</li>
             <li>n8n orchestration + dedicated error handling</li>
             <li>Salesforce Flows, Apex (trigger/batch/schedulable), SOQL</li>
+            <li>HubSpot ↔ Salesforce identity and sync controls</li>
+            <li>Postgres, Alembic, Docker, Terraform</li>
             <li>Evaluation: Wilson intervals, precision/recall, judge agreement</li>
           </ul>
         </div>
