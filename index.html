@@ -601,7 +601,7 @@ a { color: var(--accent); text-decoration: none; }
             <h3 class="t-title">Salesforce GTM Signal Layer</h3>
             <p class="pcard-stack">Salesforce · Apex (trigger + service + batch) · Flow · Validation rules · SOQL</p>
             <p>Custom object, fields, Flow and validation rule for the declarative routing layer — plus a trigger, rollup service and Batchable/Schedulable job in Apex for the roll-up Flow can't do declaratively (Lead can't be a master-detail parent). Deployed and tested against a live Developer Edition org, not just written.</p>
-            <span class="data"><b>20/20</b> Apex tests passing · <b>96%</b> org-wide coverage (75% deploy gate) <span class="note">· first real run was 19/20 — a nested-async race, root-caused and fixed, not retried until green</span></span>
+            <span class="data">First real run failed at <b>19/20</b> — a nested-async race under <code>Test.stopTest()</code>, root-caused and split into two deterministic tests instead of retried until green <span class="note">· re-run: 20/20, 96% coverage (75% deploy gate)</span></span>
             <div class="plinks">
               <a href="https://aditya-chouhan.github.io/salesforce-gtm-org/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
               <a href="https://github.com/Aditya-chouhan/salesforce-gtm-org" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
@@ -639,7 +639,7 @@ a { color: var(--accent); text-decoration: none; }
             <h3 class="t-title">GTM Warehouse</h3>
             <p class="pcard-stack">dbt Core · DuckDB · Incremental models · Custom + generic tests</p>
             <p>A dimensional warehouse — staging → marts, an incremental fact table, generic and custom dbt tests — over the real signal data from the n8n artifact above. Touch and opportunity data is disclosed as synthetic everywhere it appears, since real sequencing infrastructure doesn't exist yet.</p>
-            <span class="data"><b>46/46</b> dbt tests passing, zero warnings · real signals, synthetic touches/opportunities <span class="note">· labelled in every file that touches them</span></span>
+            <span class="data"><b>35/35</b> data tests passing, zero warnings · real signals, synthetic touches/opportunities <span class="note">· labelled in every file that touches them</span></span>
             <div class="plinks">
               <a href="https://aditya-chouhan.github.io/gtm-warehouse/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
               <a href="https://github.com/Aditya-chouhan/gtm-warehouse" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
