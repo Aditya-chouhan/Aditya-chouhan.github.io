@@ -118,7 +118,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background-color .25s ease, color .25s ease;
   overflow-x: hidden;
-  overscroll-behavior-y: none;
 }
 h1,h2,h3,h4 { margin: 0; font-weight: 600; font-optical-sizing: auto; text-wrap: balance; }
 p { margin: 0; }
@@ -681,7 +680,7 @@ button { touch-action: manipulation; }
         <p class="t-body-lg hero-role">GTM / Revenue Systems Engineer</p>
         <p class="t-body-lg hero-voice">I build the operating layer between GTM strategy and pipeline — signal-driven prospecting, AI account intelligence, CRM automation and revenue-data systems.</p>
         <p class="hero-dek">Commercial outcomes backed by 17 public systems, with exact boundaries around what ran live, what is simulated and what remains preview-only.</p>
-        <div class="impact-grid" aria-label="Selected commercial outcomes">
+        <div class="impact-grid" role="group" aria-label="Selected commercial outcomes">
           <div class="impact-card">
             <span class="t-micro">Sydon · GTM Engineer</span>
             <strong>25,000+ → 150+ → 35+</strong>
