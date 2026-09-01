@@ -41,6 +41,9 @@
   --hairline-strong: rgba(0,0,0,0.14);
   --accent: #0066CC;
   --accent-hover: #0055AA;
+  --accent-rgb: 0, 102, 204;
+  --accent-2: #5E5CE6;
+  --glass: rgba(255,255,255,0.58);
 
   --e1: 0 1px 2px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.03);
   --e2: 0 4px 16px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
@@ -56,7 +59,6 @@
 
   /* spring approximations */
   --damped: cubic-bezier(0.32, 0.72, 0, 1);
-  --bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
   --micro: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -73,6 +75,9 @@
     --hairline-strong: rgba(255,255,255,0.18);
     --accent: #2997FF;
     --accent-hover: #5AAEFF;
+    --accent-rgb: 41, 151, 255;
+    --accent-2: #BF5AF2;
+    --glass: rgba(20,20,22,0.58);
     --e1: 0 1px 2px rgba(0,0,0,.5);
     --e2: 0 8px 28px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
     --e3: 0 20px 56px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.07);
@@ -90,6 +95,9 @@
   --hairline-strong: rgba(255,255,255,0.18);
   --accent: #2997FF;
   --accent-hover: #5AAEFF;
+  --accent-rgb: 41, 151, 255;
+  --accent-2: #BF5AF2;
+  --glass: rgba(20,20,22,0.58);
   --e1: 0 1px 2px rgba(0,0,0,.5);
   --e2: 0 8px 28px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
   --e3: 0 20px 56px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.07);
@@ -97,7 +105,7 @@
 
 /* ============ BASE ============ */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
   margin: 0;
   background: var(--bg);
@@ -110,11 +118,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background-color .25s ease, color .25s ease;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
-h1,h2,h3,h4 { margin: 0; font-weight: 600; }
+h1,h2,h3,h4 { margin: 0; font-weight: 600; font-optical-sizing: auto; text-wrap: balance; }
 p { margin: 0; }
 ul { margin: 0; padding: 0; list-style: none; }
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--accent); text-decoration: none; touch-action: manipulation; }
+button { touch-action: manipulation; }
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -165,12 +175,21 @@ a { color: var(--accent); text-decoration: none; }
               -webkit-backdrop-filter .35s var(--damped),
               border-color .35s var(--damped);
 }
+.nav::after {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 100%; height: 14px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,.08), transparent);
+  opacity: 0;
+  transition: opacity .35s var(--damped);
+}
 .nav[data-stuck="true"] {
   background: var(--chrome);
   -webkit-backdrop-filter: blur(var(--blur-chrome)) saturate(180%);
   backdrop-filter: blur(var(--blur-chrome)) saturate(180%);
   border-bottom-color: var(--hairline);
 }
+.nav[data-stuck="true"]::after { opacity: .12; }
 .nav-in {
   height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
 }
@@ -179,9 +198,38 @@ a { color: var(--accent); text-decoration: none; }
 @media (min-width: 620px) { .nav-links { display: flex; } }
 .nav-links > a:not(.btn) {
   font-size: .875rem; font-weight: 500; color: var(--text-2);
-  padding: var(--s2) var(--s1); transition: color .2s var(--damped);
+  padding: var(--s2) var(--s3); border-radius: var(--r-full);
+  transition: color .2s var(--damped), background-color .25s var(--damped);
 }
 .nav-links > a:not(.btn):hover { color: var(--text-1); }
+.nav-links > a:not(.btn)[aria-current="location"] { color: var(--text-1); background: var(--bg-sunken); }
+
+.mobile-dock { display: none; }
+@media (max-width: 619px) {
+  body { padding-bottom: calc(78px + env(safe-area-inset-bottom)); }
+  .mobile-dock {
+    position: fixed; z-index: 70;
+    left: 50%; bottom: max(12px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    width: min(calc(100% - 24px), 430px);
+    padding: 6px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 22px;
+    background: var(--chrome);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: var(--e3);
+  }
+  .mobile-dock a {
+    min-height: 44px; display: grid; place-items: center;
+    border-radius: 16px; color: var(--text-2);
+    font-size: .75rem; font-weight: 590;
+    transition: color .2s var(--damped), background-color .25s var(--damped), transform .12s var(--micro);
+  }
+  .mobile-dock a[aria-current="location"] { color: var(--text-1); background: var(--surface); box-shadow: var(--e1); }
+  .mobile-dock a:active { transform: scale(.95); }
+}
 
 /* ============ BUTTONS ============ */
 .btn {
@@ -191,16 +239,27 @@ a { color: var(--accent); text-decoration: none; }
   border: 1px solid transparent; cursor: pointer;
   text-decoration: none; white-space: nowrap;
   transition: background-color .25s var(--damped), color .25s var(--damped),
-              border-color .25s var(--damped), box-shadow .25s var(--damped);
+              border-color .25s var(--damped), box-shadow .25s var(--damped), transform .12s var(--micro);
 }
 .btn-sm { font-size: .8125rem; padding: .4375rem .875rem; }
 .btn-primary { background: var(--text-1); color: var(--bg); }
 .btn-primary:hover { background: var(--accent); }
 .btn-ghost { background: transparent; color: var(--text-1); border-color: var(--hairline-strong); }
 .btn-ghost:hover { border-color: var(--text-1); background: var(--bg-sunken); }
+.btn:active { transform: scale(.97); }
 
 /* ============ HERO ============ */
-.hero { padding-top: clamp(var(--s8), 10vw, var(--s9)); padding-bottom: clamp(var(--s6), 4vw, var(--s7)); }
+.hero {
+  position: relative; isolation: isolate;
+  padding-top: clamp(var(--s8), 9vw, var(--s9));
+  padding-bottom: clamp(var(--s7), 5vw, var(--s8));
+}
+.hero::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  width: min(62vw, 720px); aspect-ratio: 1; right: -24%; top: -32%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb),.12) 0, rgba(var(--accent-rgb),.035) 38%, transparent 70%);
+  filter: blur(20px);
+}
 .hero-eyebrow { color: var(--text-3); margin-bottom: var(--s5); }
 .hero h1 { margin-bottom: var(--s4); max-width: 16ch; }
 .hero-role { color: var(--text-2); margin-bottom: var(--s6); max-width: 40ch; }
@@ -210,7 +269,7 @@ a { color: var(--accent); text-decoration: none; }
   padding-left: var(--s5);
   border-left: 2px solid var(--hairline-strong);
 }
-.hero-dek { color: var(--text-2); max-width: 62ch; margin-bottom: var(--s7); }
+.hero-dek { color: var(--text-2); max-width: 60ch; margin-bottom: var(--s5); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-bottom: var(--s6); }
 .hero-contact { display: flex; flex-wrap: wrap; gap: var(--s5) var(--s6); }
 .hero-contact > a {
@@ -222,13 +281,130 @@ a { color: var(--accent); text-decoration: none; }
 
 /* Photo slot — drop a 256x256 image in and delete the hidden attribute.
    Layout switches to two columns automatically. */
-.hero-grid { display: grid; gap: var(--s7); align-items: start; }
+.hero-grid { display: grid; gap: var(--s8); align-items: center; }
 @media (min-width: 900px) {
-  .hero-grid:has(.hero-photo:not([hidden])) { grid-template-columns: minmax(0,1fr) auto; gap: var(--s9); }
+  .hero-grid { grid-template-columns: minmax(0,1.22fr) minmax(330px,.78fr); gap: clamp(var(--s7), 6vw, var(--s9)); }
 }
 .hero-photo {
   width: 128px; height: 128px; border-radius: var(--r-full);
   object-fit: cover; box-shadow: 0 0 0 1px var(--hairline), var(--e2);
+}
+
+.impact-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: var(--s3); max-width: 660px; margin-bottom: var(--s6);
+}
+.impact-card {
+  min-width: 0; padding: var(--s4);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+.impact-card .t-micro { color: var(--text-3); display: block; margin-bottom: var(--s2); }
+.impact-card strong {
+  display: block; color: var(--text-1); font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  line-height: 1.15; letter-spacing: -.02em; font-weight: 650;
+}
+.impact-card span:last-child { display: block; color: var(--text-2); font-size: .75rem; line-height: 1.45; margin-top: var(--s2); }
+@media (max-width: 480px) { .impact-grid { grid-template-columns: 1fr; } }
+
+.system-visual {
+  --tilt-x: 0deg; --tilt-y: 0deg;
+  position: relative; width: 100%; max-width: 420px; margin-inline: auto;
+  padding: clamp(var(--s4), 4vw, var(--s5));
+  border: 1px solid var(--hairline-strong);
+  border-radius: 32px;
+  background: linear-gradient(145deg, rgba(255,255,255,.12), transparent 38%), var(--glass);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+  backdrop-filter: blur(26px) saturate(170%);
+  box-shadow: var(--e3), inset 0 1px 0 rgba(255,255,255,.18);
+  perspective: 900px;
+}
+.system-visual::before {
+  content: ""; position: absolute; inset: 18% 14%; z-index: -1;
+  background: radial-gradient(circle, rgba(var(--accent-rgb),.22), transparent 68%);
+  filter: blur(30px);
+}
+.system-stage {
+  position: relative; width: 100%; aspect-ratio: 1;
+  border: 1px solid var(--hairline);
+  border-radius: 24px; overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb),.10), transparent 35%),
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px),
+    rgba(0,0,0,.018);
+  background-size: auto, 32px 32px, 32px 32px, auto;
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.system-stage::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.10), transparent 34%, transparent 70%, rgba(var(--accent-rgb),.05));
+}
+.visual-kicker {
+  position: absolute; top: 16px; left: 18px; z-index: 4;
+  color: var(--text-3); font-family: var(--font-mono); font-size: .625rem;
+  font-weight: 590; letter-spacing: .08em; text-transform: uppercase;
+}
+.system-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.system-lines path { fill: none; stroke: var(--hairline-strong); stroke-width: 1.25; stroke-linecap: round; }
+.system-lines .line-accent { stroke: rgba(var(--accent-rgb),.32); stroke-dasharray: 3 7; }
+.system-node,
+.pipeline-core {
+  position: absolute; z-index: 3;
+  display: grid; gap: 2px;
+  color: var(--text-1);
+  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--e2), inset 0 1px 0 rgba(255,255,255,.12);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.system-node {
+  width: 92px; min-height: 54px; padding: 10px 12px;
+  border-radius: 15px; transform: translateZ(14px);
+}
+.system-node small, .pipeline-core small { color: var(--text-3); font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .05em; text-transform: uppercase; }
+.system-node strong { font-size: .75rem; line-height: 1.2; letter-spacing: -.01em; }
+.node-signal { left: 6%; top: 15%; }
+.node-context { right: 5%; top: 16%; }
+.node-crm { left: 7%; bottom: 13%; }
+.node-learning { right: 5%; bottom: 13%; }
+.pipeline-core {
+  left: 50%; top: 50%; width: 116px; min-height: 76px;
+  padding: 14px; place-content: center; text-align: center;
+  border-radius: 22px;
+  transform: translate(-50%,-50%) translateZ(28px);
+  border-color: rgba(var(--accent-rgb),.36);
+  box-shadow: 0 16px 34px rgba(var(--accent-rgb),.14), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.pipeline-core strong { font-size: .8125rem; letter-spacing: -.01em; }
+.core-dot {
+  width: 8px; height: 8px; justify-self: center; margin-bottom: 4px;
+  border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(var(--accent-rgb),.10), 0 0 18px rgba(var(--accent-rgb),.65);
+  animation: core-glow 3.2s ease-in-out infinite;
+}
+.signal-pulse {
+  position: absolute; z-index: 2; left: 0; top: 0;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 14px rgba(var(--accent-rgb),.9);
+  offset-rotate: 0deg;
+  animation: signal-travel 7.5s linear infinite;
+}
+.pulse-one { offset-path: path("M 58 88 C 116 88 124 180 180 180 C 238 180 246 88 302 88"); }
+.pulse-two { offset-path: path("M 60 278 C 116 278 126 180 180 180 C 236 180 246 276 302 276"); animation-delay: -2.5s; }
+.pulse-three { offset-path: path("M 58 88 C 118 88 126 180 180 180 C 238 180 244 276 302 276"); animation-delay: -5s; background: var(--accent-2); }
+@keyframes signal-travel { from { offset-distance: 0%; opacity: 0; } 8%, 88% { opacity: 1; } to { offset-distance: 100%; opacity: 0; } }
+@keyframes core-glow { 0%,100% { opacity: .72; } 50% { opacity: 1; } }
+.visual-caption {
+  color: var(--text-3); font-family: var(--font-mono); font-size: .6875rem;
+  line-height: 1.4; letter-spacing: .025em; text-align: center; margin-top: var(--s4);
 }
 
 /* ============ SECTIONS ============ */
@@ -242,7 +418,8 @@ a { color: var(--accent); text-decoration: none; }
 /* ============ HERO PROJECT CARDS ============ */
 .heroes { display: grid; gap: var(--s5); }
 .pcard {
-  display: block;
+  --mx: 50%; --my: 50%;
+  display: block; position: relative; overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--hairline);
   border-radius: var(--r-xl);
@@ -250,8 +427,15 @@ a { color: var(--accent); text-decoration: none; }
   box-shadow: var(--e2);
   transition: transform .35s var(--damped), box-shadow .35s var(--damped), border-color .35s var(--damped);
 }
+.pcard::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(520px circle at var(--mx) var(--my), rgba(var(--accent-rgb),.09), transparent 44%);
+  opacity: 0; transition: opacity .3s var(--damped);
+}
+.pcard > * { position: relative; z-index: 1; }
 @media (hover: hover) {
   .pcard:hover { transform: translateY(-3px); box-shadow: var(--e3); border-color: var(--hairline-strong); }
+  .pcard:hover::before { opacity: 1; }
 }
 .pcard h3 { margin-bottom: var(--s3); }
 .pcard-stack { overflow-wrap: anywhere; color: var(--text-3); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .02em; margin-bottom: var(--s5); }
@@ -377,8 +561,8 @@ a { color: var(--accent); text-decoration: none; }
   filter: blur(0);
   transition: opacity .55s var(--damped), transform .55s var(--damped), filter .55s var(--damped);
 }
-.pressed { transform: scale(.978); transition: transform .12s var(--micro); }
-.unpressed { transition: transform .4s var(--bounce); }
+.pressed { transform: scale(.978) !important; transition: transform .1s var(--micro) !important; }
+.unpressed { transition: transform .35s var(--damped) !important; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -391,10 +575,24 @@ a { color: var(--accent); text-decoration: none; }
   [data-reveal="in"] { transition: opacity .2s ease !important; }
   .pressed { transform: none; }
   .pcard:hover, .fork-card:hover { transform: none; }
+  .signal-pulse, .core-dot { animation: none !important; }
+  .signal-pulse { display: none; }
+  .system-stage { transform: none !important; }
 }
 @media (prefers-contrast: more) {
   :root { --hairline: rgba(0,0,0,.35); --hairline-strong: rgba(0,0,0,.6); --text-2: #4A4A4E; --text-3: #5A5A5E; }
-  :root[data-theme="dark"], :root:not([data-theme="light"]) { }
+  :root[data-theme="dark"] { --hairline: rgba(255,255,255,.42); --hairline-strong: rgba(255,255,255,.72); --text-2: #D1D1D6; --text-3: #B4B4B9; }
+  .nav[data-stuck="true"], .mobile-dock, .system-visual, .impact-card { border-color: var(--hairline-strong); }
+}
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+  :root:not([data-theme="light"]) { --hairline: rgba(255,255,255,.42); --hairline-strong: rgba(255,255,255,.72); --text-2: #D1D1D6; --text-3: #B4B4B9; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav[data-stuck="true"], .mobile-dock, .system-visual, .impact-card, .system-node, .pipeline-core {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 /* ============ TOOL STRIP (hero) ============ */
@@ -408,6 +606,15 @@ a { color: var(--accent); text-decoration: none; }
   transition: color .2s var(--damped), border-color .2s var(--damped), background-color .2s var(--damped);
 }
 @media (hover: hover) { .chip:hover { color: var(--text-1); border-color: var(--hairline-strong); background: var(--surface); } }
+@media (max-width: 619px) {
+  .toolstrip {
+    flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain;
+    scroll-snap-type: inline proximity; scrollbar-width: none;
+    margin-inline: calc(var(--s5) * -1); padding-inline: var(--s5);
+  }
+  .toolstrip::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; scroll-snap-align: start; }
+}
 
 /* ============ STACK LAYERS (work section) ============ */
 .layer { margin-bottom: var(--s8); }
@@ -440,28 +647,47 @@ a { color: var(--accent); text-decoration: none; }
 
 <nav class="nav" id="nav" aria-label="Primary">
   <div class="wrap nav-in">
-    <span class="nav-mark">Aditya Chouhan</span>
+    <a class="nav-mark" href="#main" aria-label="Back to top">Aditya Chouhan</a>
     <div class="nav-links">
-      <a href="#experience">Experience</a>
-      <a href="#work">Work</a>
-      <a href="#failures">Operating proof</a>
-      <a href="#contact">Contact</a>
+      <a href="#experience" data-section-link="experience">Experience</a>
+      <a href="#work" data-section-link="work">Work</a>
+      <a href="#failures" data-section-link="failures">Operating proof</a>
+      <a href="#contact" data-section-link="contact">Contact</a>
       <a class="btn btn-ghost btn-sm" href="Aditya-Chouhan-Resume.pdf">Résumé</a>
       <a class="btn btn-primary btn-sm" href="#contact">Get in touch</a>
     </div>
   </div>
 </nav>
 
+<nav class="mobile-dock" aria-label="Section navigation">
+  <a href="#experience" data-section-link="experience">Impact</a>
+  <a href="#work" data-section-link="work">Systems</a>
+  <a href="#failures" data-section-link="failures">Proof</a>
+  <a href="#contact" data-section-link="contact">Contact</a>
+</nav>
+
 <main id="main">
 
   <header class="hero wrap">
     <div class="hero-grid">
-      <div>
+      <div class="hero-copy">
         <p class="t-micro hero-eyebrow">Mumbai, India · Open to global / remote roles and contract work</p>
         <h1 class="t-display-xl">Aditya Chouhan</h1>
         <p class="t-body-lg hero-role">GTM / Revenue Systems Engineer</p>
         <p class="t-body-lg hero-voice">I build the operating layer between GTM strategy and pipeline — signal-driven prospecting, AI account intelligence, CRM automation and revenue-data systems.</p>
-        <p class="hero-dek">At Sydon, systems supported 25,000+ prospects → 150+ qualified meetings → 35+ opportunities. At MAPOG, I helped build outbound from zero and generated and supported 600+ qualified product demos across ~12 months. The 17 public systems below show how the work was built, tested and governed.</p>
+        <p class="hero-dek">Commercial outcomes backed by 17 public systems, with exact boundaries around what ran live, what is simulated and what remains preview-only.</p>
+        <div class="impact-grid" aria-label="Selected commercial outcomes">
+          <div class="impact-card">
+            <span class="t-micro">Sydon · GTM Engineer</span>
+            <strong>25,000+ → 150+ → 35+</strong>
+            <span>prospects → qualified meetings → opportunities</span>
+          </div>
+          <div class="impact-card">
+            <span class="t-micro">MAPOG · First outbound hire</span>
+            <strong>20,000+ → 600+</strong>
+            <span>targeted prospects → qualified product demos across ~12 months</span>
+          </div>
+        </div>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#work">View the evidence</a>
           <a class="btn btn-ghost" href="Aditya-Chouhan-Resume.pdf">Download résumé</a>
@@ -483,8 +709,25 @@ a { color: var(--accent); text-decoration: none; }
           <a class="chip" href="#layer-lifecycle">CRM / Lifecycle</a>
         </nav>
       </div>
-      <!-- Swap src for a 256x256 photo and remove `hidden` to switch to a two-column hero. -->
-      <img class="hero-photo" hidden alt="Aditya Chouhan" src="">
+      <div class="system-visual" id="systemVisual" aria-hidden="true">
+        <div class="system-stage">
+          <span class="visual-kicker">Signal-to-pipeline system</span>
+          <svg class="system-lines" viewBox="0 0 360 360" preserveAspectRatio="none">
+            <path d="M58 88 C116 88 124 180 180 180 C238 180 246 88 302 88" />
+            <path d="M60 278 C116 278 126 180 180 180 C236 180 246 276 302 276" />
+            <path class="line-accent" d="M58 88 C118 88 126 180 180 180 C238 180 244 276 302 276" />
+          </svg>
+          <span class="system-node node-signal"><small>01 · Detect</small><strong>Signals</strong></span>
+          <span class="system-node node-context"><small>02 · Understand</small><strong>AI context</strong></span>
+          <span class="system-node node-crm"><small>03 · Activate</small><strong>CRM action</strong></span>
+          <span class="system-node node-learning"><small>04 · Improve</small><strong>Learning loop</strong></span>
+          <span class="pipeline-core"><span class="core-dot"></span><strong>Revenue system</strong><small>orchestrated</small></span>
+          <span class="signal-pulse pulse-one"></span>
+          <span class="signal-pulse pulse-two"></span>
+          <span class="signal-pulse pulse-three"></span>
+        </div>
+        <p class="visual-caption">Signals → context → activation → learning</p>
+      </div>
     </div>
   </header>
 
@@ -890,7 +1133,7 @@ a { color: var(--accent); text-decoration: none; }
           <p>I design and build signal, enrichment, orchestration, CRM and revenue-data systems inside your stack, with documentation, guardrails and ownership transfer.</p>
           <div class="fork-actions">
             <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Project">Discuss a project</a>
-            <button class="btn btn-ghost" type="button" id="copyEmail">Copy email</button>
+            <button class="btn btn-ghost" type="button" id="copyEmail" aria-live="polite">Copy email</button>
           </div>
         </div>
       </div>
@@ -911,20 +1154,39 @@ a { color: var(--accent); text-decoration: none; }
   'use strict';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* --- nav materializes past the hero --- */
+  /* --- floating chrome appears as soon as content moves underneath it --- */
   var nav = document.getElementById('nav');
-  var hero = document.querySelector('.hero');
-  if (nav && hero) {
+  if (nav) {
     var setStuck = function () {
-      nav.dataset.stuck = (window.scrollY > hero.offsetHeight - 52) ? 'true' : 'false';
+      nav.dataset.stuck = (window.scrollY > 8) ? 'true' : 'false';
     };
     setStuck();
     window.addEventListener('scroll', setStuck, { passive: true });
   }
 
+  /* --- section-aware wayfinding in both desktop nav and the mobile dock --- */
+  if ('IntersectionObserver' in window) {
+    var sectionLinks = document.querySelectorAll('[data-section-link]');
+    var setCurrentSection = function (id) {
+      Array.prototype.forEach.call(sectionLinks, function (link) {
+        if (link.dataset.sectionLink === id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setCurrentSection(entry.target.id);
+      });
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: 0 });
+    ['experience', 'work', 'failures', 'contact'].forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) sectionObserver.observe(section);
+    });
+  }
+
   /* --- reveal on scroll. Elements start visible; we only hide what we will observe. --- */
   if (!reduce && 'IntersectionObserver' in window) {
-    var targets = document.querySelectorAll('.section-head, .pcard, .row, .fail-item, .xp-item, .cap, .fork-card');
+    var targets = document.querySelectorAll('.section-head, .impact-card, .system-visual, .pcard, .row, .fail-item, .xp-item, .cap, .fork-card');
     Array.prototype.forEach.call(targets, function (el) { el.dataset.reveal = 'pending'; });
 
     var io = new IntersectionObserver(function (entries) {
@@ -951,9 +1213,14 @@ a { color: var(--accent); text-decoration: none; }
     }, 1200);
   }
 
-  /* --- press feedback on pointerdown, not click. Delegated; cancels on drag-off. --- */
+  /* --- press feedback starts on pointerdown and follows drag-off / drag-back --- */
   if (!reduce) {
     var pressed = null;
+    var pressPointer = null;
+    var setPressState = function (active) {
+      if (!pressed) return;
+      pressed.classList.toggle('pressed', active);
+    };
     var release = function () {
       if (!pressed) return;
       pressed.classList.remove('pressed');
@@ -961,17 +1228,72 @@ a { color: var(--accent); text-decoration: none; }
       var el = pressed;
       setTimeout(function () { el.classList.remove('unpressed'); }, 400);
       pressed = null;
+      pressPointer = null;
     };
     document.addEventListener('pointerdown', function (e) {
-      var el = e.target.closest('a.btn, button.btn, .pcard, .row, .fork-card, .plinks a');
-      if (!el) return;
+      if (e.button !== 0) return;
+      var el = e.target.closest('a, button');
+      if (!el || el.closest('.skip')) return;
       pressed = el;
+      pressPointer = e.pointerId;
       el.classList.remove('unpressed');
       el.classList.add('pressed');
     }, { passive: true });
-    ['pointerup', 'pointercancel', 'pointerleave', 'dragstart'].forEach(function (evt) {
+    document.addEventListener('pointermove', function (e) {
+      if (!pressed || e.pointerId !== pressPointer) return;
+      var r = pressed.getBoundingClientRect();
+      var pad = 10;
+      setPressState(e.clientX >= r.left - pad && e.clientX <= r.right + pad &&
+                    e.clientY >= r.top - pad && e.clientY <= r.bottom + pad);
+    }, { passive: true });
+    ['pointerup', 'pointercancel', 'dragstart'].forEach(function (evt) {
       document.addEventListener(evt, release, { passive: true });
     });
+  }
+
+  /* --- pointer-local material highlight on evidence cards --- */
+  if (!reduce && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    Array.prototype.forEach.call(document.querySelectorAll('.pcard'), function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    });
+  }
+
+  /* --- critically damped, interruptible pointer depth for the hero system --- */
+  var visual = document.getElementById('systemVisual');
+  if (visual && !reduce && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var targetX = 0, targetY = 0, currentX = 0, currentY = 0, velocityX = 0, velocityY = 0;
+    var springFrame = 0, lastFrame = 0;
+    var springTick = function (time) {
+      var dt = Math.min((time - (lastFrame || time)) / 1000, .032);
+      lastFrame = time;
+      var stiffness = 150;
+      var damping = 2 * Math.sqrt(stiffness);
+      velocityX += (stiffness * (targetX - currentX) - damping * velocityX) * dt;
+      velocityY += (stiffness * (targetY - currentY) - damping * velocityY) * dt;
+      currentX += velocityX * dt;
+      currentY += velocityY * dt;
+      visual.style.setProperty('--tilt-x', currentX.toFixed(3) + 'deg');
+      visual.style.setProperty('--tilt-y', currentY.toFixed(3) + 'deg');
+      var unsettled = Math.abs(targetX - currentX) + Math.abs(targetY - currentY) +
+                      Math.abs(velocityX) + Math.abs(velocityY) > .015;
+      springFrame = unsettled ? requestAnimationFrame(springTick) : 0;
+    };
+    var wakeSpring = function () {
+      if (!springFrame) { lastFrame = 0; springFrame = requestAnimationFrame(springTick); }
+    };
+    visual.addEventListener('pointermove', function (e) {
+      var r = visual.getBoundingClientRect();
+      targetY = ((e.clientX - r.left) / r.width - .5) * 6;
+      targetX = (.5 - (e.clientY - r.top) / r.height) * 6;
+      wakeSpring();
+    }, { passive: true });
+    visual.addEventListener('pointerleave', function () {
+      targetX = 0; targetY = 0; wakeSpring();
+    }, { passive: true });
   }
 
   /* --- copy email --- */
