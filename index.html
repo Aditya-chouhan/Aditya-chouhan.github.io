@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aditya Chouhan — GTM / Revenue Systems Engineer</title>
-<meta name="description" content="GTM / Revenue Systems Engineer building signal-driven prospecting, AI account intelligence, CRM automation and revenue-data systems. Commercial impact backed by 17 public, runnable systems.">
+<meta name="description" content="GTM / Revenue Systems Engineer building signal-driven prospecting, AI account intelligence, CRM automation and revenue-data systems. Commercial experience and public engineering work are documented separately.">
 <link rel="canonical" href="https://aditya-chouhan.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aditya-chouhan.github.io/">
 <meta property="og:title" content="Aditya Chouhan — GTM / Revenue Systems Engineer">
-<meta property="og:description" content="Commercial GTM impact backed by 17 public, runnable AI, CRM, automation and revenue-data systems.">
+<meta property="og:description" content="Commercial GTM experience paired with public, inspectable AI, CRM, automation and revenue-data systems.">
 <meta property="og:image" content="https://aditya-chouhan.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Aditya Chouhan — GTM / Revenue Systems Engineer">
-<meta name="twitter:description" content="Commercial GTM impact backed by 17 public, runnable AI, CRM, automation and revenue-data systems.">
+<meta name="twitter:description" content="Commercial GTM experience paired with public, inspectable AI, CRM, automation and revenue-data systems.">
 <meta name="twitter:image" content="https://aditya-chouhan.github.io/og.png">
 
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
@@ -679,7 +679,7 @@ button { touch-action: manipulation; }
         <h1 class="t-display-xl">Aditya Chouhan</h1>
         <p class="t-body-lg hero-role">GTM / Revenue Systems Engineer</p>
         <p class="t-body-lg hero-voice">I build the operating layer between GTM strategy and pipeline — signal-driven prospecting, AI account intelligence, CRM automation and revenue-data systems.</p>
-        <p class="hero-dek">Commercial outcomes backed by 17 public systems, with exact boundaries around what ran live, what is simulated and what remains preview-only.</p>
+        <p class="hero-dek">Commercial experience at Sydon.ai and MAPOG. The public engineering work below separately documents what ran live, what is simulated and what remains preview-only.</p>
         <div class="impact-grid" role="group" aria-label="Selected commercial outcomes">
           <div class="impact-card">
             <span class="t-micro">Sydon · GTM Engineer</span>
@@ -870,8 +870,8 @@ button { touch-action: manipulation; }
           <article class="pcard">
             <h3 class="t-title">n8n GTM Orchestration</h3>
             <p class="pcard-stack">n8n · Scheduled workflows · Dedicated error handling · openFDA API</p>
-            <p>Turns public enforcement data into a ranked, grounded outreach queue on a schedule, with retry, backoff, rate limits and a separately exercised error path.</p>
-            <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs · error handler fired <b>80ms</b> after a forced failure and paged <span class="note">· first classifier rule fell to the conservative “unclassified” default, then was fixed</span></span>
+            <p>Turns public enforcement data into a ranked, grounded outreach queue on a schedule, with fixed-delay retries, rate limits and a separately exercised error path.</p>
+            <span class="data"><b>100</b> records → <b>34</b> firms → <b>11</b> cleared ≥60 → <b>10</b> briefs · error handler fired <b>80ms</b> after a forced failure and generated a page-intent payload <span class="note">· no external notification delivery is claimed; the first classifier rule fell to “unclassified,” then was fixed</span></span>
             <div class="plinks">
               <a href="https://aditya-chouhan.github.io/n8n-gtm-orchestration/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
               <a href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
@@ -982,7 +982,7 @@ button { touch-action: manipulation; }
             <span class="row-main">
               <span class="row-name">GTM Data-Quality Monitor</span>
               <span class="row-desc">Applies declarative contracts to schema, types, freshness and fill rate so broken GTM data surfaces as an alert before it reaches a rep.</span>
-              <span class="row-data">Caught osm_id type violation on 65/65 records and detections on 43 · flagged 193/219 firms stale &gt;60d · defect fixed upstream</span>
+              <span class="row-data">Corrected two faulty monitor contracts affecting 65 osm_id values and 43 detection fields · separately flagged 193/219 firms stale &gt;60d and caught an upstream recall-count defect</span>
             </span>
             <span class="row-arw" aria-hidden="true">→</span>
           </a>
@@ -1020,8 +1020,8 @@ button { touch-action: manipulation; }
             <span class="row-dom">Sourcing</span>
             <span class="row-main">
               <span class="row-name">Restaurant Lead Engine</span>
-              <span class="row-desc">Builds a prospecting pipeline from public OpenStreetMap data: venue sourcing, tech-stack fingerprinting, fit scoring and an A/B-tested scoring variant.</span>
-              <span class="row-data">OpenStreetMap harvest → tech fingerprint → fit score → A/B tested scoring variant</span>
+              <span class="row-desc">Builds a prospecting pipeline from public OpenStreetMap data: venue sourcing, tech-stack fingerprinting, fit scoring and an offline scoring sensitivity comparison.</span>
+              <span class="row-data">OpenStreetMap harvest → tech fingerprint → fit score → offline scoring sensitivity comparison</span>
             </span>
             <span class="row-arw" aria-hidden="true">→</span>
           </a>
@@ -1042,27 +1042,27 @@ button { touch-action: manipulation; }
         <article class="fail-item">
           <h3 class="fail-what">Salesforce: made asynchronous behavior testable, not merely green.</h3>
           <p class="fail-why">The first real Apex run returned 19/20 because scheduled and batch behavior raced under <code>Test.stopTest()</code>. I isolated both paths into deterministic tests; the re-run finished at 20/20 with 96% org-wide coverage.</p>
-          <a class="fail-link" href="https://github.com/Aditya-chouhan/salesforce-gtm-org/blob/main/docs/FAILURE_LOG.md" target="_blank" rel="noopener">Inspect the test evidence <span aria-hidden="true">→</span></a>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/salesforce-gtm-org/blob/main/evidence/apex-test-run-2026-08-24.txt" target="_blank" rel="noopener">Inspect the test evidence <span aria-hidden="true">→</span></a>
         </article>
         <article class="fail-item">
           <h3 class="fail-what">n8n: proved the fallback worked, then fixed the classifier.</h3>
-          <p class="fail-why">A forced failure paged through the conservative default, but n8n rewrote the error name and the code defect landed as “unclassified.” I updated the rule to the runtime payload the workflow actually received.</p>
-          <a class="fail-link" href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration/blob/main/docs/FAILURE_LOG.md" target="_blank" rel="noopener">Inspect the forced-failure receipt <span aria-hidden="true">→</span></a>
+          <p class="fail-why">A forced failure generated a page-intent payload through the conservative default, but n8n rewrote the error name and the code defect landed as “unclassified.” I updated the rule to the runtime payload the workflow actually received. External notification delivery is not part of this build.</p>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/n8n-gtm-orchestration/blob/main/output/error-workflow-fired-2026-08-23.json" target="_blank" rel="noopener">Inspect the forced-failure receipt <span aria-hidden="true">→</span></a>
         </article>
         <article class="fail-item">
           <h3 class="fail-what">Removed a stale metric from contact-facing output.</h3>
           <p class="fail-why">A live-data demo still pasted a hard-coded +183% into outreach. I moved the metric to the same dated source-of-truth function used by scoring, so the claim now recomputes with each run.</p>
-          <a class="fail-link" href="https://github.com/Aditya-chouhan/signal-engine-demo/blob/main/FAILURE_LOG.md" target="_blank" rel="noopener">Inspect the correction <span aria-hidden="true">→</span></a>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/signal-engine-demo/commit/70ebd16182ca5cb9b3f1246f0f9eefdd9bab7051" target="_blank" rel="noopener">Inspect the correction <span aria-hidden="true">→</span></a>
         </article>
         <article class="fail-item">
           <h3 class="fail-what">Made the documented setup genuinely reproducible.</h3>
           <p class="fail-why">The CRM lifecycle repository used Python 3.10+ syntax without declaring that minimum. I fixed the compatibility and setup documentation, then verified that regenerated outputs were byte-identical.</p>
-          <a class="fail-link" href="https://github.com/Aditya-chouhan/revenue-engine-demo/blob/main/FAILURE_LOG.md" target="_blank" rel="noopener">Inspect the reproducibility fix <span aria-hidden="true">→</span></a>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/revenue-engine-demo/commit/44e53ec" target="_blank" rel="noopener">Inspect the reproducibility fix <span aria-hidden="true">→</span></a>
         </article>
         <article class="fail-item">
           <h3 class="fail-what">Added uncertainty and sample concentration to my own metric.</h3>
-          <p class="fail-why">Groundtruth's 60.5% precision was correct, but its confidence interval and 65% single-repository concentration changed how the result should be read. I published both caveats and ran the checker across this portfolio.</p>
-          <a class="fail-link" href="https://github.com/Aditya-chouhan/groundtruth/blob/main/README.md" target="_blank" rel="noopener">Inspect the self-audit <span aria-hidden="true">→</span></a>
+          <p class="fail-why">Groundtruth's 60.5% precision was correct, but its confidence interval and 65% single-repository concentration changed how the result should be read. I published both caveats in the evaluation harness and ran the checker across this portfolio.</p>
+          <a class="fail-link" href="https://github.com/Aditya-chouhan/gtm-eval-harness/blob/main/README.md#the-first-result-re-analysing-a-published-number-including-my-own" target="_blank" rel="noopener">Inspect the self-audit <span aria-hidden="true">→</span></a>
         </article>
       </div>
     </div>
