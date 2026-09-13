@@ -420,6 +420,20 @@ button { touch-action: manipulation; }
 .section-head h2 { margin-bottom: var(--s4); }
 .section-head p { color: var(--text-2); max-width: 62ch; }
 
+
+/* Selected hiring proof stays visible; supporting work uses a native disclosure. */
+.selected-grid .pcard { padding: var(--s5); display: flex; flex-direction: column; min-width: 0; }
+@media (min-width: 1000px) { .selected-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.evidence-label { display: block; color: var(--text-2); font-family: var(--font-mono); font-size: .6875rem; line-height: 1.5; margin-bottom: var(--s4); }
+.system-facts { margin: 0 0 var(--s5); }
+.system-facts dt { color: var(--text-1); font-size: .75rem; font-weight: 650; margin-top: var(--s4); }
+.system-facts dd { margin: var(--s2) 0 0; color: var(--text-2); font-size: .875rem; line-height: 1.6; overflow-wrap: anywhere; }
+.selected-grid .plinks { margin-top: auto; gap: var(--s3); }
+.selected-next { margin-top: var(--s6); color: var(--text-3); font-size: .875rem; }
+.selected-next a { display: inline-block; padding-block: var(--s3); }
+.index-toggle { padding: var(--s5); border: 1px solid var(--hairline-strong); border-radius: var(--r-md); background: var(--bg-sunken); color: var(--text-1); cursor: pointer; font-weight: 590; }
+.engineering-details[open] > summary { margin-bottom: var(--s7); }
+
 /* ============ HERO PROJECT CARDS ============ */
 .heroes { display: grid; gap: var(--s5); }
 .pcard {
@@ -653,8 +667,8 @@ button { touch-action: manipulation; }
   <div class="wrap nav-in">
     <a class="nav-mark" href="#main" aria-label="Back to top">Aditya Chouhan</a>
     <div class="nav-links">
+      <a href="#work" data-section-link="work">Systems</a>
       <a href="#experience" data-section-link="experience">Experience</a>
-      <a href="#work" data-section-link="work">Work</a>
       <a href="#failures" data-section-link="failures">Operating proof</a>
       <a href="#contact" data-section-link="contact">Contact</a>
       <a class="btn btn-ghost btn-sm" href="Aditya-Chouhan-Resume.pdf">Résumé</a>
@@ -664,8 +678,8 @@ button { touch-action: manipulation; }
 </nav>
 
 <nav class="mobile-dock" aria-label="Section navigation">
-  <a href="#experience" data-section-link="experience">Impact</a>
   <a href="#work" data-section-link="work">Systems</a>
+  <a href="#experience" data-section-link="experience">Experience</a>
   <a href="#failures" data-section-link="failures">Proof</a>
   <a href="#contact" data-section-link="contact">Contact</a>
 </nav>
@@ -701,16 +715,11 @@ button { touch-action: manipulation; }
           <a href="https://www.linkedin.com/in/aditya-chouhan-gtm/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub</a>
         </div>
-        <nav class="toolstrip" aria-label="Jump to a stack layer">
-          <a class="chip" href="#layer-ai">AI / Agents</a>
-          <a class="chip" href="#layer-salesforce">Salesforce</a>
-          <a class="chip" href="#layer-lifecycle">HubSpot / CRM sync</a>
-          <a class="chip" href="#layer-n8n">n8n</a>
-          <a class="chip" href="#layer-warehouse">dbt / SQL</a>
-          <a class="chip" href="#layer-signal">Signal</a>
-          <a class="chip" href="#layer-clay">Clay</a>
-          <a class="chip" href="#layer-observability">Observability</a>
-          <a class="chip" href="#layer-lifecycle">CRM / Lifecycle</a>
+        <nav class="toolstrip" aria-label="Inspect a selected GTM system">
+          <a class="chip" href="#selected-crm">CRM reliability</a>
+          <a class="chip" href="#selected-ai">AI account intelligence</a>
+          <a class="chip" href="#selected-warehouse">Revenue analytics</a>
+          <a class="chip" href="#engineering-index">Engineering index</a>
         </nav>
       </div>
       <div class="system-visual" id="systemVisual" aria-hidden="true">
@@ -734,6 +743,66 @@ button { touch-action: manipulation; }
       </div>
     </div>
   </header>
+
+
+
+  <section class="section" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="t-micro">Selected GTM systems</span>
+        <h2 class="t-display" id="work-h">Three systems. Inspect the decisions.</h2>
+        <p>CRM reliability, grounded account intelligence and revenue analytics. Start with the walkthroughs, then inspect the implementation and evidence. Public engineering proof is separate from employer outcomes.</p>
+      </div>
+      <div class="heroes selected-grid">
+        <article class="pcard" id="selected-crm">
+          <span class="evidence-label">SQLite execution · Simulated CRM responses</span>
+          <h3 class="t-title">RevOps Sync Control Plane</h3>
+          <p class="pcard-stack">Python · SQLAlchemy · HubSpot / Salesforce · Recovery &amp; audit</p>
+          <dl class="system-facts">
+            <dt>Problem</dt><dd>CRM sync can duplicate accounts, overwrite good data or restore stale consent.</dd>
+            <dt>Implementation</dt><dd>Identity and field-ownership rules, version checks, fenced delivery claims, ordered outbox streams, read-back recovery and audited hold release.</dd>
+            <dt>Inspectable proof</dt><dd><a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/evidence/README.md" target="_blank" rel="noopener">5 checked demo scenarios; 123 tests passed, 1 skipped</a> in the local 13 September 2026 SQLite run. Simulated trace: create → read-back → update.</dd>
+            <dt>Limit</dt><dd>No live CRM calls in the walkthrough. Concurrent ingestion and signed webhooks remain unimplemented; no revenue result is claimed.</dd>
+          </dl>
+          <div class="plinks">
+            <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO.md" target="_blank" rel="noopener">5-minute walkthrough <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
+          </div>
+        </article>
+        <article class="pcard" id="selected-ai">
+          <span class="evidence-label">Real public signals · Offline AI outputs</span>
+          <h3 class="t-title">Claude GTM Revenue Agent</h3>
+          <p class="pcard-stack">Python · Claude API adapter · FastAPI · Grounding &amp; cost controls</p>
+          <dl class="system-facts">
+            <dt>Problem</dt><dd>Account research becomes a liability when AI invents facts or hides rejected-response costs.</dd>
+            <dt>Implementation</dt><dd>Public-signal ingestion, deterministic scoring, strict tool/output contracts, grounding checks, human-review boundaries and failed-response usage accounting.</dd>
+            <dt>Inspectable proof</dt><dd><a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent/blob/main/evidence/README.md" target="_blank" rel="noopener">12/12 deliberate corruptions rejected; 29 local tests passed</a> in the 12 September 2026 receipt. This measures guard behavior, not live-model quality.</dd>
+            <dt>Limit</dt><dd>Briefs are offline mocks. No authorized live-Claude receipt, independent human benchmark or business outcome is claimed.</dd>
+          </dl>
+          <div class="plinks">
+            <a href="https://aditya-chouhan.github.io/claude-gtm-revenue-agent/" target="_blank" rel="noopener">Evidence console <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
+          </div>
+        </article>
+        <article class="pcard" id="selected-warehouse">
+          <span class="evidence-label">Real BigQuery run · Synthetic funnel activity</span>
+          <h3 class="t-title">GTM Warehouse</h3>
+          <p class="pcard-stack">SQL · dbt Core · DuckDB · BigQuery · Dimensional models</p>
+          <dl class="system-facts">
+            <dt>Problem</dt><dd>Signals, touches and opportunities need a tested data model before funnel reports can be trusted.</dd>
+            <dt>Implementation</dt><dd>Staging and account/fact models, incremental signal modeling, generic and custom data tests, and fixes verified across two SQL engines.</dd>
+            <dt>Inspectable proof</dt><dd><a href="https://github.com/Aditya-chouhan/gtm-warehouse/blob/main/output/bigquery_run_receipt_2026-08-27.json" target="_blank" rel="noopener">35/35 data tests passed on real BigQuery</a> on 27 August 2026, also verified on DuckDB. Build-node counts are not presented as test counts.</dd>
+            <dt>Limit</dt><dd>Signals are public-source data; touches and opportunities are synthetic. One batch does not prove recurring loads, production scale or commercial performance.</dd>
+          </dl>
+          <div class="plinks">
+            <a href="https://aditya-chouhan.github.io/gtm-warehouse/" target="_blank" rel="noopener">Warehouse walkthrough <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/gtm-warehouse" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
+          </div>
+        </article>
+      </div>
+      <p class="selected-next"><a href="#contact">Discuss a GTM Engineering role →</a> <span aria-hidden="true">·</span> <a href="#engineering-index">Explore supporting engineering work</a></p>
+    </div>
+  </section>
 
   <section class="section" id="experience" aria-labelledby="xp-h">
     <div class="wrap">
@@ -768,14 +837,16 @@ button { touch-action: manipulation; }
     </div>
   </section>
 
-  <section class="section" id="work" aria-labelledby="work-h">
+  <section class="section" id="engineering-index" aria-labelledby="index-h">
     <div class="wrap">
       <div class="section-head">
         <span class="t-micro">Engineering evidence</span>
-        <h2 class="t-display" id="work-h">Systems built to be inspected</h2>
-        <p>Seventeen public systems spanning AI agents, CRM architecture, orchestration, revenue data and signal intelligence. Each project starts with the operating problem, includes reproducible evidence, and states what is real, simulated or not yet deployed.</p>
+        <h2 class="t-display" id="index-h">Additional engineering work</h2>
+        <p>Supporting implementations in evaluation, orchestration, Salesforce, enrichment and signal intelligence. Explore these after the three selected systems; each retains its own execution and data boundaries.</p>
       </div>
 
+      <details class="engineering-details" id="engineering-details">
+        <summary class="index-toggle">Explore additional systems, grouped by capability</summary>
       <div class="layer" id="layer-ai">
         <div class="layer-head">
           <h3>AI / agent engineering &amp; evaluation</h3>
@@ -783,17 +854,7 @@ button { touch-action: manipulation; }
         </div>
         <div class="heroes">
 
-          <article class="pcard">
-            <h3 class="t-title">Claude GTM Revenue Agent</h3>
-            <p class="pcard-stack">Claude API · Structured outputs + strict tools · FastAPI · Postgres · n8n · Docker</p>
-            <p>Turns real public market signals into evidence-grounded account intelligence while keeping human review, spend limits and CRM writes explicit. This is a production-style architecture, not a production deployment.</p>
-            <span class="data"><b>25</b> real public records fetched → <b>24</b> stored signals → <b>10</b> accounts scored · <b>23/23</b> tests, <b>85%</b> coverage · <b>7/7</b> deliberately corrupted briefs rejected <span class="note">· committed evidence proves live openFDA ingestion; briefs are offline mocks and no live Claude result or business outcome is claimed</span></span>
-            <div class="plinks">
-              <a href="https://aditya-chouhan.github.io/claude-gtm-revenue-agent/" target="_blank" rel="noopener">Live evidence console <span class="arw">→</span></a>
-              <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">Case study <span class="arw">→</span></a>
-              <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
-            </div>
-          </article>
+
 
           <article class="pcard">
             <h3 class="t-title">GTM Eval Harness</h3>
@@ -885,18 +946,7 @@ button { touch-action: manipulation; }
           <h3>Warehouse &amp; SQL</h3>
           <span class="jd">DuckDB + real BigQuery</span>
         </div>
-        <div class="heroes">
-          <article class="pcard">
-            <h3 class="t-title">GTM Warehouse</h3>
-            <p class="pcard-stack">dbt Core · BigQuery · DuckDB · Incremental models · Custom + generic tests</p>
-            <p>Models accounts, signals, touches, opportunities and funnel reporting across DuckDB and a real BigQuery sandbox. Running the second engine exposed two portability issues that inspection alone missed.</p>
-            <span class="data"><b>35/35</b> data tests pass on both engines · full build <b>PASS=46, WARN=0</b> <span class="note">· upstream signals are real; touches and opportunities are synthetic and labelled</span></span>
-            <div class="plinks">
-              <a href="https://aditya-chouhan.github.io/gtm-warehouse/" target="_blank" rel="noopener">Live write-up <span class="arw">→</span></a>
-              <a href="https://github.com/Aditya-chouhan/gtm-warehouse" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
-            </div>
-          </article>
-        </div>
+        
         <div class="index">
           <a class="row" href="https://aditya-chouhan.github.io/gtm-warehouse-demo/" target="_blank" rel="noopener">
             <span class="row-dom">Warehouse</span>
@@ -994,21 +1044,7 @@ button { touch-action: manipulation; }
           <h3>CRM integration, lifecycle &amp; forecasting</h3>
           <span class="jd">Historical HubSpot test portal · Simulated CRM recovery</span>
         </div>
-        <div class="heroes">
-          <article class="pcard">
-            <h3 class="t-title">RevOps Sync Control Plane</h3>
-            <p class="pcard-stack">Python · SQLAlchemy · HubSpot / Salesforce · SQLite / Postgres · Recovery &amp; audit</p>
-            <p>Inspect how CRM disagreements resolve, stale inputs are rejected, lost responses recover without blind replay, and queued creates become safe updates. A single-command walkthrough exercises the actual control-plane code with explicitly simulated CRM responses.</p>
-            <span class="data"><b>5</b> checked walkthrough scenarios · <b>123</b> tests passed, <b>1</b> skipped · <b>94.37%</b> source-line coverage <span class="note">· latest local run: SQLite and synthetic data; no live CRM or business-result claim</span></span>
-            <p class="pcard-stack">Separate historical evidence: 3 HubSpot companies created in a developer test portal and re-run twice against their IDs. Salesforce live delivery unverified; BigQuery/dbt/Terraform path undeployed.</p>
-            <div class="plinks">
-              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO.md" target="_blank" rel="noopener">5-minute walkthrough <span class="arw">→</span></a>
-              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO_OUTPUT.md" target="_blank" rel="noopener">Captured output <span class="arw">→</span></a>
-              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">Case study <span class="arw">→</span></a>
-              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
-            </div>
-          </article>
-        </div>
+        
         <div class="index">
           <a class="row" href="https://aditya-chouhan.github.io/revenue-engine-demo/" target="_blank" rel="noopener">
             <span class="row-dom">Lifecycle</span>
@@ -1031,6 +1067,7 @@ button { touch-action: manipulation; }
         </div>
       </div>
 
+      </details>
     </div>
   </section>
 
@@ -1131,15 +1168,15 @@ button { touch-action: manipulation; }
           <h3 class="t-headline">For hiring teams</h3>
           <p>Open to GTM Engineer and Revenue Systems roles — global / remote or contract. Based in Mumbai, India.</p>
           <div class="fork-actions">
-            <a class="btn btn-primary" href="Aditya-Chouhan-Resume.pdf">Download résumé</a>
             <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=GTM%20Engineering%20role">Discuss a GTM Engineering role</a>
+            <a class="btn btn-ghost" href="Aditya-Chouhan-Resume.pdf">Download résumé</a>
           </div>
         </div>
         <div class="fork-card">
-          <h3 class="t-headline">For GTM teams</h3>
-          <p>I design and build signal, enrichment, orchestration, CRM and revenue-data systems inside your stack, with documentation, guardrails and ownership transfer.</p>
+          <h3 class="t-headline">Inspect the operating decisions</h3>
+          <p>Bring a CRM, account-research or revenue-data problem to the interview. I can walk through the relevant implementation, its failure handling and what would need to change for your environment.</p>
           <div class="fork-actions">
-            <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=Project">Discuss a project</a>
+            <a class="btn btn-ghost" href="#work">Inspect selected systems</a>
             <button class="btn btn-ghost" type="button" id="copyEmail" aria-live="polite">Copy email</button>
           </div>
         </div>
@@ -1160,6 +1197,20 @@ button { touch-action: manipulation; }
 (function () {
   'use strict';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Preserve deep links into the collapsed supporting index. */
+  function revealEngineeringTarget() {
+    var details = document.getElementById('engineering-details');
+    var hash;
+    try { hash = decodeURIComponent(window.location.hash.slice(1)); } catch (error) { return; }
+    var target = hash && document.getElementById(hash);
+    if (details && target && details.contains(target)) {
+      details.open = true;
+      window.requestAnimationFrame(function () { target.scrollIntoView(); });
+    }
+  }
+  revealEngineeringTarget();
+  window.addEventListener('hashchange', revealEngineeringTarget);
 
   /* --- floating chrome appears as soon as content moves underneath it --- */
   var nav = document.getElementById('nav');
