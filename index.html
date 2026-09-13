@@ -232,6 +232,69 @@ html[data-keyboard] .btn:active { transform:none; }
 @media (prefers-reduced-transparency:reduce) { .topbar { background:var(--bg); backdrop-filter:none; -webkit-backdrop-filter:none; } }
 @media (prefers-contrast:more) { :root { --muted:var(--text); --line:currentColor; } .topbar { background:var(--bg); backdrop-filter:none; } }
 
+
+/* Product presentation: readable summaries, inspectable evidence, native disclosure. */
+#work { background:var(--sunken); }
+.section { padding-block:clamp(56px,7vw,100px); }
+.section-head { align-items:start; margin-bottom:44px; }
+.section-head>.t-micro { color:var(--muted); font:600 .78rem/1.5 var(--font-sans); letter-spacing:.015em; text-transform:none; }
+.section-head p { font-size:1rem; line-height:1.7; }
+.selected-grid { display:flex; flex-direction:column; gap:28px; }
+.selected-grid .product-feature { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:32px 48px; padding:48px; border-radius:24px; box-shadow:none; scroll-margin-top:100px; }
+.product-name { color:var(--muted); font-size:.8rem; font-weight:600; margin-bottom:20px; }
+.product-feature h3 { font-size:clamp(1.9rem,3vw,2.65rem); letter-spacing:-.04em; line-height:1.13; margin-bottom:20px; text-wrap:initial; }
+.product-description { color:var(--muted); font-size:1rem; line-height:1.7; max-width:45ch; }
+.selected-grid .plinks { border:0; padding:0; margin-top:22px; }
+.plinks a,.fail-link { font-size:.88rem; font-weight:500; }
+.execution-proof { align-self:center; border-left:1px solid var(--line); padding-left:32px; }
+.proof-eyebrow { font-size:.75rem; color:var(--muted); margin-bottom:18px; }
+.proof-statement { font-size:1.65rem; font-weight:600; letter-spacing:-.035em; line-height:1.2; }
+.proof-sub { font-size:.9rem; color:var(--text); margin-top:12px; }
+.proof-boundary { font-size:.82rem; line-height:1.75; color:var(--muted); margin:18px 0 12px; }
+.execution-proof>a { font-size:.85rem; display:inline-flex; min-height:44px; align-items:center; }
+.product-details { grid-column:1/-1; border-top:1px solid var(--line); }
+.product-details>summary { list-style:none; display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:56px; padding-top:16px; font-size:.85rem; cursor:pointer; }
+.product-details>summary::-webkit-details-marker { display:none; }
+.product-details>summary>span { font-size:1.3rem; }
+.product-details[open]>summary>span { transform:rotate(45deg); }
+.product-details-body { padding-top:24px; max-width:80ch; }
+.product-details .pcard-stack { font-size:.78rem; }
+.selected-grid .product-details .system-facts { margin-bottom:0 !important; }
+.system-facts dt { font-size:.75rem; }
+.system-facts dd { font-size:.95rem; }
+.impact-card { padding:28px; border-radius:18px; }
+.impact-card strong { font-size:1.6rem; }
+.impact-card span:last-child { font-size:.9rem; line-height:1.65; }
+.xp-item { padding-block:34px; }
+.xp-body { font-size:1rem; line-height:1.75; }
+.fail-what { font-size:1.2rem; }
+.fail-why { font-size:.95rem; line-height:1.75; }
+.caps { gap:32px; }
+.cap h4 { font:600 .9rem/1.5 var(--font-sans); text-transform:none; letter-spacing:0; }
+.cap li { font-size:.9rem; }
+.additional-item>summary { font-size:1rem; min-height:64px; }
+.additional-body>p,.row-desc { font-size:.95rem; }
+.row-name { font-size:1rem; }
+.data,.row-data { font-size:.8rem; }
+.contact-panel { background:var(--sunken); color:var(--text); border-radius:24px; padding:clamp(28px,5vw,64px); }
+.contact-panel p { opacity:1; color:var(--muted); font-size:1rem; line-height:1.7; }
+.contact-panel .btn-primary { background:var(--accent); color:#fff !important; border-radius:999px; }
+.contact-panel .btn-ghost { border-color:var(--line); color:var(--text); }
+.contact-note { font-size:.85rem !important; }
+.email-feedback { font-size:.85rem; overflow-wrap:anywhere; }
+@media (prefers-color-scheme:dark) { .contact-panel .btn-primary { color:#111315 !important; } }
+@media (max-width:1000px) { .selected-grid .product-feature { padding:32px; gap:24px; } }
+@media (max-width:740px) {
+ .selected-grid .product-feature { display:flex; flex-direction:column; padding:26px; border-radius:18px; gap:26px; }
+ .execution-proof { align-self:stretch; border-left:0; border-top:1px solid var(--line); padding:24px 0 0; }
+ .product-feature h3 { font-size:2rem; }
+ .section-head { margin-bottom:28px; }
+ .product-details { width:100%; }
+ .product-details>summary { font-size:.82rem; }
+ .contact-actions { width:100%; }
+ .caps { gap:24px; }
+}
+
 </style>
 </head>
 <body>
@@ -258,64 +321,53 @@ html[data-keyboard] .btn:active { transform:none; }
  </div>
  <p class="hero-meta">Available for remote contract engagements.</p>
 </header>
-<div class="wrap"><div class="scope-strip" aria-label="Public proof categories">
- <div><b>01 / CRM</b><span>Runnable recovery walkthrough</span></div>
- <div><b>02 / AI</b><span>Source-linked account intelligence</span></div>
- <div><b>03 / DATA</b><span>Tested revenue models</span></div>
-</div></div>
-  <section class="section" id="work" aria-labelledby="work-h">
+<section class="section" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="section-head">
         <span class="t-micro">Selected GTM systems</span>
-        <h2 class="t-display" id="work-h">Infrastructure, not just automations.</h2>
-        <p>Three selected implementations spanning CRM reliability, grounded account intelligence and revenue analytics. The proof—and the boundaries—are one click away.</p>
+        <h2 class="t-display" id="work-h">A closer look at the work.</h2>
+        <p>Three systems for account research, reliable CRM operations and revenue analytics. Explore what they do, how they were tested and where their limits are.</p>
       </div>
       <div class="heroes selected-grid">
-        <article class="pcard" id="selected-crm">
-          <span class="evidence-label">SQLite execution · Simulated CRM responses</span>
-          <h3 class="t-title">RevOps Sync Control Plane</h3>
-          <p class="pcard-stack">Python · SQLAlchemy · HubSpot / Salesforce · Recovery &amp; audit</p>
-          <dl class="system-facts">
+        <article class="pcard product-feature" id="selected-crm">
+ <div class="product-intro"><p class="product-name">RevOps Sync Control Plane</p><h3>CRM sync.<br>With a recovery plan.</h3><p class="product-description">Keep account identity, field ownership and delivery order explicit—and make uncertain writes recoverable.</p><div class="plinks">
+            <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO.md" target="_blank" rel="noopener">5-minute walkthrough <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
+          </div></div>
+ <aside class="execution-proof" aria-label="RevOps Sync Control Plane execution evidence"><p class="proof-eyebrow">Documented execution</p><p class="proof-statement">5 recovery scenarios checked.</p><p class="proof-sub">123 tests passed · 1 skipped</p><p class="proof-boundary">Local SQLite run · 13 September 2026.<br>CRM responses simulated; no live writes in this demo.</p><a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO.md" target="_blank" rel="noopener">Read the execution walkthrough <span aria-hidden="true">↗</span></a></aside>
+ <details class="product-details"><summary>Architecture, testing &amp; limitations <span aria-hidden="true">+</span></summary><div class="product-details-body"><p class="pcard-stack">Python · SQLAlchemy · HubSpot / Salesforce · Recovery &amp; audit</p><dl class="system-facts">
             <dt>Problem</dt><dd>CRM sync can duplicate accounts, overwrite good data or restore stale consent.</dd>
             <dt>Implementation</dt><dd>Identity and field-ownership rules, version checks, fenced delivery claims, ordered outbox streams, read-back recovery and audited hold release.</dd>
             <dt>Inspectable proof</dt><dd><a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/evidence/README.md" target="_blank" rel="noopener">5 checked demo scenarios; 123 tests passed, 1 skipped</a> in the local 13 September 2026 SQLite run. Simulated trace: create → read-back → update.</dd>
             <dt>Limit</dt><dd>No live CRM calls in the walkthrough. Concurrent ingestion and signed webhooks remain unimplemented; no revenue result is claimed.</dd>
-          </dl>
-          <div class="plinks">
-            <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO.md" target="_blank" rel="noopener">5-minute walkthrough <span class="arw">→</span></a>
-            <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
-          </div>
-        </article>
-        <article class="pcard" id="selected-ai">
-          <span class="evidence-label">Real public signals · Offline AI outputs</span>
-          <h3 class="t-title">Claude GTM Revenue Agent</h3>
-          <p class="pcard-stack">Python · Claude API adapter · FastAPI · Grounding &amp; cost controls</p>
-          <dl class="system-facts">
+          </dl></div></details>
+</article>
+        <article class="pcard product-feature" id="selected-ai">
+ <div class="product-intro"><p class="product-name">Claude GTM Revenue Agent</p><h3>Account research.<br>Grounded in evidence.</h3><p class="product-description">Turn public signals into account intelligence, with checks for unsupported claims and accounting for rejected-response costs.</p><div class="plinks">
+            <a href="https://aditya-chouhan.github.io/claude-gtm-revenue-agent/" target="_blank" rel="noopener">Evidence console <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
+          </div></div>
+ <aside class="execution-proof" aria-label="Claude GTM Revenue Agent execution evidence"><p class="proof-eyebrow">Documented execution</p><p class="proof-statement">12 deliberate corruptions rejected.</p><p class="proof-sub">29 local tests passed</p><p class="proof-boundary">Local receipt · 12 September 2026.<br>Offline mock briefs; these checks do not measure live-model quality.</p><a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent/blob/main/evidence/README.md" target="_blank" rel="noopener">Read the evaluation receipt <span aria-hidden="true">↗</span></a></aside>
+ <details class="product-details"><summary>Architecture, testing &amp; limitations <span aria-hidden="true">+</span></summary><div class="product-details-body"><p class="pcard-stack">Python · Claude API adapter · FastAPI · Grounding &amp; cost controls</p><dl class="system-facts">
             <dt>Problem</dt><dd>Account research becomes a liability when AI invents facts or hides rejected-response costs.</dd>
             <dt>Implementation</dt><dd>Public-signal ingestion, deterministic scoring, strict tool/output contracts, grounding checks, human-review boundaries and failed-response usage accounting.</dd>
             <dt>Inspectable proof</dt><dd><a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent/blob/main/evidence/README.md" target="_blank" rel="noopener">12/12 deliberate corruptions rejected; 29 local tests passed</a> in the 12 September 2026 receipt. This measures guard behavior, not live-model quality.</dd>
             <dt>Limit</dt><dd>Briefs are offline mocks. No authorized live-Claude receipt, independent human benchmark or business outcome is claimed.</dd>
-          </dl>
-          <div class="plinks">
-            <a href="https://aditya-chouhan.github.io/claude-gtm-revenue-agent/" target="_blank" rel="noopener">Evidence console <span class="arw">→</span></a>
-            <a href="https://github.com/Aditya-chouhan/claude-gtm-revenue-agent" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
-          </div>
-        </article>
-        <article class="pcard" id="selected-warehouse">
-          <span class="evidence-label">Real BigQuery run · Synthetic funnel activity</span>
-          <h3 class="t-title">GTM Warehouse</h3>
-          <p class="pcard-stack">SQL · dbt Core · DuckDB · BigQuery · Dimensional models</p>
-          <dl class="system-facts">
+          </dl></div></details>
+</article>
+        <article class="pcard product-feature" id="selected-warehouse">
+ <div class="product-intro"><p class="product-name">GTM Warehouse</p><h3>Revenue analytics.<br>Built on tested models.</h3><p class="product-description">Bring account signals, touches and opportunities into a consistent SQL model that can be inspected and tested.</p><div class="plinks">
+            <a href="https://aditya-chouhan.github.io/gtm-warehouse/" target="_blank" rel="noopener">Warehouse walkthrough <span class="arw">→</span></a>
+            <a href="https://github.com/Aditya-chouhan/gtm-warehouse" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
+          </div></div>
+ <aside class="execution-proof" aria-label="GTM Warehouse execution evidence"><p class="proof-eyebrow">Documented execution</p><p class="proof-statement">35 data tests passed.</p><p class="proof-sub">Executed on BigQuery · also verified on DuckDB</p><p class="proof-boundary">BigQuery receipt · 27 August 2026.<br>Public-source signals; synthetic touches and opportunities.</p><a href="https://github.com/Aditya-chouhan/gtm-warehouse/blob/main/output/bigquery_run_receipt_2026-08-27.json" target="_blank" rel="noopener">Read the BigQuery receipt <span aria-hidden="true">↗</span></a></aside>
+ <details class="product-details"><summary>Architecture, testing &amp; limitations <span aria-hidden="true">+</span></summary><div class="product-details-body"><p class="pcard-stack">SQL · dbt Core · DuckDB · BigQuery · Dimensional models</p><dl class="system-facts">
             <dt>Problem</dt><dd>Signals, touches and opportunities need a tested data model before funnel reports can be trusted.</dd>
             <dt>Implementation</dt><dd>Staging and account/fact models, incremental signal modeling, generic and custom data tests, and fixes verified across two SQL engines.</dd>
             <dt>Inspectable proof</dt><dd><a href="https://github.com/Aditya-chouhan/gtm-warehouse/blob/main/output/bigquery_run_receipt_2026-08-27.json" target="_blank" rel="noopener">35/35 data tests passed on real BigQuery</a> on 27 August 2026, also verified on DuckDB. Build-node counts are not presented as test counts.</dd>
             <dt>Limit</dt><dd>Signals are public-source data; touches and opportunities are synthetic. One batch does not prove recurring loads, production scale or commercial performance.</dd>
-          </dl>
-          <div class="plinks">
-            <a href="https://aditya-chouhan.github.io/gtm-warehouse/" target="_blank" rel="noopener">Warehouse walkthrough <span class="arw">→</span></a>
-            <a href="https://github.com/Aditya-chouhan/gtm-warehouse" target="_blank" rel="noopener">Inspect code <span class="arw">→</span></a>
-          </div>
-        </article>
+          </dl></div></details>
+</article>
       </div>
       <p class="selected-next"><a href="#contact">Discuss your GTM system →</a> <span aria-hidden="true">·</span> <a href="#engineering-index">Explore supporting engineering work</a></p>
     </div>
@@ -682,7 +734,7 @@ html[data-keyboard] .btn:active { transform:none; }
   </section>
 <section class="section wrap" id="contact" aria-labelledby="contact-h">
  <div class="contact-panel">
-  <div><p class="t-micro">Next conversation</p><h2 id="contact-h">Build the systems.<br>Own the motion.</h2><p>Need a GTM system built? Let’s discuss your targeting, research or CRM workflow—and what a focused engagement could deliver.</p><p class="contact-note">Available for GTM Engineering contract engagements.<br>Mumbai, India · Global / remote or contract.</p></div>
+  <div><p class="t-micro">Next conversation</p><h2 id="contact-h">Let’s build your<br>next GTM system.</h2><p>Need a GTM system built? Let’s discuss your targeting, research or CRM workflow—and what a focused engagement could deliver.</p><p class="contact-note">Available for GTM Engineering contract engagements.<br>Mumbai, India · Global / remote or contract.</p></div>
   <div class="contact-actions">
    <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=GTM%20system%20project">Discuss your GTM system <span aria-hidden="true">↗</span></a>
    <a class="btn btn-ghost" href="Aditya-Chouhan-Resume.pdf">View résumé <span aria-hidden="true">↗</span></a>
