@@ -97,20 +97,6 @@ button { font:inherit; }
 .hero-proof-note { color:var(--muted); font-size:.68rem; line-height:1.6; margin-top:5px; }
 .hero-meta { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:.76rem; color:var(--muted); }
 .hero-meta a { color:var(--muted); }
-.architecture { background:var(--surface); border-radius:18px; padding:26px; box-shadow:var(--shadow); position:relative; }
-.diagram-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:22px; }
-.diagram-heading strong { font-size:.85rem; letter-spacing:-.015em; }
-.diagram-heading span { font: .61rem/1.5 var(--font-mono); color:var(--muted); }
-.flow-step { display:grid; grid-template-columns:32px 1fr auto; gap:13px; align-items:center; padding:15px 0; position:relative; }
-.step-num { font: .64rem/1.5 var(--font-mono); color:var(--muted); width:30px; height:30px; display:grid; place-items:center; border:1px solid var(--line); border-radius:8px; background:var(--surface); z-index:1; }
-.flow-step:not(:last-of-type)::after { content:""; position:absolute; width:1px; height:30px; background:var(--line); left:15px; top:45px; }
-.flow-step strong { display:block; font-size:.82rem; font-weight:600; }
-.flow-step small { display:block; color:var(--muted); font-size:.68rem; margin-top:2px; }
-.step-arrow { color:var(--muted); font-size:.85rem; }
-.flow-step.review { background:var(--accent-soft); padding:15px 12px; margin-inline:-12px; border-radius:10px; }
-.flow-step.review::after { left:27px; }
-.review strong,.review .step-num { color:var(--accent); }
-.architecture figcaption { border-top:1px solid var(--line); padding-top:18px; margin-top:18px; color:var(--muted); font-size:.65rem; line-height:1.65; }
 .scope-strip { border-block:1px solid var(--line); display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding-block:24px; }
 .scope-strip>div { display:flex; gap:13px; align-items:center; font-size:.76rem; color:var(--muted); }
 .scope-strip b { color:var(--text); font: .65rem/1.5 var(--font-mono); }
@@ -228,7 +214,6 @@ html[data-keyboard] .btn:active { transform:none; }
  .hero h1 { font-size:clamp(2rem,7.2vw,3rem); }
  .hero-dek { font-size:.95rem; }
  .hero .eyebrow { font-size:.6rem; margin-bottom:20px; }
- .architecture { padding:22px; }
  .scope-strip { gap:12px; padding-block:20px; }
  .scope-strip>div { font-size:.65rem; display:block; }
  .scope-strip b { display:block; margin-bottom:5px; }
