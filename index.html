@@ -75,13 +75,26 @@ button { font:inherit; }
 .btn-ghost { border-color:var(--line); color:var(--text); background:transparent; }
 .btn:active { transform:scale(.97); }
 .btn-small { min-height:42px; padding:9px 15px; }
-.hero { padding-block:88px 70px; }
-.hero-grid { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(300px,.85fr); gap:70px; align-items:center; }
-.hero .eyebrow { color:var(--accent); margin-bottom:26px; }
-.hero h1 { font-size:clamp(3rem,6.1vw,5.35rem); letter-spacing:-.062em; line-height:1.02; max-width:12ch; }
-.hero h1 span { color:var(--muted); }
-.hero-dek { font-size:1.04rem; color:var(--muted); max-width:51ch; margin-top:28px; }
-.hero-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.hero { padding-block:64px 56px; }
+.hero-grid { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr); gap:48px; align-items:center; }
+.hero .eyebrow { color:var(--muted); margin-bottom:22px; }
+.hero h1 { font-size:clamp(2.65rem,4.5vw,4rem); letter-spacing:-.052em; line-height:1.1; text-wrap:initial; }
+.hero h1 span { color:var(--accent); }
+.hero-dek { font-size:1.05rem; color:var(--muted); max-width:48ch; margin-top:24px; }
+.hero-context { font-size:.82rem; color:var(--muted); margin-top:16px; max-width:55ch; }
+.hero-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+.hero-proof { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:var(--shadow); min-width:0; }
+.hero-proof-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+.hero-proof-heading h2 { font-size:.88rem; letter-spacing:-.015em; }
+.hero-proof-heading span { font: .6rem/1.5 var(--font-mono); color:var(--muted); }
+.hero-proof-link { display:grid; grid-template-columns:28px minmax(0,1fr) 14px; gap:12px; align-items:start; padding:20px 0; color:var(--text); border-bottom:1px solid var(--line); }
+.hero-proof-link:last-of-type { border-bottom:0; }
+.hero-proof-link:hover { text-decoration:none; }
+.hero-proof-link>span:first-child { font:.65rem/1.8 var(--font-mono); color:var(--muted); }
+.hero-proof-link strong { display:block; font-size:.9rem; line-height:1.4; font-weight:600; }
+.hero-proof-link small { display:block; font-size:.73rem; line-height:1.6; color:var(--muted); margin-top:5px; }
+.hero-proof-link>span:last-child { color:var(--accent); }
+.hero-proof-note { color:var(--muted); font-size:.68rem; line-height:1.6; margin-top:5px; }
 .hero-meta { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:.76rem; color:var(--muted); }
 .hero-meta a { color:var(--muted); }
 .architecture { background:var(--surface); border-radius:18px; padding:26px; box-shadow:var(--shadow); position:relative; }
@@ -193,8 +206,8 @@ footer { border-top:1px solid var(--line); }
 button[data-keyboard],html[data-keyboard] .btn { transition:none; }
 html[data-keyboard] .btn:active { transform:none; }
 @media (max-width:1000px) {
- .hero-grid { gap:35px; grid-template-columns:1.2fr .8fr; }
- .hero h1 { font-size:clamp(3rem,6.5vw,4.8rem); }
+ .hero-grid { gap:28px; grid-template-columns:1.3fr 1fr; }
+ .hero h1 { font-size:clamp(2.45rem,4.6vw,3rem); }
  .selected-grid { grid-template-columns:1fr; }
  .selected-grid .pcard { display:grid; grid-template-columns:minmax(180px,.8fr) minmax(0,1.4fr); gap:0 32px; }
  .selected-grid .system-facts { grid-column:2; grid-row:1/span 4; margin-bottom:0; }
@@ -210,9 +223,9 @@ html[data-keyboard] .btn:active { transform:none; }
  .nav-links>a:not(.nav-hire) { display:none; }
  .nav-links { gap:0; }
  .brand { font-size:.8rem; gap:9px; }
- .hero { padding-block:52px 45px; }
- .hero-grid { grid-template-columns:1fr; gap:40px; }
- .hero h1 { font-size:clamp(2.9rem,10.5vw,4.4rem); max-width:13ch; }
+ .hero { padding-block:36px 36px; }
+ .hero-grid { grid-template-columns:1fr; gap:30px; }
+ .hero h1 { font-size:clamp(2rem,7.2vw,3rem); }
  .hero-dek { font-size:.95rem; }
  .hero .eyebrow { font-size:.6rem; margin-bottom:20px; }
  .architecture { padding:22px; }
@@ -268,24 +281,23 @@ html[data-keyboard] .btn:active { transform:none; }
 <header class="hero wrap">
  <div class="hero-grid">
   <div>
-   <p class="eyebrow">GTM Engineer / AI &amp; Revenue Systems</p>
-   <h1>I build the systems <span>behind targeted outbound.</span></h1>
-   <p class="hero-dek">Account intelligence, CRM workflows and revenue analytics built with Python, SQL, APIs and AI. My work spans outbound operations at Sydon.ai and MAPOG, with public implementations you can inspect and run.</p>
+   <p class="eyebrow">Aditya Chouhan · GTM Engineer</p>
+   <h1>GTM engineering.<br><span>AI &amp; revenue systems.</span></h1>
+   <p class="hero-dek">I build account intelligence, reliable CRM workflows and revenue analytics with Python, SQL, APIs and AI.</p>
+   <p class="hero-context">Outbound operations experience at Sydon.ai and MAPOG. Public engineering work you can inspect and run.</p>
    <div class="hero-cta">
-    <a class="btn btn-primary" href="#contact">Discuss a GTM Engineering role <span aria-hidden="true">↗</span></a>
-    <a class="btn btn-ghost" href="#work">Inspect the systems <span aria-hidden="true">↓</span></a>
+    <a class="btn btn-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+    <a class="btn btn-ghost" href="#contact">Discuss a role <span aria-hidden="true">↗</span></a>
    </div>
    <div class="hero-meta"><span>Mumbai, India · Global / remote roles</span><a href="Aditya-Chouhan-Resume.pdf">View résumé ↗</a><a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub ↗</a></div>
   </div>
-  <figure class="architecture" aria-label="Illustrative signal-to-revenue architecture">
-   <div class="diagram-heading"><strong>The systems behind the motion</strong><span>ILLUSTRATIVE FLOW</span></div>
-   <div class="flow-step"><span class="step-num">01</span><div><strong>Account signals</strong><small>Public sources · identity · enrichment</small></div><span class="step-arrow" aria-hidden="true">↓</span></div>
-   <div class="flow-step"><span class="step-num">02</span><div><strong>Evidence-grounded research</strong><small>AI briefs · scoring · validation</small></div><span class="step-arrow" aria-hidden="true">↓</span></div>
-   <div class="flow-step review"><span class="step-num">03</span><div><strong>Human review</strong><small>Explicit approval before activation</small></div><span class="step-arrow" aria-hidden="true">↓</span></div>
-   <div class="flow-step"><span class="step-num">04</span><div><strong>CRM &amp; outbound infrastructure</strong><small>Ownership · ordered delivery · recovery</small></div><span class="step-arrow" aria-hidden="true">↓</span></div>
-   <div class="flow-step"><span class="step-num">05</span><div><strong>Revenue analytics</strong><small>SQL models · funnel definitions · evaluation</small></div><span class="step-arrow" aria-hidden="true">↗</span></div>
-   <figcaption>An architectural map, not a connected production system. Each implementation below states what ran live, what is simulated, and what remains unproven.</figcaption>
-  </figure>
+  <aside class="hero-proof" aria-labelledby="hero-proof-h">
+   <div class="hero-proof-heading"><h2 id="hero-proof-h">Selected engineering work</h2><span>CODE + EVIDENCE</span></div>
+   <a class="hero-proof-link" href="#selected-crm"><span>01</span><div><strong>CRM sync &amp; recovery</strong><small>Ordered delivery, identity rules and an audited recovery walkthrough.</small></div><span aria-hidden="true">↗</span></a>
+   <a class="hero-proof-link" href="#selected-ai"><span>02</span><div><strong>AI account intelligence</strong><small>Source-grounding checks and failed-response cost accounting.</small></div><span aria-hidden="true">↗</span></a>
+   <a class="hero-proof-link" href="#selected-warehouse"><span>03</span><div><strong>Revenue data models</strong><small>SQL and dbt models tested on DuckDB and BigQuery.</small></div><span aria-hidden="true">↗</span></a>
+   <p class="hero-proof-note">Each project separates executed proof from simulated behavior. No demo revenue is presented as a business result.</p>
+  </aside>
  </div>
 </header>
 <div class="wrap"><div class="scope-strip" aria-label="Public proof categories">
