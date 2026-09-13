@@ -234,7 +234,7 @@ html[data-keyboard] .btn:active { transform:none; }
 
 
 /* Product presentation: readable summaries, inspectable evidence, native disclosure. */
-#work { background:var(--sunken); }
+#work { background:var(--bg); }
 .section { padding-block:clamp(56px,7vw,100px); }
 .section-head { align-items:start; margin-bottom:44px; }
 .section-head>.t-micro { color:var(--muted); font:600 .78rem/1.5 var(--font-sans); letter-spacing:.015em; text-transform:none; }
@@ -331,6 +331,15 @@ html[data-keyboard] .nav-hire span { transition:none; }
  .hero-work-link:hover span,.execution-proof>a:hover span,.nav-hire:hover span { transform:none; }
 }
 
+/* One continuous page canvas; color marks actions rather than section boundaries. */
+.nav-hire.btn-primary { background:var(--accent); color:#fff !important; border-radius:999px; }
+.hero h1 span { color:var(--text); }
+@media (prefers-color-scheme:dark) {
+ .nav-hire.btn-primary { color:#111315 !important; }
+}
+@media (hover:hover) and (pointer:fine) {
+ .nav-hire.btn-primary:hover { filter:brightness(.94); }
+}
 </style>
 </head>
 <body>
