@@ -295,6 +295,42 @@ html[data-keyboard] .btn:active { transform:none; }
  .caps { gap:24px; }
 }
 
+
+/* Motion: brief feedback, one-time section entrances, native disclosure enhancement. */
+.hero-work-link span,.execution-proof>a span,.nav-hire span {
+ display:inline-block; transition:transform 160ms var(--ease-out);
+}
+.product-details>summary>span,.expand-mark {
+ transition:transform 200ms var(--ease-out);
+}
+.product-details>summary,.additional-item>summary {
+ transition:color 160ms ease;
+}
+@media (hover:hover) and (pointer:fine) {
+ .hero-work-link:hover span,.execution-proof>a:hover span,.nav-hire:hover span { transform:translate(2px,-2px); }
+ .product-details>summary:hover,.additional-item>summary:hover { color:var(--accent); }
+ .hero .btn-primary:hover,.contact-panel .btn-primary:hover { filter:brightness(.94); }
+}
+/* Progressive enhancement: browsers without details-content retain native instant toggles. */
+@supports (interpolate-size:allow-keywords) and (transition-behavior:allow-discrete) {
+ .product-details::details-content {
+  interpolate-size:allow-keywords; height:0; opacity:0; overflow:clip;
+  transition:height 200ms var(--ease-out),opacity 200ms var(--ease-out),content-visibility 200ms allow-discrete;
+ }
+ .product-details[open]::details-content { height:auto; opacity:1; }
+}
+html[data-keyboard] .product-details::details-content,
+html[data-keyboard] .product-details>summary>span,
+html[data-keyboard] .expand-mark,
+html[data-keyboard] .hero-work-link span,
+html[data-keyboard] .execution-proof>a span,
+html[data-keyboard] .nav-hire span { transition:none; }
+@media (prefers-reduced-motion:reduce) {
+ .product-details::details-content,.product-details>summary>span,.expand-mark,
+ .hero-work-link span,.execution-proof>a span,.nav-hire span { transition:none; }
+ .hero-work-link:hover span,.execution-proof>a:hover span,.nav-hire:hover span { transform:none; }
+}
+
 </style>
 </head>
 <body>
@@ -791,6 +827,44 @@ html[data-keyboard] .btn:active { transform:none; }
    if(el.animate)el.animate([{opacity:.6,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],
     {duration:250,delay:index*50,easing:'cubic-bezier(0.23, 1, 0.32, 1)'});
   });
+ }
+})();
+</script>
+<script>
+
+(function(){
+ 'use strict';
+ var root=document.documentElement;
+ var preference=window.matchMedia('(prefers-reduced-motion: reduce)');
+ var active=new Set();
+ function stopMotion(){active.forEach(function(a){a.cancel();});active.clear();}
+ function allowed(){return !preference.matches&&!root.dataset.keyboard;}
+ function entrance(el,delay){
+  if(!allowed()||!el.animate||el.contains(document.activeElement))return;
+  var animation=el.animate(
+   [{opacity:.65,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],
+   {duration:250,delay:delay||0,easing:'cubic-bezier(0.23,1,0.32,1)'});
+  active.add(animation);
+  animation.onfinish=animation.oncancel=function(){active.delete(animation);};
+ }
+ window.addEventListener('keydown',function(e){
+  if(e.key==='Tab'||e.key==='Enter'||e.key===' '){root.dataset.keyboard='true';stopMotion();}
+ });
+ if(preference.addEventListener)preference.addEventListener('change',stopMotion);
+ document.addEventListener('visibilitychange',function(){if(document.hidden)stopMotion();});
+ // Content stays visible without JS; animation starts only when a section enters view.
+ if('IntersectionObserver' in window){
+  var observer=new IntersectionObserver(function(entries){
+   entries.forEach(function(entry){
+    if(!entry.isIntersecting)return;
+    observer.unobserve(entry.target);
+    entrance(entry.target,0);
+   });
+  },{threshold:.08});
+  document.querySelectorAll('.product-intro,.execution-proof,.section-head,.contact-panel').forEach(function(el){observer.observe(el);});
+ }
+ if(!window.location.hash){
+  document.querySelectorAll('.hero>.eyebrow,.hero>h1,.hero>.hero-dek,.hero>.hero-cta').forEach(function(el,index){entrance(el,index*50);});
  }
 })();
 </script>
