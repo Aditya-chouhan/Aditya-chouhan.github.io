@@ -75,28 +75,16 @@ button { font:inherit; }
 .btn-ghost { border-color:var(--line); color:var(--text); background:transparent; }
 .btn:active { transform:scale(.97); }
 .btn-small { min-height:42px; padding:9px 15px; }
-.hero { padding-block:64px 56px; }
-.hero-grid { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr); gap:48px; align-items:center; }
-.hero .eyebrow { color:var(--muted); margin-bottom:22px; }
-.hero h1 { font-size:clamp(2.65rem,4.5vw,4rem); letter-spacing:-.052em; line-height:1.1; text-wrap:initial; }
-.hero h1 span { color:var(--accent); }
-.hero-dek { font-size:1.05rem; color:var(--muted); max-width:48ch; margin-top:24px; }
-.hero-context { font-size:.82rem; color:var(--muted); margin-top:16px; max-width:55ch; }
-.hero-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
-.hero-proof { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:var(--shadow); min-width:0; }
-.hero-proof-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; padding-bottom:18px; border-bottom:1px solid var(--line); }
-.hero-proof-heading h2 { font-size:.88rem; letter-spacing:-.015em; }
-.hero-proof-heading span { font: .6rem/1.5 var(--font-mono); color:var(--muted); }
-.hero-proof-link { display:grid; grid-template-columns:28px minmax(0,1fr) 14px; gap:12px; align-items:start; padding:20px 0; color:var(--text); border-bottom:1px solid var(--line); }
-.hero-proof-link:last-of-type { border-bottom:0; }
-.hero-proof-link:hover { text-decoration:none; }
-.hero-proof-link>span:first-child { font:.65rem/1.8 var(--font-mono); color:var(--muted); }
-.hero-proof-link strong { display:block; font-size:.9rem; line-height:1.4; font-weight:600; }
-.hero-proof-link small { display:block; font-size:.73rem; line-height:1.6; color:var(--muted); margin-top:5px; }
-.hero-proof-link>span:last-child { color:var(--accent); }
-.hero-proof-note { color:var(--muted); font-size:.68rem; line-height:1.6; margin-top:5px; }
-.hero-meta { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:.76rem; color:var(--muted); }
-.hero-meta a { color:var(--muted); }
+.hero { padding-block:clamp(48px,6vw,80px) 56px; }
+.hero .eyebrow { color:var(--muted); margin-bottom:24px; font:600 .8rem/1.5 var(--font-sans); letter-spacing:.025em; text-transform:none; }
+.hero h1 { font-size:clamp(2.15rem,4.4vw,3.7rem); letter-spacing:-.045em; line-height:1.12; max-width:1060px; text-wrap:initial; }
+.hero h1 span { color:var(--muted); }
+.hero-dek { font-size:clamp(1.05rem,1.5vw,1.2rem); line-height:1.65; color:var(--muted); max-width:65ch; margin-top:26px; }
+.hero-cta { display:flex; flex-wrap:wrap; align-items:center; gap:14px 28px; margin-top:28px; }
+.hero .btn-primary { background:var(--accent); color:#fff !important; border-radius:999px; padding-inline:24px; font-size:.9rem; }
+.hero-work-link { display:inline-flex; align-items:center; gap:9px; min-height:48px; font-size:.9rem; }
+.hero-meta { margin-top:22px; font-size:.8rem; color:var(--muted); }
+@media (prefers-color-scheme:dark) { .hero .btn-primary { color:#111315 !important; } }
 .scope-strip { border-block:1px solid var(--line); display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding-block:24px; }
 .scope-strip>div { display:flex; gap:13px; align-items:center; font-size:.76rem; color:var(--muted); }
 .scope-strip b { color:var(--text); font: .65rem/1.5 var(--font-mono); }
@@ -192,8 +180,6 @@ footer { border-top:1px solid var(--line); }
 button[data-keyboard],html[data-keyboard] .btn { transition:none; }
 html[data-keyboard] .btn:active { transform:none; }
 @media (max-width:1000px) {
- .hero-grid { gap:28px; grid-template-columns:1.3fr 1fr; }
- .hero h1 { font-size:clamp(2.45rem,4.6vw,3rem); }
  .selected-grid { grid-template-columns:1fr; }
  .selected-grid .pcard { display:grid; grid-template-columns:minmax(180px,.8fr) minmax(0,1.4fr); gap:0 32px; }
  .selected-grid .system-facts { grid-column:2; grid-row:1/span 4; margin-bottom:0; }
@@ -210,10 +196,9 @@ html[data-keyboard] .btn:active { transform:none; }
  .nav-links { gap:0; }
  .brand { font-size:.8rem; gap:9px; }
  .hero { padding-block:36px 36px; }
- .hero-grid { grid-template-columns:1fr; gap:30px; }
- .hero h1 { font-size:clamp(2rem,7.2vw,3rem); }
+ .hero h1 { font-size:clamp(2rem,6.2vw,2.8rem); letter-spacing:-.035em; }
  .hero-dek { font-size:.95rem; }
- .hero .eyebrow { font-size:.6rem; margin-bottom:20px; }
+ .hero .eyebrow { font-size:.8rem; margin-bottom:20px; }
  .scope-strip { gap:12px; padding-block:20px; }
  .scope-strip>div { font-size:.65rem; display:block; }
  .scope-strip b { display:block; margin-bottom:5px; }
@@ -258,32 +243,20 @@ html[data-keyboard] .btn:active { transform:none; }
       <a href="#work" data-section-link="work">Selected systems</a>
       <a href="#experience" data-section-link="experience">Experience</a>
       <a href="#failures" data-section-link="failures">Operating proof</a>
-      <a class="btn btn-primary btn-small nav-hire" href="#contact" data-section-link="contact">Discuss a role <span aria-hidden="true">↗</span></a>
+      <a class="btn btn-primary btn-small nav-hire" href="#contact" data-section-link="contact">Get in touch <span aria-hidden="true">↗</span></a>
     </div>
   </nav>
 </header>
 <main id="main">
 <header class="hero wrap">
- <div class="hero-grid">
-  <div>
-   <p class="eyebrow">Aditya Chouhan · GTM Engineer</p>
-   <h1>GTM engineering.<br><span>AI &amp; revenue systems.</span></h1>
-   <p class="hero-dek">I build account intelligence, reliable CRM workflows and revenue analytics with Python, SQL, APIs and AI.</p>
-   <p class="hero-context">Outbound operations experience at Sydon.ai and MAPOG. Public engineering work you can inspect and run.</p>
-   <div class="hero-cta">
-    <a class="btn btn-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
-    <a class="btn btn-ghost" href="#contact">Discuss a role <span aria-hidden="true">↗</span></a>
-   </div>
-   <div class="hero-meta"><span>Mumbai, India · Global / remote roles</span><a href="Aditya-Chouhan-Resume.pdf">View résumé ↗</a><a href="https://github.com/Aditya-chouhan" target="_blank" rel="noopener">GitHub ↗</a></div>
-  </div>
-  <aside class="hero-proof" aria-labelledby="hero-proof-h">
-   <div class="hero-proof-heading"><h2 id="hero-proof-h">Selected engineering work</h2><span>CODE + EVIDENCE</span></div>
-   <a class="hero-proof-link" href="#selected-crm"><span>01</span><div><strong>CRM sync &amp; recovery</strong><small>Ordered delivery, identity rules and an audited recovery walkthrough.</small></div><span aria-hidden="true">↗</span></a>
-   <a class="hero-proof-link" href="#selected-ai"><span>02</span><div><strong>AI account intelligence</strong><small>Source-grounding checks and failed-response cost accounting.</small></div><span aria-hidden="true">↗</span></a>
-   <a class="hero-proof-link" href="#selected-warehouse"><span>03</span><div><strong>Revenue data models</strong><small>SQL and dbt models tested on DuckDB and BigQuery.</small></div><span aria-hidden="true">↗</span></a>
-   <p class="hero-proof-note">Each project separates executed proof from simulated behavior. No demo revenue is presented as a business result.</p>
-  </aside>
+ <p class="eyebrow">GTM Engineering</p>
+ <h1>Find the right accounts.<br><span>Give sales a reason to reach out.</span></h1>
+ <p class="hero-dek">I build signal-based prospecting, account research and CRM workflows for B2B teams—connecting buying signals to relevant outreach and measurable follow-up.</p>
+ <div class="hero-cta">
+  <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=GTM%20system%20project">Discuss your GTM system <span aria-hidden="true">↗</span></a>
+  <a class="hero-work-link" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
  </div>
+ <p class="hero-meta">Available for remote contract engagements.</p>
 </header>
 <div class="wrap"><div class="scope-strip" aria-label="Public proof categories">
  <div><b>01 / CRM</b><span>Runnable recovery walkthrough</span></div>
@@ -344,7 +317,7 @@ html[data-keyboard] .btn:active { transform:none; }
           </div>
         </article>
       </div>
-      <p class="selected-next"><a href="#contact">Discuss a GTM Engineering role →</a> <span aria-hidden="true">·</span> <a href="#engineering-index">Explore supporting engineering work</a></p>
+      <p class="selected-next"><a href="#contact">Discuss your GTM system →</a> <span aria-hidden="true">·</span> <a href="#engineering-index">Explore supporting engineering work</a></p>
     </div>
   </section>
   <section class="section" id="experience" aria-labelledby="xp-h">
@@ -709,9 +682,9 @@ html[data-keyboard] .btn:active { transform:none; }
   </section>
 <section class="section wrap" id="contact" aria-labelledby="contact-h">
  <div class="contact-panel">
-  <div><p class="t-micro">Next conversation</p><h2 id="contact-h">Build the systems.<br>Own the motion.</h2><p>Hiring a GTM Engineer? I can walk through the architecture, receipts and tradeoffs—and how I would adapt them to your GTM environment.</p><p class="contact-note">Open to GTM Engineering and Revenue Systems roles.<br>Mumbai, India · Global / remote or contract.</p></div>
+  <div><p class="t-micro">Next conversation</p><h2 id="contact-h">Build the systems.<br>Own the motion.</h2><p>Need a GTM system built? Let’s discuss your targeting, research or CRM workflow—and what a focused engagement could deliver.</p><p class="contact-note">Available for GTM Engineering contract engagements.<br>Mumbai, India · Global / remote or contract.</p></div>
   <div class="contact-actions">
-   <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=GTM%20Engineering%20role">Discuss a GTM Engineering role <span aria-hidden="true">↗</span></a>
+   <a class="btn btn-primary" href="mailto:ai.adityachouhan@gmail.com?subject=GTM%20system%20project">Discuss your GTM system <span aria-hidden="true">↗</span></a>
    <a class="btn btn-ghost" href="Aditya-Chouhan-Resume.pdf">View résumé <span aria-hidden="true">↗</span></a>
    <button class="btn btn-ghost" id="copyEmail" type="button">Copy email address</button>
    <span class="email-feedback" id="emailFeedback" role="status" aria-live="polite"></span>
