@@ -992,15 +992,18 @@ button { touch-action: manipulation; }
       <div class="layer" id="layer-lifecycle">
         <div class="layer-head">
           <h3>CRM integration, lifecycle &amp; forecasting</h3>
-          <span class="jd">HubSpot live test portal · Salesforce preview</span>
+          <span class="jd">Historical HubSpot test portal · Simulated CRM recovery</span>
         </div>
         <div class="heroes">
           <article class="pcard">
             <h3 class="t-title">RevOps Sync Control Plane</h3>
-            <p class="pcard-stack">HubSpot · Salesforce · Identity resolution · Postgres · dbt / BigQuery · Terraform</p>
-            <p>Reconciles cross-CRM account identity, field ownership and conflicts without unsafe same-name merges. Real company create/update behavior is validated in a HubSpot developer test portal; Salesforce remains preview-only.</p>
-            <span class="data"><b>3</b> HubSpot companies created with portal IDs, then re-run twice against the same IDs · <b>27/27</b> local tests, <b>93%</b> coverage · offline fixture: <b>6</b> source records → <b>4</b> canonical accounts, <b>8</b> conflicts, <b>6</b> preview actions <span class="note">· Salesforce preview-only; BigQuery/dbt/Terraform path undeployed</span></span>
+            <p class="pcard-stack">Python · SQLAlchemy · HubSpot / Salesforce · SQLite / Postgres · Recovery &amp; audit</p>
+            <p>Inspect how CRM disagreements resolve, stale inputs are rejected, lost responses recover without blind replay, and queued creates become safe updates. A single-command walkthrough exercises the actual control-plane code with explicitly simulated CRM responses.</p>
+            <span class="data"><b>5</b> checked walkthrough scenarios · <b>123</b> tests passed, <b>1</b> skipped · <b>94.37%</b> source-line coverage <span class="note">· latest local run: SQLite and synthetic data; no live CRM or business-result claim</span></span>
+            <p class="pcard-stack">Separate historical evidence: 3 HubSpot companies created in a developer test portal and re-run twice against their IDs. Salesforce live delivery unverified; BigQuery/dbt/Terraform path undeployed.</p>
             <div class="plinks">
+              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO.md" target="_blank" rel="noopener">5-minute walkthrough <span class="arw">→</span></a>
+              <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/HIRING_DEMO_OUTPUT.md" target="_blank" rel="noopener">Captured output <span class="arw">→</span></a>
               <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">Case study <span class="arw">→</span></a>
               <a href="https://github.com/Aditya-chouhan/revops-sync-control-plane" target="_blank" rel="noopener">Code <span class="arw">→</span></a>
             </div>
